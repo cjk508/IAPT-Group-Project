@@ -1,5 +1,9 @@
 # Please do not change the following line; it will be automatically changed at submission
-ITSAccess ar874,cjk508,kw701,nin500
+#ITSAccess ar874,cjk508,kw701,nin500
 
 # Add any rules below this line
 
+RewriteEngine On 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteRule ^(.*)$ index.php/$1 [L]
