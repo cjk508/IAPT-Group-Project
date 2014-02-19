@@ -5,7 +5,7 @@ class Recipe extends CI_Controller {
 		$this->load->model ( 'recipes_model' );
 	}
 	/**
-	 * The index page of the controller. 
+	 * The index page of the controller.
 	 */
 	public function index() {
 		$this->load->view ( 'templates/header' );
@@ -26,5 +26,7 @@ class Recipe extends CI_Controller {
 			$this->load->view ( 'recipes/view', $data );
 		}
 		$this->load->view ( 'templates/footer' );
+	}
+	public function surprise() {
 	}
 }
