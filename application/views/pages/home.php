@@ -17,14 +17,6 @@ if ($sessionData['viewType'] == 'null' /*or $sessionData['viewType'] != 'null'*/
 	    body{
 	    	background: transparent;
 	    }
-	    header,footer{
-	    	background-color: #FFF;
-	    }
-	    footer{
-	    	position:absolute;
-	    	bottom:0;
-	    	width:100%;
-	    }
 	</style>
 	<div class="jumbotron jumbotron-homepage">
 		<h1>Welcome to the Cook Book!</h1>
@@ -130,7 +122,7 @@ else{
 	      <h4 class="media-heading">Recipe 3</h4>
 	      Lorem Ipsum Ingredients
 	    </div>
-	  </div>
+	  </div>	
   </div>
 </div>
 
