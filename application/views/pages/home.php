@@ -4,7 +4,7 @@
 * otherwise show the normal home screen
 */
 $sessionData = $this->session->all_userdata();
-if ($sessionData['viewType'] == 'null' or $sessionData['viewType'] != 'null'){
+if ($sessionData['viewType'] == 'null' /*or $sessionData['viewType'] != 'null'*/){
 ?>
 	<style>
 		html {
@@ -56,7 +56,83 @@ if ($sessionData['viewType'] == 'null' or $sessionData['viewType'] != 'null'){
 else{
 	echo '<p>'.$sessionData['viewType'].'</p>';
 ?>
+<div class="panel panel-default mostRecent">
+  <div class="panel-heading">
+    <h3 class="panel-title">Most Recent Recipes</h3>
+  </div>
+  <div class="panel-body">
+ 	 <!-- @todo load most recent recipes -->
+	  <div class="media">
+	    <a class="pull-left" href="#">
+	      <img class="media-object" src="assets/images/64test.svg" alt="">
+	    </a>
+	    <div class="media-body">
+	      <h4 class="media-heading">Recipe 1</h4>
+	      Lorem Ipsum Ingredients
+	    </div>
+	  </div>
 
+	  <div class="media">
+	    <a class="pull-left" href="#">
+	      <img class="media-object" src="assets/images/64test.svg" alt="">
+	    </a>
+	    <div class="media-body">
+	      <h4 class="media-heading">Recipe 2</h4>
+	      Lorem Ipsum Ingredients
+	    </div>
+	  </div>
+
+	  <div class="media">
+	    <a class="pull-left" href="#">
+	      <img class="media-object" src="assets/images/64test.svg" alt="">
+	    </a>
+	    <div class="media-body">
+	      <h4 class="media-heading">Recipe 3</h4>
+	      Lorem Ipsum Ingredients
+	    </div>
+	  </div>
+
+
+  </div>
+</div>
+
+<div class="panel panel-default mostPopular pull-right">
+  <div class="panel-heading">
+    <h3 class="panel-title">Most Popular Recipes</h3>
+  </div>
+  <div class="panel-body">
+  <!-- @todo load most popular recipes -->
+  	<div class="media">
+	    <a class="pull-left" href="#">
+	      <img class="media-object" src="assets/images/64test.svg" alt="">
+	    </a>
+	    <div class="media-body">
+	      <h4 class="media-heading">Recipe 1</h4>
+	      Lorem Ipsum Ingredients
+	    </div>
+	  </div>
+
+	  <div class="media">
+	    <a class="pull-left" href="#">
+	      <img class="media-object" src="assets/images/64test.svg" alt="">
+	    </a>
+	    <div class="media-body">
+	      <h4 class="media-heading">Recipe 2</h4>
+	      Lorem Ipsum Ingredients
+	    </div>
+	  </div>
+
+	  <div class="media">
+	    <a class="pull-left" href="#">
+	      <img class="media-object" src="assets/images/64test.svg" alt="">
+	    </a>
+	    <div class="media-body">
+	      <h4 class="media-heading">Recipe 3</h4>
+	      Lorem Ipsum Ingredients
+	    </div>
+	  </div>
+  </div>
+</div>
 
 <?php 
 }
