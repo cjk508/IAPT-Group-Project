@@ -7,6 +7,12 @@ $sessionData = $this->session->all_userdata();
 if ($sessionData['viewType'] == 'null' /*or $sessionData['viewType'] != 'null'*/){
 ?>
 	<style>
+	/**
+
+	This styling is only relevant to the homepage
+	@todo if there is a more efficient way of implementing this style then use that
+
+	*/
 		html {
 			background: url(assets/images/backgroundImage.jpg) no-repeat center center fixed; 
 			-webkit-background-size: cover;
@@ -18,6 +24,8 @@ if ($sessionData['viewType'] == 'null' /*or $sessionData['viewType'] != 'null'*/
 	    	background: transparent;
 	    }
 	</style>
+
+	<!-- This is the large welcome box in the middle of the homepage -->
 	<div class="jumbotron jumbotron-homepage">
 		<h1>Welcome to the Cook Book!</h1>
 		<p> 
@@ -31,13 +39,15 @@ if ($sessionData['viewType'] == 'null' /*or $sessionData['viewType'] != 'null'*/
 		<?php
 		echo '<p> Button Pressed: '.$sessionData['viewType'].' </p>';
 		?>
-
+		<!-- A form that allows the user to select the type of interface they wish to use
+			This is based on how skilled they believe they are at cooking
+		 -->
 		<p>
 			<form class="btn-group" action = '#' method="post">
 				<button class="btn btn-primary" name = "viewType" value = 'Step-by-Step'>Step-by-Step</button>
 				<button class="btn btn-primary" name = "viewType" value = 'Segmented'>Segmented</button>
 				<button class="btn btn-primary" name = "viewType" value = 'Narrative'>Narrative</button>
-			</>
+			</form>
 		</p>
 	</div>
 
@@ -45,6 +55,14 @@ if ($sessionData['viewType'] == 'null' /*or $sessionData['viewType'] != 'null'*/
 
 <?php
 }
+
+/*
+If there is already a session variable stored for the user attempting to access the site then a different page will be shown to the user.
+Instead of seeing the welcome page, they will see a list of the most recent and most popular recipes
+
+@todo link these to the database and loop
+
+*/
 else{
 	echo '<p>'.$sessionData['viewType'].'</p>';
 ?>
