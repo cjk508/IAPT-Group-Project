@@ -1,0 +1,29 @@
+.wrapper{
+  max-width: 1000px;
+  margin: 0 auto;	
+}
+
+nav{
+	display:inline-block;
+	width:40%;
+	margin-top: 17px;
+	margin-left: 10px;
+	border-left: 1px solid black;
+	padding-left: 10px;
+}
+.navbar-search{
+	margin-top: 24px;
+	display: inline-block;
+}
+.brand{
+	display: inline-block;
+	float: left;
+}
+header, footer {
+	padding: 10px;
+	display: block;
+}
+.jumbotron-homepage{
+	margin-top:13.25%;
+	background-color: rgba(255, 255, 255, 0.85);
+}
