@@ -1,12 +1,14 @@
 <?php
-if (!isset($_COOKIE['viewType'])){
-	//$_SESSION['ViewType'] = $_POST['viewType'];
-	setcookie('viewType', 'null', time()+3600); 
-}
-if (isset($_POST['viewType'])){
-	//$_SESSION['ViewType'] = $_POST['viewType'];
-	setcookie('viewType', $_POST['viewType'], time()+3600); 
-}
+	$sessionData = $this->session->all_userdata();
+ 	if (!isset($sessionData['viewType'])){
+ 		$sessionData = array('viewType'  => 'null' );
+
+ 		$this->session->set_userdata($sessionData);
+ 	}
+	if (isset($_POST['viewType'])){
+		$sessionData = array('viewType'  => $_POST['viewType'] );
+		$this->session->set_userdata($sessionData);
+	}
 ?>
 <html>
 <head>
@@ -23,7 +25,7 @@ if (isset($_POST['viewType'])){
 	<h2 class="brand">Cooking Website</h2>
 	<nav>
 		<ul class="nav nav-pills">
-			<li class="active"><a href="#">Home</a></li>
+			<li class="active"><a href="">Home</a></li>
 			<!-- @todo need to get the drop downs working. Seems to meet the same logic as is on the bootstrap page but it doesn't currently work-->
 			<li class="dropdown">
 				<a data-toggle="dropdown" href="#">Categories<span class="caret"></span></a>
@@ -31,11 +33,16 @@ if (isset($_POST['viewType'])){
 					Meat
 				</ul>
 			</li>
+			<li>
+			<a href="#">
+				Surprise Me!
+			</a></li>
 		</ul>
 	</nav>
 	
 	<form class="navbar-search pull-right">
 	    <input type="text" class="search-query" placeholder="Search">
+	    <span class="glyphicon glyphicon-search"></span>
 	</form>
 </header>
 <script type="text/javascript">

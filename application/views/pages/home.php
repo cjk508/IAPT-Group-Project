@@ -3,7 +3,8 @@
 * If the session variable has not been set then show the default welcome screen
 * otherwise show the normal home screen
 */
-	//if ($_COOKIE['viewType'] == 'null'){
+$sessionData = $this->session->all_userdata();
+if ($sessionData['viewType'] == 'null' or $sessionData['viewType'] != 'null'){
 ?>
 	<style>
 		html {
@@ -36,7 +37,7 @@
 		</p>
 		
 		<?php
-		echo '<p> Button Pressed: '.$_COOKIE['viewType'].' </p>';
+		echo '<p> Button Pressed: '.$sessionData['viewType'].' </p>';
 		?>
 
 		<p>
@@ -44,19 +45,19 @@
 				<button class="btn btn-primary" name = "viewType" value = 'Step-by-Step'>Step-by-Step</button>
 				<button class="btn btn-primary" name = "viewType" value = 'Segmented'>Segmented</button>
 				<button class="btn btn-primary" name = "viewType" value = 'Narrative'>Narrative</button>
-			</form>
+			</>
 		</p>
 	</div>
 
 
 
 <?php
-/*}
+}
 else{
-	echo '<p>'.$_COOKIE['viewType'].'</p>';
+	echo '<p>'.$sessionData['viewType'].'</p>';
 ?>
 
 
 <?php 
-}*/
+}
 ?>
