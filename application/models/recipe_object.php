@@ -51,6 +51,9 @@ class Recipe_object {
 		return $this->recipe_id;
 	}
 	public function getCategory() {
+		if (! is_array ( $this->category )) {
+			eval ( '$this->category = ' . $this->category . ";" );
+		}
 		return $this->category;
 	}
 	public function getIngredientPools() {

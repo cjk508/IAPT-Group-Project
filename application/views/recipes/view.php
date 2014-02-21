@@ -1,8 +1,6 @@
 
 <h2><?php echo  $recipe_item->getTitle()?></h2>
-<p><?php echo $recipe_item->getCategory()?></p>
-
-
+<p><?php var_dump( $recipe_item->getCategory())?></p>
 
 <?php
 foreach ( $recipe_item->getIngredientPools () as $pool ) {

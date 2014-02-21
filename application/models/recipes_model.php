@@ -32,9 +32,28 @@ class Recipes_model extends CI_Model {
 	 *        	the category
 	 */
 	public function get_category($category) {
-		$query_1 = "select * from `recipes_view` where `category` like '" . ( string ) $category . "'";
+		if ($this->_valid_category ( $category )) {
+			$query_1 = "select * from `recipes_view` where `category` like '%" . ( string ) $category . "%'";
+			$result = $this->db->query ( $query_1 );
+			return $this->_processMultipleResults ( $result );
+		}
+		return NULL;
+	}
+	/**
+	 * Check if a category call is valid.
+	 *
+	 *
+	 * @param string $category
+	 *        	the category name
+	 * @return boolean true if valid
+	 */
+	public function _valid_category($category) {
+		$query_1 = "select * from `categories` where `category_name` like '" . ( string ) $category . "'";
 		$result = $this->db->query ( $query_1 );
-		return $this->_processMultipleResults ( $result );
+		if ($this->_processMultipleResults ( $result )) {
+			return true;
+		}
+		return false;
 	}
 	/**
 	 * Get a random recipe from the database.
