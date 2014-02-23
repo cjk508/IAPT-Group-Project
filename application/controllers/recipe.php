@@ -3,8 +3,10 @@ class Recipe extends CI_Controller {
 	public function __construct() {
 		parent::__construct ();
 		$this->load->model ( 'recipes_model' );
+		$this->load->library('session');
 	}
 	/**
+	 * 
 	 * The index page of the controller. 
 	 */
 	public function index() {
@@ -26,5 +28,7 @@ class Recipe extends CI_Controller {
 			$this->load->view ( 'recipes/view', $data );
 		}
 		$this->load->view ( 'templates/footer' );
+	}
+	public function surprise() {
 	}
 }
