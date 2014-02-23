@@ -55,7 +55,7 @@
 
 <script type="text/javascript">
 	$(document).ready( function() {
-		$('.dropdown-toggle').dropdown()
+		$('.dropdown').dropdown()
 	});
 </script>
 <div class = "wrapper">
