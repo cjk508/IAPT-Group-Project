@@ -8,7 +8,7 @@
   <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>iapt2/documentation/Mysql_Workbench_diagram.mwb.bak at master · cjk508/iapt2</title>
+        <title>iapt2/documentation/Mysql_Workbench_diagram.mwb at master · cjk508/iapt2</title>
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub" />
     <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub" />
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114.png" />
@@ -20,7 +20,7 @@
       <meta content="@github" name="twitter:site" /><meta content="summary" name="twitter:card" /><meta content="cjk508/iapt2" name="twitter:title" /><meta content="iapt2 - IAPT 2 Group 6 Cooking Site" name="twitter:description" /><meta content="https://0.gravatar.com/avatar/369ead7831586145efaebe823e0bb09a?d=https%3A%2F%2Fidenticons.github.com%2F1f238d40b3f2cbcb5e374b3f7fb74e9e.png&amp;r=x&amp;s=400" name="twitter:image:src" />
 <meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="https://0.gravatar.com/avatar/369ead7831586145efaebe823e0bb09a?d=https%3A%2F%2Fidenticons.github.com%2F1f238d40b3f2cbcb5e374b3f7fb74e9e.png&amp;r=x&amp;s=400" property="og:image" /><meta content="cjk508/iapt2" property="og:title" /><meta content="https://github.com/cjk508/iapt2" property="og:url" /><meta content="iapt2 - IAPT 2 Group 6 Cooking Site" property="og:description" />
 
-    <meta name="hostname" content="github-fe116-cp1-prd.iad.github.net">
+    <meta name="hostname" content="github-fe139-cp1-prd.iad.github.net">
     <meta name="ruby" content="ruby 2.1.0p0-github-tcmalloc (87c9373a41) [x86_64-linux]">
     <link rel="assets" href="https://github.global.ssl.fastly.net/">
     <link rel="conduit-xhr" href="https://ghconduit.com:25035/">
@@ -30,7 +30,7 @@
     <meta name="msapplication-TileImage" content="/windows-tile.png" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="selected-link" value="repo_source" data-pjax-transient />
-    <meta content="collector.githubapp.com" name="octolytics-host" /><meta content="collector-cdn.github.com" name="octolytics-script-host" /><meta content="github" name="octolytics-app-id" /><meta content="5AD6E6A7:5646:2108803:530A0230" name="octolytics-dimension-request_id" /><meta content="2572682" name="octolytics-actor-id" /><meta content="cjk508" name="octolytics-actor-login" /><meta content="a1f07022035fbecfe1a931d17794d824ea19f9e7ebb9f6470df35af279fd14f8" name="octolytics-actor-hash" />
+    <meta content="collector.githubapp.com" name="octolytics-host" /><meta content="collector-cdn.github.com" name="octolytics-script-host" /><meta content="github" name="octolytics-app-id" /><meta content="5AD6E6A7:5644:1043C42:530A021B" name="octolytics-dimension-request_id" /><meta content="2572682" name="octolytics-actor-id" /><meta content="cjk508" name="octolytics-actor-login" /><meta content="a1f07022035fbecfe1a931d17794d824ea19f9e7ebb9f6470df35af279fd14f8" name="octolytics-actor-hash" />
     
 
     
@@ -51,12 +51,12 @@
       
       <meta http-equiv="x-pjax-version" content="df411d3c97b15f5ab1e253f83d14f069">
 
-        <link data-pjax-transient rel='permalink' href='/cjk508/iapt2/blob/a8d16b98612b89024a4b78ca92e826ced883054f/documentation/Mysql_Workbench_diagram.mwb.bak'>
+        <link data-pjax-transient rel='permalink' href='/cjk508/iapt2/blob/a8d16b98612b89024a4b78ca92e826ced883054f/documentation/Mysql_Workbench_diagram.mwb'>
 
   <meta name="description" content="iapt2 - IAPT 2 Group 6 Cooking Site" />
 
   <meta content="2572682" name="octolytics-dimension-user_id" /><meta content="cjk508" name="octolytics-dimension-user_login" /><meta content="16618796" name="octolytics-dimension-repository_id" /><meta content="cjk508/iapt2" name="octolytics-dimension-repository_nwo" /><meta content="false" name="octolytics-dimension-repository_public" /><meta content="false" name="octolytics-dimension-repository_is_fork" /><meta content="16618796" name="octolytics-dimension-repository_network_root_id" /><meta content="cjk508/iapt2" name="octolytics-dimension-repository_network_root_nwo" />
-  <link href="https://github.com/cjk508/iapt2/commits/master.atom?token=2572682__eyJzY29wZSI6IkF0b206L2NqazUwOC9pYXB0Mi9jb21taXRzL21hc3Rlci5hdG9tIiwiZXhwaXJlcyI6Mjk3MTAwMTY0OX0=--b7f7e16d1ff43dc037f90c5faa8017f38a8c0b12" rel="alternate" title="Recent Commits to iapt2:master" type="application/atom+xml" />
+  <link href="https://github.com/cjk508/iapt2/commits/master.atom?token=2572682__eyJzY29wZSI6IkF0b206L2NqazUwOC9pYXB0Mi9jb21taXRzL21hc3Rlci5hdG9tIiwiZXhwaXJlcyI6Mjk3MTAwMTYzNH0=--fff4382eb46b941df7839b62365aab3690d41f0d" rel="alternate" title="Recent Commits to iapt2:master" type="application/atom+xml" />
 
   </head>
 
@@ -484,7 +484,7 @@
           
 
 
-<!-- blob contrib key: blob_contributors:v21:460b845fbb3b0a96faa0c87cb7f64703 -->
+<!-- blob contrib key: blob_contributors:v21:55fb51040ad5bc52504228ec42bc7eee -->
 
 <p title="This is a placeholder element" class="js-history-link-replace hidden"></p>
 
@@ -534,7 +534,7 @@
 
             <div class="select-menu-item js-navigation-item selected">
               <span class="select-menu-item-icon octicon octicon-check"></span>
-              <a href="/cjk508/iapt2/blob/master/documentation/Mysql_Workbench_diagram.mwb.bak"
+              <a href="/cjk508/iapt2/blob/master/documentation/Mysql_Workbench_diagram.mwb"
                  data-name="master"
                  data-skip-pjax="true"
                  rel="nofollow"
@@ -551,7 +551,7 @@
             </div>
             <input type="hidden" name="name" id="name" class="js-new-item-value">
             <input type="hidden" name="branch" id="branch" value="master" />
-            <input type="hidden" name="path" id="path" value="documentation/Mysql_Workbench_diagram.mwb.bak" />
+            <input type="hidden" name="path" id="path" value="documentation/Mysql_Workbench_diagram.mwb" />
           </form> <!-- /.select-menu-item -->
 
       </div> <!-- /.select-menu-list -->
@@ -570,17 +570,29 @@
 </div> <!-- /.select-menu -->
 
   <div class="breadcrumb">
-    <span class='repo-root js-repo-root'><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/cjk508/iapt2" data-branch="master" data-direction="back" data-pjax="true" itemscope="url"><span itemprop="title">iapt2</span></a></span></span><span class="separator"> / </span><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/cjk508/iapt2/tree/master/documentation" data-branch="master" data-direction="back" data-pjax="true" itemscope="url"><span itemprop="title">documentation</span></a></span><span class="separator"> / </span><strong class="final-path">Mysql_Workbench_diagram.mwb.bak</strong> <span aria-label="copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-clipboard-text="documentation/Mysql_Workbench_diagram.mwb.bak" data-copied-hint="copied!"><span class="octicon octicon-clippy"></span></span>
+    <span class='repo-root js-repo-root'><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/cjk508/iapt2" data-branch="master" data-direction="back" data-pjax="true" itemscope="url"><span itemprop="title">iapt2</span></a></span></span><span class="separator"> / </span><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/cjk508/iapt2/tree/master/documentation" data-branch="master" data-direction="back" data-pjax="true" itemscope="url"><span itemprop="title">documentation</span></a></span><span class="separator"> / </span><strong class="final-path">Mysql_Workbench_diagram.mwb</strong> <span aria-label="copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-clipboard-text="documentation/Mysql_Workbench_diagram.mwb" data-copied-hint="copied!"><span class="octicon octicon-clippy"></span></span>
   </div>
 </div>
 
 
-  <div class="commit commit-loader file-history-tease js-deferred-content" data-url="/cjk508/iapt2/contributors/master/documentation/Mysql_Workbench_diagram.mwb.bak">
-    Fetching contributors…
+  <div class="commit file-history-tease">
+    <img class="main-avatar" height="24" src="https://0.gravatar.com/avatar/bc4ed80ad434d4f1bded972c9ce49011?d=https%3A%2F%2Fa248.e.akamai.net%2Fassets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=x&amp;s=140" width="24" />
+    <span class="author"><span rel="author">nnikolov91</span></span>
+    <time class="js-relative-date" data-title-format="YYYY-MM-DD HH:mm:ss" datetime="2014-02-21T08:58:59-08:00" title="2014-02-21 08:58:59">February 21, 2014</time>
+    <div class="commit-title">
+        <a href="/cjk508/iapt2/commit/a503d044036d912581ce8985c580b33abea3d8ec" class="message" data-pjax="true" title="Updated the DB model to allow for multiple categories.
+
+And the Recipe_model.">Updated the DB model to allow for multiple categories.</a>
+    </div>
 
     <div class="participation">
-      <p class="loader-loading"><img alt="Octocat-spinner-32-eaf2f5" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32-EAF2F5.gif" width="16" /></p>
-      <p class="loader-error">Cannot retrieve contributors at this time</p>
+      <p class="quickstat"><a href="#blob_contributors_box" rel="facebox"><strong>0</strong> contributors</a></p>
+      
+    </div>
+    <div id="blob_contributors_box" style="display:none">
+      <h2 class="facebox-header">Users who have contributed to this file</h2>
+      <ul class="facebox-user-list">
+      </ul>
     </div>
   </div>
 
@@ -591,22 +603,22 @@
         <span class="icon"><b class="octicon octicon-file-text"></b></span>
         <span class="mode" title="File Mode">file</span>
         <span class="meta-divider"></span>
-        <span>14.634 kb</span>
+        <span>15.358 kb</span>
       </div>
       <div class="actions">
         <div class="button-group">
             <a class="minibutton tooltipped tooltipped-w js-conduit-openfile-check"
                href="http://mac.github.com"
-               data-url="github-mac://openRepo/https://github.com/cjk508/iapt2?branch=master&amp;filepath=documentation%2FMysql_Workbench_diagram.mwb.bak"
+               data-url="github-mac://openRepo/https://github.com/cjk508/iapt2?branch=master&amp;filepath=documentation%2FMysql_Workbench_diagram.mwb"
                aria-label="Open this file in GitHub for Mac"
                data-failed-title="Your version of GitHub for Mac is too old to open this file. Try checking for updates.">
                 <span class="octicon octicon-device-desktop"></span> Open
             </a>
-          <a href="/cjk508/iapt2/raw/master/documentation/Mysql_Workbench_diagram.mwb.bak" class="button minibutton " id="raw-url">Raw</a>
-          <a href="/cjk508/iapt2/commits/master/documentation/Mysql_Workbench_diagram.mwb.bak" class="button minibutton " rel="nofollow">History</a>
+          <a href="/cjk508/iapt2/raw/master/documentation/Mysql_Workbench_diagram.mwb" class="button minibutton " id="raw-url">Raw</a>
+          <a href="/cjk508/iapt2/commits/master/documentation/Mysql_Workbench_diagram.mwb" class="button minibutton " rel="nofollow">History</a>
         </div><!-- /.button-group -->
           <a class="minibutton danger empty-icon tooltipped tooltipped-s"
-             href="/cjk508/iapt2/delete/master/documentation/Mysql_Workbench_diagram.mwb.bak"
+             href="/cjk508/iapt2/delete/master/documentation/Mysql_Workbench_diagram.mwb"
              aria-label=""
              data-method="post" data-test-id="delete-blob-file" rel="nofollow">
           Delete
@@ -615,7 +627,7 @@
     </div>
         <div class="blob-wrapper data type-text js-blob-data">
       <div class="image js-image">
-          <a href="/cjk508/iapt2/blob/master/documentation/Mysql_Workbench_diagram.mwb.bak?raw=true">View Raw</a>
+          <a href="/cjk508/iapt2/blob/master/documentation/Mysql_Workbench_diagram.mwb?raw=true">View Raw</a>
       </div>
   </div>
 
@@ -657,7 +669,7 @@
     </a>
 
     <ul class="site-footer-links">
-      <li>&copy; 2014 <span title="0.04811s from github-fe116-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+      <li>&copy; 2014 <span title="0.04003s from github-fe139-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
         <li><a href="/site/terms">Terms</a></li>
         <li><a href="/site/privacy">Privacy</a></li>
         <li><a href="/security">Security</a></li>

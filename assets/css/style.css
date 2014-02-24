@@ -14,6 +14,11 @@ h2 {
 	text-shadow: 1px 2px 0px #888888;
 }
 
+h3 {
+	margin-top: 2px; 
+	font-size: 25px; 
+}
+
 nav {
 	display: inline-block;
 	/* width:40%; */
@@ -68,13 +73,23 @@ html {
 	background-size: cover;
 }
 
+html, body {
+  /* overflow: hidden; */
+}
+
 #recipe-contents {
 	margin-top: 15px;
+	max-height: 80%; 
 }
 
 #recipe-contents img {
 	max-width: 250px;
 	float: left;
+}
+
+#recipe-contents #preparation {
+	max-height: 30%; 
+	overflow-y: scroll;
 }
 
 #recipe-contents #main-panel {
