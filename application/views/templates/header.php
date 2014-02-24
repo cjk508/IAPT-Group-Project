@@ -32,8 +32,10 @@ if (isset ( $_POST ['viewType'] )) {
 	type="text/javascript"></script>
 <script type="text/javascript"
 	src="<?php echo base_url('assets/js/bootstrap.js'); ?>"></script>
+<script type="text/javascript"
+	src="<?php echo base_url('assets/js/jquery.collagePlus.min.js'); ?>"></script>	
 <script type="text/javascript">
-	var images = ['40340813_332a3467ac_o.jpg', '3443134369_a4a4bab59f_o.jpg', '5894638397_c11b559fcd_o.jpg', '6603319247_154ec00be7_o.jpg', '7692051800_2877c0b2e8_k.jpg', 'backgroundImage.jpg'];
+	var images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg'];
 	 $('html').css({'background': 'url(<?php echo base_url()?>assets/images/' + images[Math.floor(Math.random() * images.length)] + ') no-repeat center center fixed'});
 	 $('html').css({'background-size': '100%'});
 	</script>
@@ -42,15 +44,23 @@ if (isset ( $_POST ['viewType'] )) {
 <body>
 
 	<header>
-		<h2 class="brand">The Cook Book</h2>
+		<a href = "<?php echo site_url(); ?>"><h2 class="brand">The Cook Book</h2> </a>
 		<nav>
 			<ul class="nav nav-pills">
-				<li class="active"><a href="">Home</a></li>
+				<li class="active"><a href="<?php echo site_url();?>">Home</a></li>
 				<!-- @todo need to get the drop downs working. Seems to meet the same logic as is on the bootstrap page but it doesn't currently work-->
-				<li class="dropdown"><a data-toggle="dropdown" href="#">Categories<span
-						class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">Meat
-					</ul></li>
+				<li class="dropdown">
+				  <a id="dLabel" role="button" data-toggle="dropdown" href="#">
+				    Categories <span class="caret"></span>
+				  </a>
+
+
+				  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+				    <li>
+				    	<a href="#"> MEAT </a>
+				    </li>
+				  </ul>
+				</li>
 				<li><a href="#"> Surprise Me! </a></li>
 			</ul>
 		</nav>
@@ -64,7 +74,7 @@ if (isset ( $_POST ['viewType'] )) {
 
 	<script type="text/javascript">
 	$(document).ready( function() {
-		$('.dropdown').dropdown()
+		$('.dropdown-toggle').dropdown()
 	});
 </script>
 	<div class="wrapper">

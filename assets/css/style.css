@@ -34,11 +34,14 @@ nav {
 	display: inline-block;
 	float: left;
 }
-
+.Collage img{
+	max-width: 300px;
+	height:auto;
+}
 header,footer {
 	padding: 10px;
 	display: block;
-	/* background-color: rgba(255, 255, 255, 0.85); */
+	background-color: rgba(255, 255, 255, 0.85); 
 }
 
 header {

@@ -30,7 +30,7 @@ if ($sessionData['viewType'] == 'null' /*or $sessionData['viewType'] != 'null'*/
 <!-- This is the large welcome box in the middle of the homepage -->
 <div class="jumbotron jumbotron-homepage">
 	<h1>Welcome to the Cook Book!</h1>
-	<p>
+	<p>	
 		Recipes your way! <br> You can cook anything with our site! It is
 		really easy. <br>
 			<?php echo $db_works?>
@@ -46,9 +46,9 @@ if ($sessionData['viewType'] == 'null' /*or $sessionData['viewType'] != 'null'*/
 	
 	
 	<form class="btn-group" action='#' method="post">
-		<button class="btn btn-primary" name="viewType" value='Step-by-Step'>Step-by-Step</button>
-		<button class="btn btn-primary" name="viewType" value='Segmented'>Segmented</button>
-		<button class="btn btn-primary" name="viewType" value='Narrative'>Narrative</button>
+		<button class="btn btn-primary" name="viewType" value='step'>Step-by-Step</button>
+		<button class="btn btn-primary" name="viewType" value='segmented'>Segmented</button>
+		<button class="btn btn-primary" name="viewType" value='narrative'>Narrative</button>
 	</form>
 	</p>
 </div>
@@ -66,45 +66,44 @@ Instead of seeing the welcome page, they will see a list of the most recent and 
 
 */
 else{
-	echo '<p>'.$sessionData['viewType'].'</p>';
 ?>
-<div class="panel panel-default mostRecent">
+
+ <div class="panel panel-default mostRecent">
 	<div class="panel-heading">
 		<h3 class="panel-title">Most Recent Recipes</h3>
 	</div>
-	<div class="panel-body">
+	<div class="panel-body">	
 		<!-- @todo load most recent recipes -->
+		<?php 	foreach($recipe_items as $recipe_item){ ?>
 		<div class="media">
 			<a class="pull-left" href="#"> <img class="media-object"
-				src="assets/images/64test.svg" alt="">
+				src="<?php echo $recipe_item->getImage();?>" alt="" style = "max-width:150px; height:auto;">
 			</a>
 			<div class="media-body">
-				<h4 class="media-heading">Recipe 1</h4>
-				Lorem Ipsum Ingredients
+				<h4 class="media-heading"><?php echo $recipe_item->getTitle();?></h4>
+				<?php
+				foreach ( $recipe_item->getIngredientPools () as $pool ) {
+					?>
+					<?php 
+					if ( $pool-> getDifficulty() == $sessionData['viewType']){ ?>
+						<ul>
+
+							<?php
+							
+							foreach ( $pool->getIngredients () as $ingredient ) {
+								?>
+								<li><?php echo $ingredient?></li>
+								<?php
+							}	
+							?>
+						</ul>
+					<?php
+					}
+				}
+				?>
 			</div>
 		</div>
-
-		<div class="media">
-			<a class="pull-left" href="#"> <img class="media-object"
-				src="assets/images/64test.svg" alt="">
-			</a>
-			<div class="media-body">
-				<h4 class="media-heading">Recipe 2</h4>
-				Lorem Ipsum Ingredients
-			</div>
-		</div>
-
-		<div class="media">
-			<a class="pull-left" href="#"> <img class="media-object"
-				src="assets/images/64test.svg" alt="">
-			</a>
-			<div class="media-body">
-				<h4 class="media-heading">Recipe 3</h4>
-				Lorem Ipsum Ingredients
-			</div>
-		</div>
-
-
+	<?php } ?>
 	</div>
 </div>
 
@@ -145,7 +144,16 @@ else{
 		</div>
 	</div>
 </div>
-
+<?php /*<div class = "Collage panel">
+	<?php  $images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg'];
+		foreach($images as $image){
+	?>
+		<img src = "<?php echo base_url()?>assets/images/<?php echo $image;?>">
+	<?php } ?>
+</div>
+<script type="text/javascript">
+	 $('.Collage').collagePlus('allowPartialLastRow' : true, 'targetHeight'    : 400);
+</script>*/ ?>
 <?php 
 }
 ?>
