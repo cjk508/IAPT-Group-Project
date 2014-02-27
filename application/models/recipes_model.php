@@ -56,6 +56,14 @@ class Recipes_model extends CI_Model {
 		return false;
 	}
 	/**
+	 * Get a all recipes from the database and order them A-Z on there Name.
+	 */
+	public function get_all_recipes_AZ() {
+		$query_1 = "select * from `recipes_view` ORDER BY `recipe_title`";
+		$result = $this->db->query ( $query_1 );
+		return $this->_processSingleResult ( $result );
+	}
+	/**
 	 * Get a random recipe from the database.
 	 */
 	public function get_surprise() {

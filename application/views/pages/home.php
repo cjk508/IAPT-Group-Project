@@ -92,7 +92,7 @@ else{
 							
 							foreach ( $pool->getIngredients () as $ingredient ) {
 								?>
-								<li><?php echo $ingredient?></li>
+								<li><?php echo $pool->getTitle();echo $ingredient?></li>
 								<?php
 							}	
 							?>
