@@ -66,7 +66,7 @@ if (isset ( $_POST ['viewType'] )) {
 		</nav>
 		<!-- @todo need to add the ability to change viewType through a dropdown, but as dropdown's are not currently working I didn't see the point -->
 		<form class="navbar-search pull-right">
-			<input type="text" class="search-query" placeholder="Search"> <span
+			<input type="text" class="search-query" role='search' placeholder="Search"> <span
 				class="glyphicon glyphicon-search"></span>
 		</form>
 	</header>
