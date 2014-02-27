@@ -74,15 +74,15 @@ else{
 	</div>
 	<div class="panel-body">	
 		<!-- @todo load most recent recipes -->
-		<?php 	foreach($recipe_items as $recipe_item){ ?>
+		<?php 	foreach($mostRecents as $mostRecent){ ?>
 		<div class="media">
 			<a class="pull-left" href="#"> <img class="media-object"
-				src="<?php echo $recipe_item->getImage();?>" alt="" style = "max-width:150px; height:auto;">
+				src="<?php echo $mostRecent->getImage();?>" alt="" style = "max-width:150px; height:auto;">
 			</a>
 			<div class="media-body">
-				<h4 class="media-heading"><?php echo $recipe_item->getTitle();?></h4>
+				<h4 class="media-heading"><?php echo $mostRecent->getTitle();?></h4>
 				<?php
-				foreach ( $recipe_item->getIngredientPools () as $pool ) {
+				foreach ( $mostRecent->getIngredientPools () as $pool ) {
 					?>
 					<?php 
 					if ( $pool-> getDifficulty() == $sessionData['viewType']){ ?>
@@ -92,7 +92,7 @@ else{
 							
 							foreach ( $pool->getIngredients () as $ingredient ) {
 								?>
-								<li><?php echo $pool->getTitle();echo $ingredient?></li>
+								<li><?php echo $ingredient?></li>
 								<?php
 							}	
 							?>
@@ -144,16 +144,45 @@ else{
 		</div>
 	</div>
 </div>
-<?php /*<div class = "Collage panel">
-	<?php  $images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg'];
-		foreach($images as $image){
-	?>
-		<img src = "<?php echo base_url()?>assets/images/<?php echo $image;?>">
+
+<div class="panel panel-default allRecipes">
+	<div class="panel-heading">
+		<h3 class="panel-title">All Recipes</h3>
+	</div>
+	<div class="panel-body">	
+		<!-- @todo load most recent recipes -->
+		<?php 	foreach($AllItems as $mostRecent){ ?>
+		<div class="media">
+			<a class="pull-left" href="#"> <img class="media-object"
+				src="<?php echo $mostRecent->getImage();?>" alt="" style = "max-width:150px; height:auto;">
+			</a>
+			<div class="media-body">
+				<h4 class="media-heading"><?php echo $mostRecent->getTitle();?></h4>
+				<?php
+				foreach ( $mostRecent->getIngredientPools () as $pool ) {
+					?>
+					<?php 
+					if ( $pool-> getDifficulty() == $sessionData['viewType']){ ?>
+						<ul>
+
+							<?php
+							
+							foreach ( $pool->getIngredients () as $ingredient ) {
+								?>
+								<li><?php echo $ingredient?></li>
+								<?php
+							}	
+							?>
+						</ul>
+					<?php
+					}
+				}
+				?>
+			</div>
+		</div>
 	<?php } ?>
+	</div>
 </div>
-<script type="text/javascript">
-	 $('.Collage').collagePlus('allowPartialLastRow' : true, 'targetHeight'    : 400);
-</script>*/ ?>
 <?php 
 }
 ?>

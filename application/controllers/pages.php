@@ -16,7 +16,8 @@ class Pages extends CI_Controller {
 		
 		$data ['title'] = ucfirst ( $page ); // Capitalize the first letter
 		$data['db_works'] = $this->recipes_model->test_db();
-		$data ['recipe_items'] = $this->recipes_model->get_latest();
+		$data ['mostRecents'] = $this->recipes_model->get_latest();
+		$data ['AllItems'] = $this->recipes_model->get_all_recipes_AZ();
 
 		$this->load->view ( 'templates/header', $data );
 		$this->load->view ( 'pages/' . $page, $data );

@@ -61,7 +61,7 @@ class Recipes_model extends CI_Model {
 	public function get_all_recipes_AZ() {
 		$query_1 = "select * from `recipes_view` ORDER BY `recipe_title`";
 		$result = $this->db->query ( $query_1 );
-		return $this->_processSingleResult ( $result );
+		return $this->_processMultipleResults ( $result );
 	}
 	/**
 	 * Get a random recipe from the database.
