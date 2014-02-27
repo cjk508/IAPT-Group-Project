@@ -80,6 +80,16 @@ html, body {
   /* overflow: hidden; */
 }
 
+.ticker {
+	list-style-position:inside;
+	font-size: 20px; 
+}
+
+ticker li:before {
+	
+}
+
+
 #recipe-contents {
 	margin-top: 15px;
 	max-height: 80%; 
@@ -91,8 +101,12 @@ html, body {
 }
 
 #recipe-contents #preparation {
-	max-height: 30%; 
-	overflow-y: scroll;
+	max-height: 20%; 
+	overflow-y: hidden;
+}
+
+#ingredients {
+	list-style-position:inside;
 }
 
 #recipe-contents #main-panel {

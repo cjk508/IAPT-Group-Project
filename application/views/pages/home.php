@@ -24,7 +24,7 @@ body {
 * otherwise show the normal home screen
 */
 $sessionData = $this->session->all_userdata();
-if ($sessionData['viewType'] == 'null' /*or $sessionData['viewType'] != 'null'*/){
+if (!typeIsSelected($sessionData) /*or $sessionData['viewType'] != 'null'*/){
 ?>
 
 <!-- This is the large welcome box in the middle of the homepage -->
@@ -46,9 +46,9 @@ if ($sessionData['viewType'] == 'null' /*or $sessionData['viewType'] != 'null'*/
 	
 	
 	<form class="btn-group" action='#' method="post">
-		<button class="btn btn-primary" name="viewType" value='step'>Step-by-Step</button>
-		<button class="btn btn-primary" name="viewType" value='segmented'>Segmented</button>
-		<button class="btn btn-primary" name="viewType" value='narrative'>Narrative</button>
+		<button class="btn btn-primary" name="viewType" value='<?php echo STEP ?>'>Step-by-Step</button>
+		<button class="btn btn-primary" name="viewType" value='<?php echo SEGMENTED ?>'>Segmented</button>
+		<button class="btn btn-primary" name="viewType" value='<?php echo NARRATIVE ?>'>Narrative</button>
 	</form>
 	</p>
 </div>
