@@ -68,121 +68,26 @@ Instead of seeing the welcome page, they will see a list of the most recent and 
 else{
 ?>
 
- <div class="panel panel-default mostRecent">
+ <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">Most Recent Recipes</h3>
 	</div>
 	<div class="panel-body">	
-		<!-- @todo load most recent recipes -->
-		<?php 	foreach($mostRecents as $mostRecent){ ?>
-		<div class="media">
-			<a class="pull-left" href="#"> <img class="media-object"
-				src="<?php echo $mostRecent->getImage();?>" alt="" style = "max-width:150px; height:auto;">
-			</a>
-			<div class="media-body">
-				<h4 class="media-heading"><?php echo $mostRecent->getTitle();?></h4>
-				<?php
-				foreach ( $mostRecent->getIngredientPools () as $pool ) {
-					?>
-					<?php 
-					if ( $pool-> getDifficulty() == $sessionData['viewType']){ ?>
-						<ul>
-
-							<?php
-							
-							foreach ( $pool->getIngredients () as $ingredient ) {
-								?>
-								<li><?php echo $ingredient?></li>
-								<?php
-							}	
-							?>
-						</ul>
-					<?php
-					}
-				}
-				?>
-			</div>
-		</div>
-	<?php } ?>
-	</div>
-</div>
-
-<div class="panel panel-default mostPopular pull-right">
-	<div class="panel-heading">
-		<h3 class="panel-title">Most Popular Recipes</h3>
-	</div>
-	<div class="panel-body">
-		<!-- @todo load most popular recipes -->
-		<div class="media">
-			<a class="pull-left" href="#"> <img class="media-object"
-				src="assets/images/64test.svg" alt="">
-			</a>
-			<div class="media-body">
-				<h4 class="media-heading">Recipe 1</h4>
-				Lorem Ipsum Ingredients
-			</div>
-		</div>
-
-		<div class="media">
-			<a class="pull-left" href="#"> <img class="media-object"
-				src="assets/images/64test.svg" alt="">
-			</a>
-			<div class="media-body">
-				<h4 class="media-heading">Recipe 2</h4>
-				Lorem Ipsum Ingredients
-			</div>
-		</div>
-
-		<div class="media">
-			<a class="pull-left" href="#"> <img class="media-object"
-				src="assets/images/64test.svg" alt="">
-			</a>
-			<div class="media-body">
-				<h4 class="media-heading">Recipe 3</h4>
-				Lorem Ipsum Ingredients
-			</div>
+		<div class="row">
+		  <?php foreach($mostRecents as $mostRecent){ ?>
+		  <div class="col-sm-3 col-md-4">
+		    <div class="thumbnail">
+		      <img class = "media-object" src="<?php echo $mostRecent->getImage();?>" alt="...">
+		      <div class="caption">
+		        <h3><?php echo $mostRecent->getTitle();?></h3>
+		      </div>
+		    </div>
+		  </div>
+		  <?php } ?>
 		</div>
 	</div>
 </div>
 
-<div class="panel panel-default allRecipes">
-	<div class="panel-heading">
-		<h3 class="panel-title">All Recipes</h3>
-	</div>
-	<div class="panel-body">	
-		<!-- @todo load most recent recipes -->
-		<?php 	foreach($AllItems as $mostRecent){ ?>
-		<div class="media">
-			<a class="pull-left" href="#"> <img class="media-object"
-				src="<?php echo $mostRecent->getImage();?>" alt="" style = "max-width:150px; height:auto;">
-			</a>
-			<div class="media-body">
-				<h4 class="media-heading"><?php echo $mostRecent->getTitle();?></h4>
-				<?php
-				foreach ( $mostRecent->getIngredientPools () as $pool ) {
-					?>
-					<?php 
-					if ( $pool-> getDifficulty() == $sessionData['viewType']){ ?>
-						<ul>
-
-							<?php
-							
-							foreach ( $pool->getIngredients () as $ingredient ) {
-								?>
-								<li><?php echo $ingredient?></li>
-								<?php
-							}	
-							?>
-						</ul>
-					<?php
-					}
-				}
-				?>
-			</div>
-		</div>
-	<?php } ?>
-	</div>
-</div>
 <?php 
 }
 ?>

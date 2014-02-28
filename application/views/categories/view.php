@@ -14,8 +14,8 @@
 
 			<?php foreach($category_items as $category_item) {?>
 			<li class="media">
-				<a class="pull-left" href="#"> <img class="media-object"
-					src="<?php echo $category_item->getImage();?> " alt="" style = "max-width:150px; height:auto;">
+				<a class="pull-left" href="#"> <img class="category-media-object"
+					src="<?php echo $category_item->getImage();?> " alt="">
 				</a>
 				<span class="media-body">
 					<h4 class="media-heading"> <?php echo $category_item->getTitle(); ?></h4>
