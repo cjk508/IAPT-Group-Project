@@ -12,3 +12,7 @@ application/logs/*
 /.htaccess
 
 /application/config/database.php
+
+iapt2.sublime-workspace
+
+iapt2.sublime-project

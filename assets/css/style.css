@@ -141,11 +141,11 @@ img.category-media-object{
 	height:auto;	
 }
 img.media-object{
-	/*max-height:90px;
-	max-width:120px;*/
-	max-height: 150px;
+	max-height:90px;
+	max-width:120px;
+	/*max-height: 150px;*/
 	overflow: hidden;
-	width:auto;
+	height:auto;
 }
 .mostPopular {
 	overflow-y: scroll;
