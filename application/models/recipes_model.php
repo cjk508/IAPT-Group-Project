@@ -40,6 +40,20 @@ class Recipes_model extends CI_Model {
 		return NULL;
 	}
 	/**
+	 * Get all the categories for the recipes. 
+	 * 
+	 * @return array: a list of categories for the website. 
+	 */
+	public function get_all_categories() {
+		$query_1 = "select * from `category_list_view` limit 1";
+		$result = $this->db->query ( $query_1 );
+		$array = array ();
+		if ($result->num_rows () > 0) {
+			eval ( '$array = ' . $result->result ()[0]->categories . ";" );
+		}
+		return $array;
+	}
+	/**
 	 * Check if a category call is valid.
 	 *
 	 *
