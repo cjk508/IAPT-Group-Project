@@ -15,8 +15,8 @@ h2 {
 }
 
 h3 {
-	margin-top: 2px; 
-	font-size: 25px; 
+	margin-top: 2px;
+	font-size: 25px;
 }
 
 nav {
@@ -43,7 +43,7 @@ nav {
 header,footer {
 	padding: 10px;
 	display: block;
-	background-color: rgba(255, 255, 255, 0.85); 
+	background-color: rgba(255, 255, 255, 0.85);
 }
 
 header {
@@ -73,36 +73,50 @@ html {
 	background-size: cover;
 }
 
-html, body {
+html,body {
 	/* overflow: hidden; */
+	
 }
 
 .ticker {
-	list-style-position:inside;
-	font-size: 20px; 
+	list-style-position: inside;
+	font-size: 20px;
 }
 
 ticker li:before {
+	
 }
-
 
 #recipe-contents {
 	margin-top: 15px;
-	max-height: 80%; 
+	max-height: 80%;
 }
 
-#recipe-contents img {
-	max-width: 250px;
-	float: left;
+#ingredients .input-group:hover {
+	border-color: rgba(126, 239, 104, 0.8);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset, 0 0 8px
+		rgba(126, 239, 104, 0.8);
+	outline: 1 none;
 }
 
 #recipe-contents #preparation {
-	max-height: 20%; 
+	max-height: 16%;
 	overflow-y: hidden;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#recipe-contents #preparation a:link,a:visited,a:active,a:hover {
+	color: black;
+	text-decoration: none;
 }
 
 #ingredients {
-	list-style-position:inside;
+	list-style-position: inside;
 }
 
 #recipe-contents #main-panel {
@@ -120,40 +134,45 @@ body {
 	margin-top: 13.25%;
 	background-color: rgba(255, 255, 255, 0.85);
 }
-.panel-default{
+
+.panel-default {
 	margin-top: 10px;
-	max-height:83%;
+	max-height: 83%;
 }
 
-.category-box{
+.category-box {
 	max-height: 83%;
-	overflow-y:scroll;
+	overflow-y: scroll;
 }
+
 .mostRecent {
 	overflow-y: scroll;
 	width: 49%;
 	display: inline-block;
 }
-img.category-media-object{
-	max-height:90px;
-	max-width:120px;
+
+img.category-media-object {
+	max-height: 90px;
+	max-width: 120px;
 	overflow: hidden;
-	height:auto;	
+	height: auto;
 }
-img.media-object{
-	max-height:90px;
-	max-width:120px;
+
+img.media-object {
+	max-height: 90px;
+	max-width: 120px;
 	/*max-height: 150px;*/
 	overflow: hidden;
-	height:auto;
+	height: auto;
 }
+
 .mostPopular {
 	overflow-y: scroll;
 	width: 49%;
 	display: inline-block;
 }
 
-.media-list>li>span{
+.media-list>li>span {
 	width: 85%;
 	float: right;
 }

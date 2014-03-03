@@ -39,6 +39,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 define('NARRATIVE', 'narrative'); 
 define('SEGMENTED', 'segmented');
 define('STEP', 'step');
+define('DEFAULT_TYPE', NARRATIVE); 
 define('DIFFICULTIES', serialize(array(NARRATIVE, SEGMENTED, STEP)));
 
 /* End of file constants.php */

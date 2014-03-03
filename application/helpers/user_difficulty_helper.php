@@ -4,9 +4,10 @@
  */
 
 /**
- * Check if we're on the narrative track. 
- * 
- * @param unknown $sessionData
+ * Check if we're on the narrative track.
+ *
+ *
+ * @param unknown $sessionData        	
  * @return boolean
  */
 function isNarrative($sessionData) {
@@ -19,15 +20,21 @@ function isStep($sessionData) {
 	return $sessionData ['viewType'] == STEP;
 }
 /**
- * Check if a user type has been selected. 
- * 
- * @param unknown $sessionData the current session. 
- * @return boolean true if a type is selected. 
+ * Check if a user type has been selected.
+ *
+ *
+ * @param unknown $sessionData
+ *        	the current session.
+ * @return boolean true if a type is selected.
  */
 function typeIsSelected($sessionData) {
 	return isNarrative ( $sessionData ) || isSegmented ( $sessionData ) || isStep ( $sessionData );
 }
 function getUserType($sessionData) {
-	return $sessionData['viewType']; 
+	if (array_key_exists ( 'viewType', $sessionData )) {
+		return $sessionData ['viewType'];
+	}
+	// The default type. 
+	return DEFAULT_TYPE; 
 }
 

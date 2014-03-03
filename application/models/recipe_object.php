@@ -67,7 +67,7 @@ class Recipe_object {
 	}
 	public function getIngredientPool($difficulty) {
 		foreach ( $this->getIngredientPools () as $pool ) {
-			if ($pool->getDifficulty () == $difficulty) {
+			if (strcmp ( $pool->getDifficulty (), $difficulty )) {
 				return $pool;
 			}
 		}
