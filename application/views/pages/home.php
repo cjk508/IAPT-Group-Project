@@ -66,6 +66,7 @@ Instead of seeing the welcome page, they will see a list of the most recent and 
 
 */
 else{
+
 ?>
  <div class="panel panel-default mostRecent">
 	<div class="panel-heading">

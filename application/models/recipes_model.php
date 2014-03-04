@@ -1,5 +1,6 @@
 <?php
 require_once 'recipe_object.php';
+require_once 'category_object.php';
 require_once 'ingredient_pool_object.php';
 /**
  * Defines the Recipe model of the application.
@@ -40,18 +41,15 @@ class Recipes_model extends CI_Model {
 		return NULL;
 	}
 	/**
-	 * Get all the categories for the recipes. 
-	 * 
-	 * @return array: a list of categories for the website. 
+	 * Get all the categories for the recipes.
+	 *
+	 *
+	 * @return array: a list of categories for the website.
 	 */
 	public function get_all_categories() {
-		$query_1 = "select * from `category_list_view` limit 1";
+		$query_1 = "select * from `categories_view`";
 		$result = $this->db->query ( $query_1 );
-		$array = array ();
-		if ($result->num_rows () > 0) {
-			eval ( '$array = ' . $result->result ()[0]->categories . ";" );
-		}
-		return $array;
+		return $this->_processMultipleResults ( $result, 'Category_object' );
 	}
 	/**
 	 * Check if a category call is valid.
@@ -129,9 +127,9 @@ class Recipes_model extends CI_Model {
 	 *        	result of the query
 	 * @return Recipe_object instance
 	 */
-	private function _processSingleResult($result) {
+	private function _processSingleResult($result, $output_class = 'Recipe_object') {
 		if ($result->num_rows () > 0) {
-			$recipe_data = $result->result ( 'Recipe_object' );
+			$recipe_data = $result->result ( $output_class );
 			$recipe_data [0]->ingredient_pools = $this->_getIngredientPool ( $recipe_data [0]->getId () );
 			return $recipe_data [0];
 		}
@@ -145,11 +143,13 @@ class Recipes_model extends CI_Model {
 	 *        	result of the query
 	 * @return array of Recipe_object
 	 */
-	private function _processMultipleResults($result) {
+	private function _processMultipleResults($result, $output_class = 'Recipe_object') {
 		if ($result->num_rows () > 0) {
-			$recipe_data = $result->result ( 'Recipe_object' );
-			foreach ( $recipe_data as $recipe ) {
-				$recipe->ingredient_pools = $this->_getIngredientPool ( $recipe->getId () );
+			$recipe_data = $result->result ( $output_class );
+			if ($output_class === 'Recipe_object') {
+				foreach ( $recipe_data as $recipe ) {
+					$recipe->ingredient_pools = $this->_getIngredientPool ( $recipe->getId () );
+				}
 			}
 			return $recipe_data;
 		}
