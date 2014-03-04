@@ -67,6 +67,10 @@ Instead of seeing the welcome page, they will see a list of the most recent and 
 */
 else{
 ?>
+<?php /*
+*******************************
+******** List Home page *******
+********************************
  <div class="panel panel-default mostRecent">
 	<div class="panel-heading">
 		<h3 class="panel-title">Most Recent Recipes</h3>
@@ -75,11 +79,11 @@ else{
 		<!-- @todo load most recent recipes -->
 		<?php 	foreach($mostRecents as $mostRecent){ ?>
 		<div class="media">
-			<a class="pull-left" href="#"> <img class="media-object"
+			<a class="pull-left" href="<?php echo site_url('recipe/'.$mostRecent->getID()); ?>"> <img class="media-object"
 				src="<?php echo $mostRecent->getImage();?>" alt="">
 			</a>
 			<div class="media-body">
-				<h4 class="media-heading"><?php echo $mostRecent->getTitle();?></h4>
+				<a href ="<?php echo site_url('recipe/'.$mostRecent->getID()); ?>"> <h4 class="media-heading"><?php echo $mostRecent->getTitle();?></h4></a>
 				<?php
 				foreach ( $mostRecent->getIngredientPools () as $pool ) {
 					?>
@@ -142,8 +146,11 @@ else{
 			</div>
 		</div>
 	</div>
-</div>
-<?php /*
+</div> */ ?>
+
+<?php /*******************************
+***** thumbnail Home page *****
+******************************
  <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">Most Recent Recipes</h3>
@@ -162,7 +169,80 @@ else{
 		  <?php } ?>
 		</div>
 	</div>
-</div> */?>
+</div> 
+
+*/
+?>
+<div class = "largeImageRecipes panel panel-default">
+	<div class="panel-heading"><h3 class="panel-title">Most Recent Recipes</h3></div>
+	<div class = "panel-body">
+		<div class = "featuredRecipe pull-left">
+			<a class="pull-left" href="<?php echo site_url('recipe/'.$mostRecents[0]->getID()); ?>"> 
+				<img  src="<?php echo $mostRecents[0]->getImage();?>" alt="...">
+				<h4>
+					<?php echo $mostRecents[0]->getTitle(); ?>
+				</h4>
+				<p>
+					<?php foreach ( $mostRecents[0]->getIngredientPools () as $pool ) {
+						?>
+						<?php 
+						if ( $pool-> getDifficulty() == $sessionData['viewType']){ ?>
+							<ul>
+
+								<?php
+								
+								foreach ( $pool->getIngredients () as $ingredient ) {
+									?>
+									<li><?php echo $ingredient?></li>
+									<?php
+								}	
+								?>
+							</ul>
+						<?php
+						}
+					}
+					?>
+				</p>
+			</a>
+		</div>
+		<div class = "otherFour pull-right">
+			<div class = "topLeft pull-left">
+				<a class="pull-left" href="<?php echo site_url('recipe/'.$mostRecents[1]->getID()); ?>"> 
+					<img style="height:auto; width:100%" src="<?php echo $mostRecents[1]->getImage();?>" alt="...">
+					<h4>
+						<?php echo $mostRecents[1]->getTitle(); ?>
+					</h4>
+				</a>	
+			</div>
+			<div class = "topRight pull-right">
+				<a class="pull-left" href="<?php echo site_url('recipe/'.$mostRecents[2]->getID()); ?>"> 
+					<img style="height:auto; width:100%; overflow-x:hidden;" src="<?php echo $mostRecents[2]->getImage();?>" alt="...">
+					<h4>
+						<?php echo $mostRecents[2]->getTitle(); ?>
+					</h4>
+				</a>	
+			</div>
+			<div class = "bottomLeft pull-left">
+				<a class="pull-left" href="<?php echo site_url('recipe/'.$mostRecents[3]->getID()); ?>"> 
+					<img style="height:auto; width:100%; overflow-x:hidden;" src="<?php echo $mostRecents[3]->getImage();?>" alt="...">
+					<h4>
+						<?php echo $mostRecents[3]->getTitle(); ?>
+					</h4>
+				</a>
+			</div>
+			<div class = "bottomRight pull-right">
+				<a class="pull-left" href="<?php echo site_url('recipe/'.$mostRecents[4]->getID()); ?>"> 
+					<img style="height:auto; width:100%; overflow-x:hidden;" src="<?php echo $mostRecents[4]->getImage();?>" alt="...">
+					<h4>
+						<?php echo $mostRecents[4]->getTitle(); ?>
+					</h4>
+				</a>
+			</div>
+		</div>
+	</div>	
+</div>
+
+*/?>
 
 <?php 
 }

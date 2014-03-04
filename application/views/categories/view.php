@@ -14,13 +14,13 @@
 
 			<?php foreach($category_items as $category_item) {?>
 			<li class="media">
-				<a class="pull-left" href="#"> <img class="category-media-object"
+				<a class="pull-left" href="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <img class="category-media-object"
 					src="<?php echo $category_item->getImage();?> " alt="">
 				</a>
 				<span class="media-body">
-					<h4 class="media-heading"> <?php echo $category_item->getTitle(); ?></h4>
+					<a href ="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <h4 class="media-heading"><?php echo $category_item->getTitle();?></h4></a>
 					<span class="button-box pull-right">
-						<button class="btn btn-primary">Cook</button>
+						<button class="btn btn-primary" name = 'Cook' value = 'Cook <?php echo $category_item->getTitle(); ?>' onclick="window.location='<?php echo site_url('recipe/'.$category_item->getID()) ?>';">Cook</button>
 						<button class="btn btn-primary">Take a Peek</button>
 					</span>
 					<?php

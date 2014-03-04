@@ -50,14 +50,14 @@ if (isset ( $_POST ['viewType'] )) {
 				<li class="active"><a href="<?php echo site_url();?>">Home</a></li>
 				<!-- @todo need to get the drop downs working. Seems to meet the same logic as is on the bootstrap page but it doesn't currently work-->
 				<li class="dropdown">
-				  <a id="dLabel" role="button" data-toggle="dropdown" href="#">
+				  <a id="dLabel" role="button" data-toggle="dropdown" href="">
 				    Categories <span class="caret"></span>
 				  </a>
 
 
 				  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 				    <li>
-				    	<a href="#"> MEAT </a>
+				    	<a href="<?php echo site_url('category'); ?>"> MEAT </a>
 				    </li>
 				  </ul>
 				</li>
