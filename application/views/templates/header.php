@@ -60,6 +60,7 @@ if (isset ( $_POST ['viewType'] )) {
 							href="<?php echo base_url()."category/".$category-> getCategoryName() ?>"> <?php echo $category-> getCategoryDisplayName()?> </a></li>
 				<?php }?>
 				  </ul></li>
+
 				<li><a href="#"> Surprise Me! </a></li>
 			</ul>
 		</nav>
