@@ -61,7 +61,6 @@ if (isset ( $_POST ['viewType'] )) {
 				<?php }?>
 				  </ul></li>
 
-<<<<<<< HEAD
 				  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 				    <?php foreach($headerCategories as $headerCategory){ ?>
 					    <li>
@@ -75,9 +74,6 @@ if (isset ( $_POST ['viewType'] )) {
 				  </ul>
 				</li>
 				<li><a href="<?php echo site_url('recipe/'.$headerSurprise->getID()); ?>"> Surprise Me! </a></li>
-=======
-				<li><a href="#"> Surprise Me! </a></li>
->>>>>>> FETCH_HEAD
 			</ul>
 		</nav>
 		<!-- @todo need to add the ability to change viewType through a dropdown, but as dropdown's are not currently working I didn't see the point -->
