@@ -18,6 +18,7 @@ class Recipe extends CI_Controller {
 	 *        	the id of the recipe.
 	 */
 	public function view($id) {
+		$data ['categories'] = $this->recipes_model->get_all_categories ();
 		$data ['recipe_item'] = $this->recipes_model->get_recipe ( ( int ) $id );
 		$data['headerCategories'] = $this->recipes_model->get_all_categories();
 		$data['headerSurprise'] = $this->recipes_model->get_surprise();

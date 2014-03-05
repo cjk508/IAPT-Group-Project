@@ -19,7 +19,6 @@ if (isset ( $_POST ['viewType'] )) {
 	$this->session->set_userdata ( $sessionData );
 }
 
-
 ?>
 <html>
 <head>
@@ -33,7 +32,7 @@ if (isset ( $_POST ['viewType'] )) {
 <script type="text/javascript"
 	src="<?php echo base_url('assets/js/bootstrap.js'); ?>"></script>
 <script type="text/javascript"
-	src="<?php echo base_url('assets/js/jquery.collagePlus.min.js'); ?>"></script>	
+	src="<?php echo base_url('assets/js/jquery.collagePlus.min.js'); ?>"></script>
 <script type="text/javascript">
 	var images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg'];
 	 $('html').css({'background': 'url(<?php echo base_url()?>assets/images/' + images[Math.floor(Math.random() * images.length)] + ') no-repeat center center fixed'});
@@ -44,17 +43,25 @@ if (isset ( $_POST ['viewType'] )) {
 <body>
 
 	<header>
-		<a href = "<?php echo site_url(); ?>"><h2 class="brand">The Cook Book</h2> </a>
+		<a href="<?php echo site_url(); ?>"><h2 class="brand">The Cook Book</h2>
+		</a>
 		<nav>
 			<ul class="nav nav-pills">
 				<li class="active"><a href="<?php echo site_url();?>">Home</a></li>
 				<!-- @todo need to get the drop downs working. Seems to meet the same logic as is on the bootstrap page but it doesn't currently work-->
-				<li class="dropdown">
-				  <a id="dLabel" role="button" data-toggle="dropdown" href="">
-				    Categories <span class="caret"></span>
-				  </a>
+				<li class="dropdown"><a id="dLabel" role="button"
+					data-toggle="dropdown" href="#"> Categories <span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+				  <?php						
+						foreach ( $categories as $category ) {
+							?> 					
+				    <li><a
+							href="<?php echo base_url()."category/".$category-> getCategoryName() ?>"> <?php echo $category-> getCategoryDisplayName()?> </a></li>
+				<?php }?>
+				  </ul></li>
 
-
+<<<<<<< HEAD
 				  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 				    <?php foreach($headerCategories as $headerCategory){ ?>
 					    <li>
@@ -68,12 +75,15 @@ if (isset ( $_POST ['viewType'] )) {
 				  </ul>
 				</li>
 				<li><a href="<?php echo site_url('recipe/'.$headerSurprise->getID()); ?>"> Surprise Me! </a></li>
+=======
+				<li><a href="#"> Surprise Me! </a></li>
+>>>>>>> FETCH_HEAD
 			</ul>
 		</nav>
 		<!-- @todo need to add the ability to change viewType through a dropdown, but as dropdown's are not currently working I didn't see the point -->
 		<form class="navbar-search pull-right">
-			<input type="text" class="search-query" role='search' placeholder="Search"> <span
-				class="glyphicon glyphicon-search"></span>
+			<input type="text" class="search-query" role='search'
+				placeholder="Search"> <span class="glyphicon glyphicon-search"></span>
 		</form>
 	</header>
 
