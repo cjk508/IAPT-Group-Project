@@ -19,6 +19,8 @@ class Recipe extends CI_Controller {
 	 */
 	public function view($id) {
 		$data ['recipe_item'] = $this->recipes_model->get_recipe ( ( int ) $id );
+		$data['headerCategories'] = $this->recipes_model->get_all_categories();
+		$data['headerSurprise'] = $this->recipes_model->get_surprise();
 		$this->load->view ( 'templates/header', $data );
 		if (empty ( $data ['recipe_item'] )) {
 			echo "<h2>No such recipe.</h2>";
