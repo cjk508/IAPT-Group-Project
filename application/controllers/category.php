@@ -8,11 +8,11 @@ class Category extends CI_Controller {
 		$data ['categories'] = $this->recipes_model->get_all_categories ();
 		// will need to change
 		$data ['category_items'] = $this->recipes_model->get_category ( $category );
-		/*if (empty ( $data ['category_item'] )) {
+		if (empty ( $data ['category_item'] )) {
 			show_404 ();
-		}*/
-		$data['headerCategories'] = $this->recipes_model->get_all_categories();
-		$data['headerSurprise'] = $this->recipes_model->get_surprise();
+		}
+		$data ['headerCategories'] = $this->recipes_model->get_all_categories ();
+		$data ['headerSurprise'] = $this->recipes_model->get_surprise ();
 		
 		$this->load->view ( 'templates/header', $data );
 		$this->load->view ( 'categories/view', $data );
@@ -21,8 +21,8 @@ class Category extends CI_Controller {
 	function view($category = "Main Dish") {
 		$data ['categories'] = $this->recipes_model->get_all_categories ();
 		$data ['category_items'] = $this->recipes_model->get_category ( $category );
-		$data['headerCategories'] = $this->recipes_model->get_all_categories();
-		$data['headerSurprise'] = $this->recipes_model->get_surprise();
+		$data ['headerCategories'] = $this->recipes_model->get_all_categories ();
+		$data ['headerSurprise'] = $this->recipes_model->get_surprise ();
 		if (empty ( $data ['category_items'] )) {
 			show_404 ();
 		}
