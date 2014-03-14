@@ -15,7 +15,7 @@
 			<?php foreach($category_items as $category_item) {?>
 			<li class="media">
 				<a class="pull-left" href="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <img class="category-media-object"
-					src="<?php echo $category_item->getImage();?> " alt="">
+					src="<?php echo base_url('assets/images/')."/".$category_item->getImage();?> " alt="">
 				</a>
 				<span class="media-body">
 					<a href ="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <h4 class="media-heading"><?php echo $category_item->getTitle();?></h4></a>
