@@ -25,11 +25,6 @@ class Recipes_model extends CI_Model {
 		) );
 		return $this->_processSingleResult ( $result );
 	}
-	public function recipe_Search($searchTerm) {
-		$this->db->like ( 'recipe_title', $searchTerm  );
-		$result = $this->db->get('recipes_view');
-		return $this->_processMultipleResults ( $result );
-	}
 	/**
 	 * Get a list of recipes that belong to a category.
 	 *

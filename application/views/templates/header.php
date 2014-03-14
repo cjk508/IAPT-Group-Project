@@ -13,22 +13,12 @@ if (! isset ( $sessionData ['viewType'] )) {
 
 // if the viewtype has been changed then update the session variable
 if (isset ( $_POST ['viewType'] )) {
-	if ($sessionData ['viewType'] !== $_POST ['viewType']) {
-		?>
-<script type="text/javascript">
-$(document).ready(function() {
-	
-		newAlert('alert-info', 'Your new view type is <?php echo $_POST ['viewType'] ?>');
-});
-		 </script>
-<?php
-	}
 	$sessionData = array (
 			'viewType' => $_POST ['viewType'] 
 	);
-	// var_dump( $sessionData);
 	$this->session->set_userdata ( $sessionData );
 }
+
 ?>
 <html>
 <head>
@@ -42,50 +32,15 @@ $(document).ready(function() {
 <script type="text/javascript"
 	src="<?php echo base_url('assets/js/bootstrap.js'); ?>"></script>
 <script type="text/javascript"
-	src="<?php echo base_url('assets/js/annyang.min.js'); ?>"></script>
-<script type="text/javascript"
 	src="<?php echo base_url('assets/js/jquery.collagePlus.min.js'); ?>"></script>
 <script type="text/javascript">
 	var images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg'];
 	 $('html').css({'background': 'url(<?php echo base_url()?>assets/images/' + images[Math.floor(Math.random() * images.length)] + ') no-repeat center center fixed'});
 	 $('html').css({'background-size': '100%'});
-
-	 $(document).ready(function() {		
-		<?php
-		
-		foreach ( unserialize ( DIFFICULTIES ) as $item ) {
-			?>		
-			
-		    $("#<?php echo $item ?>").click(function() {
-			    var current = <?php echo $sessionData ['viewType'] ?>; 
-		    	$.post(window.location.object, {viewType: "<?php echo $item ?>"}, function() {
-				    window.location.reload(true);		    								
-		    	    if (<?php echo $item ?> !== current) {
-		    	    	newAlert('alert-info', 'Your new view type is <?php echo $item ?>');
-					}
-				}); 
-			});
-		<?php } ?>
-		
-		$('a').tooltip();
-
-	 
-	});
-
-	 function newAlert (type, message) {
-	    $("#alert-area").append($("<div class='alert " + type + " fade in' data-alert><p> " + message + " </p></div>"));
-	    $(".alert").delay(2000).fadeOut("slow", function () { $(this).remove(); });
-	}
-	 $(document).ready(function() {		
-		
-	 	// newAlert('alert-info', 'Oh yeah!');
-	 }); 
-
 	</script>
 </head>
 
 <body>
-
 
 	<header>
 		<a href="<?php echo site_url(); ?>"><h2 class="brand">The Cook Book</h2>
@@ -98,7 +53,7 @@ $(document).ready(function() {
 					data-toggle="dropdown" href="#"> Categories <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-				  <?php
+				  <?php						
 						foreach ( $categories as $category ) {
 							?> 					
 				    <li><a
@@ -106,85 +61,32 @@ $(document).ready(function() {
 				<?php }?>
 				  </ul></li>
 
-				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+				  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 				    <?php foreach($headerCategories as $headerCategory){ ?>
 					    <li>
-					    	<?php
-									
-									/**
-									 *
-									 * @todo need to change the category view
-									 */
-									?>
+					    	<?php /**
+					    	* @todo need to change the category view
+					    	*/?>
 
-					    	<a href="<?php echo site_url('category/'.$headerCategory) ?>">
-							MEAT </a>
-					</li>
+					    	<a href="<?php echo site_url('category/'.$headerCategory) ?>"> MEAT </a>
+					    </li>
 				    <?php }?>
 				  </ul>
-
-				<li><a
-					href="<?php echo site_url('recipe/'.$headerSurprise->getID()); ?>">
-						Surprise Me! </a></li>
+				</li>
+				<li><a href="<?php echo site_url('recipe/'.$headerSurprise->getID()); ?>"> Surprise Me! </a></li>
 			</ul>
 		</nav>
-<<<<<<< HEAD
 		<!-- @todo need to add the ability to change viewType through a dropdown, but as dropdown's are not currently working I didn't see the point -->
-		<?php 
-			$attributes = array('class' => 'navbar-search pull-right', );
-			echo form_open('search/view', $attributes);
-			$data = array(
-              'name'        => 'search',
-              'value'       => '',
-              'class'		=> "search-query",
-              'role'		=>'search',
-              'placeholder'	=>'Search',
-            );
-			echo form_input($data);
-			echo form_close();
-		?>
-		<!-- <form class="navbar-search pull-right">
+		<form class="navbar-search pull-right">
 			<input type="text" class="search-query" role='search'
 				placeholder="Search"> <span class="glyphicon glyphicon-search"></span>
-		</form> -->
-=======
-
-		<form class="navbar-search pull-right" style="margin-left: 10px;">
-			<input type="text" class="search-query" role='search'
-				placeholder="Search"> <span class="glyphicon glyphicon-search"
-				style="margin-left: 3px;"></span>
 		</form>
-
-		<?php
-		// If we're not on the home page.
-		if (! endsWith ( $_SERVER ['PHP_SELF'], "index.php" ) || $sessionData ['viewType'] !== 'null') {
-			?>
-		<div class="btn-group pull-right" style="margin-top: 2px;">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown">
-				Viewing preference <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a id="<?php echo STEP ?>" href="#" data-toggle="tooltip"
-					data-placement="right" title="Step by step view is very cool">Step-by-Step</a></li>
-				<li><a id="<?php echo SEGMENTED ?>" href="#" data-toggle="tooltip"
-					data-placement="right" title="Segmented view is very cool">Segmented</a></li>
-				<li><a id="<?php echo NARRATIVE ?>" href="#" data-toggle="tooltip"
-					data-placement="right" title="Narrative view is very cool">Narrative</a></li>
-			</ul>
-		</div>
-			<?php
-		}
-		?>
->>>>>>> FETCH_HEAD
 	</header>
 
 
 	<script type="text/javascript">
 	$(document).ready( function() {
-		$('.dropdown-toggle').dropdown(); 
-		$(".alert").alert(); 
+		$('.dropdown-toggle').dropdown()
 	});
 </script>
-	<div id="alert-area"></div>
 	<div class="wrapper">
