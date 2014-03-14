@@ -77,10 +77,19 @@ if (isset ( $_POST ['viewType'] )) {
 			</ul>
 		</nav>
 		<!-- @todo need to add the ability to change viewType through a dropdown, but as dropdown's are not currently working I didn't see the point -->
-		<form class="navbar-search pull-right">
-			<input type="text" class="search-query" role='search'
-				placeholder="Search"> <span class="glyphicon glyphicon-search"></span>
-		</form>
+		<?php 
+			$attributes = array('class' => 'navbar-search pull-right', );
+			echo form_open('search/view', $attributes);
+			$data = array(
+              'name'        => 'search',
+              'value'       => '',
+              'class'		=> "search-query",
+              'role'		=>'search',
+              'placeholder'	=>'Search',
+            );
+			echo form_input($data);
+			echo form_close();
+		?>
 	</header>
 
 
