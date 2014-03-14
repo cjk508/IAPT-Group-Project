@@ -4,8 +4,7 @@
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title"><?php echo $this->input->post('search'); ?></h3>
-		
+		<h3 class="panel-title">Search Results</h3>
 	</div>
 	<div class="panel-body category-box">
 
@@ -50,4 +49,3 @@
 
 	</div>
 </div>
-

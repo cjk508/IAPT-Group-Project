@@ -179,7 +179,7 @@ else{
 	<div class = "panel-body">
 		<div class = "featuredRecipe pull-left">
 			<a class="pull-left" href="<?php echo site_url('recipe/'.$mostRecents[0]->getID()); ?>"> 
-				<img  src="<?php echo base_url('assets/images/')."/".$mostRecents[0]->getImage();?>" alt="...">
+				<img  src="<?php echo $mostRecents[0]->getImage();?>" alt="...">
 				<h4>
 					<?php echo $mostRecents[0]->getTitle(); ?>
 				</h4>
@@ -209,7 +209,7 @@ else{
 		<div class = "otherFour pull-right">
 			<div class = "topLeft pull-left">
 				<a class="pull-left" href="<?php echo site_url('recipe/'.$mostRecents[1]->getID()); ?>"> 
-					<img style="height:auto; width:100%" src="<?php echo base_url('assets/images/')."/".$mostRecents[1]->getImage();?>" alt="...">
+					<img style="height:auto; width:100%" src="<?php echo $mostRecents[1]->getImage();?>" alt="...">
 					<h4>
 						<?php echo $mostRecents[1]->getTitle(); ?>
 					</h4>
@@ -217,7 +217,7 @@ else{
 			</div>
 			<div class = "topRight pull-right">
 				<a class="pull-left" href="<?php echo site_url('recipe/'.$mostRecents[2]->getID()); ?>"> 
-					<img style="height:auto; width:100%" src="<?php echo base_url('assets/images/')."/".$mostRecents[2]->getImage();?>" alt="...">
+					<img style="height:auto; width:100%; overflow-x:hidden;" src="<?php echo $mostRecents[2]->getImage();?>" alt="...">
 					<h4>
 						<?php echo $mostRecents[2]->getTitle(); ?>
 					</h4>
@@ -225,7 +225,7 @@ else{
 			</div>
 			<div class = "bottomLeft pull-left">
 				<a class="pull-left" href="<?php echo site_url('recipe/'.$mostRecents[3]->getID()); ?>"> 
-					<img style="height:auto; width:100%" src="<?php echo base_url('assets/images/')."/".$mostRecents[3]->getImage();?>" alt="...">
+					<img style="height:auto; width:100%; overflow-x:hidden;" src="<?php echo $mostRecents[3]->getImage();?>" alt="...">
 					<h4>
 						<?php echo $mostRecents[3]->getTitle(); ?>
 					</h4>
@@ -233,7 +233,7 @@ else{
 			</div>
 			<div class = "bottomRight pull-right">
 				<a class="pull-left" href="<?php echo site_url('recipe/'.$mostRecents[4]->getID()); ?>"> 
-					<img style="height:auto; width:100%" src="<?php echo base_url('assets/images/')."/".$mostRecents[4]->getImage();?>" alt="...">
+					<img style="height:auto; width:100%; overflow-x:hidden;" src="<?php echo $mostRecents[4]->getImage();?>" alt="...">
 					<h4>
 						<?php echo $mostRecents[4]->getTitle(); ?>
 					</h4>
