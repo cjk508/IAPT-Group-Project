@@ -58,7 +58,7 @@ $(document).ready(function(){
 		  animatePreparationTo(current); 
 	}); 
 	$('#collapseOne').on('shown.bs.collapse', function () {
-		  $("#preparation").css({"max-height": "16%"});
+		  $("#preparation").css({"max-height": "26%"});
 		  animatePreparationTo(current); 
 	});
 
@@ -69,7 +69,19 @@ $(document).ready(function(){
 	    	$("#previous_step").trigger("click");
 		}
 	});
-	
+	if (annyang) {
+	  var commands = {
+	    'next step': function() {
+	    	$("#next_step").trigger("click");
+	    }, 'previous step': function() {
+	    	$("#previous_step").trigger("click");
+	    }, 'go to top': function() {
+	    	$("#reset_steps").trigger("click");
+	    }
+	  };
+	  annyang.addCommands(commands);
+	  annyang.start();
+	}
 });
 </script>
 
@@ -78,7 +90,7 @@ $(document).ready(function(){
 		<h3 class="panel-title">Preparation</h3>
 	</div> 
 <?php
-if (! typeIsSelected ( $sessionData ) or isNarrative ( $sessionData )) { 
+if (! typeIsSelected ( $sessionData ) or isNarrative ( $sessionData )) {
 	?>
 				<script type="text/javascript">$(document).ready(function(){
 						$("#preparation").css({"overflow-y": "auto"}); 
@@ -108,9 +120,10 @@ elseif (isSegmented ( $sessionData )) { ?>
 					</ol>
 </div>
 <div class="text-center">
-<button type="button" class="btn btn-default" id="previous_step">Previous</button>
-<button type="button" class="btn btn-default" id="reset_steps">Go to top</button>
-<button type="button" class="btn btn-default" id="next_step">Next</button>
+	<button type="button" class="btn btn-default" id="previous_step">Previous</button>
+	<button type="button" class="btn btn-default" id="reset_steps">Go to
+		top</button>
+	<button type="button" class="btn btn-default" id="next_step">Next</button>
 </div>
 <?php }
 else { ?>
@@ -133,9 +146,10 @@ else { ?>
 					</ol>
 </div>
 <div class="text-center">
-<button type="button" class="btn btn-default" id="previous_step">Previous</button>
-<button type="button" class="btn btn-default" id="reset_steps">Go to top</button>
-<button type="button" class="btn btn-default" id="next_step">Next</button>
+	<button type="button" class="btn btn-default" id="previous_step">Previous</button>
+	<button type="button" class="btn btn-default" id="reset_steps">Go to
+		top</button>
+	<button type="button" class="btn btn-default" id="next_step">Next</button>
 </div>
 <?php
 }

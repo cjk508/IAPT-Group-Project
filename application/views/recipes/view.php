@@ -17,7 +17,7 @@ function isSelected($type) {
 		}
 		?></small>
 		</h3>
-		<form class="btn-group" action='#' method="post">
+		<!--<form class="btn-group" action='#' method="post">
 		
 			<button class="btn btn-primary <?php echo isSelected(STEP)?>" name="viewType"
 				value='<?php echo STEP ?>'>Step-by-Step</button>
@@ -25,7 +25,7 @@ function isSelected($type) {
 				value='<?php echo SEGMENTED ?>'>Segmented</button>
 			<button class="btn btn-primary <?php echo isSelected(NARRATIVE)?>" name="viewType"
 				value='<?php echo NARRATIVE ?>'>Narrative</button>
-		</form>
+		</form>-->
 		<?php
 		require_once 'ingredients_panel.php';
 		require_once 'preparation_panel.php';
