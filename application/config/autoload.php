@@ -64,7 +64,11 @@ $autoload['libraries'] = array('session');
 |	$autoload['helper'] = array('url', 'file');
 */
 
+<<<<<<< HEAD
 $autoload['helper'] = array('form','url', 'html', 'user_difficulty');
+=======
+$autoload['helper'] = array('url', 'html', 'user_difficulty', 'strings');
+>>>>>>> FETCH_HEAD
 
 
 /*

@@ -37,4 +37,7 @@ function getUserType($sessionData) {
 	// The default type. 
 	return DEFAULT_TYPE; 
 }
+function differentType($sessionData) {
+	return ! isset ( $sessionData ['viewType'] ) || $sessionData ['viewType'] !== $_POST ['viewType']; 
+}
 
