@@ -65,10 +65,14 @@ $autoload['libraries'] = array('session');
 */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 $autoload['helper'] = array('form','url', 'html', 'user_difficulty');
 =======
 $autoload['helper'] = array('url', 'html', 'user_difficulty', 'strings');
 >>>>>>> FETCH_HEAD
+=======
+$autoload['helper'] = array('url', 'html', 'user_difficulty');
+>>>>>>> parent of 831166b... Fixed presentation drop down. Added tooltips. Other stuff.
 
 
 /*
