@@ -10,22 +10,10 @@ class Category extends CI_Controller {
 		$data ['category_items'] = $this->recipes_model->get_category ( $category );
 		/*if (empty ( $data ['category_item'] )) {
 			show_404 ();
-<<<<<<< HEAD
-<<<<<<< HEAD
 		}*/
 		$data['headerCategories'] = $this->recipes_model->get_all_categories();
 		$data['headerSurprise'] = $this->recipes_model->get_surprise();
-=======
-		}
-		$data ['headerCategories'] = $this->recipes_model->get_all_categories ();
-		$data ['headerSurprise'] = $this->recipes_model->get_surprise ();
-=======
-		}*/
-		$data['headerCategories'] = $this->recipes_model->get_all_categories();
-		$data['headerSurprise'] = $this->recipes_model->get_surprise();
->>>>>>> parent of 831166b... Fixed presentation drop down. Added tooltips. Other stuff.
 		
->>>>>>> FETCH_HEAD
 		$this->load->view ( 'templates/header', $data );
 		$this->load->view ( 'categories/view', $data );
 		$this->load->view ( 'templates/footer' );

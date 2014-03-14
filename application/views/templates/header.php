@@ -76,62 +76,11 @@ if (isset ( $_POST ['viewType'] )) {
 				<li><a href="<?php echo site_url('recipe/'.$headerSurprise->getID()); ?>"> Surprise Me! </a></li>
 			</ul>
 		</nav>
-<<<<<<< HEAD
-<<<<<<< HEAD
-		<!-- @todo need to add the ability to change viewType through a dropdown, but as dropdown's are not currently working I didn't see the point -->
-		<?php 
-			$attributes = array('class' => 'navbar-search pull-right', );
-			echo form_open('search/view', $attributes);
-			$data = array(
-              'name'        => 'search',
-              'value'       => '',
-              'class'		=> "search-query",
-              'role'		=>'search',
-              'placeholder'	=>'Search',
-            );
-			echo form_input($data);
-			echo form_close();
-		?>
-		<!-- <form class="navbar-search pull-right">
-			<input type="text" class="search-query" role='search'
-				placeholder="Search"> <span class="glyphicon glyphicon-search"></span>
-		</form> -->
-=======
-
-		<form class="navbar-search pull-right" style="margin-left: 10px;">
-=======
 		<!-- @todo need to add the ability to change viewType through a dropdown, but as dropdown's are not currently working I didn't see the point -->
 		<form class="navbar-search pull-right">
->>>>>>> parent of 831166b... Fixed presentation drop down. Added tooltips. Other stuff.
 			<input type="text" class="search-query" role='search'
 				placeholder="Search"> <span class="glyphicon glyphicon-search"></span>
 		</form>
-<<<<<<< HEAD
-
-		<?php
-		// If we're not on the home page.
-		if (! endsWith ( $_SERVER ['PHP_SELF'], "index.php" ) || $sessionData ['viewType'] !== 'null') {
-			?>
-		<div class="btn-group pull-right" style="margin-top: 2px;">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown">
-				Viewing preference <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a id="<?php echo STEP ?>" href="#" data-toggle="tooltip"
-					data-placement="right" title="Step by step view is very cool">Step-by-Step</a></li>
-				<li><a id="<?php echo SEGMENTED ?>" href="#" data-toggle="tooltip"
-					data-placement="right" title="Segmented view is very cool">Segmented</a></li>
-				<li><a id="<?php echo NARRATIVE ?>" href="#" data-toggle="tooltip"
-					data-placement="right" title="Narrative view is very cool">Narrative</a></li>
-			</ul>
-		</div>
-			<?php
-		}
-		?>
->>>>>>> FETCH_HEAD
-=======
->>>>>>> parent of 831166b... Fixed presentation drop down. Added tooltips. Other stuff.
 	</header>
 
 
@@ -140,8 +89,4 @@ if (isset ( $_POST ['viewType'] )) {
 		$('.dropdown-toggle').dropdown()
 	});
 </script>
-<<<<<<< HEAD
-	<div id="alert-area"></div>
-=======
->>>>>>> parent of 831166b... Fixed presentation drop down. Added tooltips. Other stuff.
 	<div class="wrapper">
