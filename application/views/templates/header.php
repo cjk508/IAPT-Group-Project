@@ -65,11 +65,8 @@ $(document).ready(function() {
 					}
 				}); 
 			});
-		<?php } ?>
-		
-		$('a').tooltip();
-
-	 
+		<?php } ?>		
+		$('a').tooltip();	 
 	});
 
 	 function newAlert (type, message) {

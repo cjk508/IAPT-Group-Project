@@ -45,8 +45,7 @@ $(document).ready(function(){
 				<div id="ingredients" class="row">
 					<div class="col-md-4">
 
-						<a href="#" class="thumbnail"> 											
-						<img class="img-rounded" alt="test"
+						<a href="#" class="thumbnail"> <img class="img-rounded" alt="test"
 							src="<?php echo base_url('assets/images/')."/".$recipe_item->getImage()?>">
 
 						</a>
@@ -56,15 +55,15 @@ $(document).ready(function(){
 							<div class="panel-body">
 								<h3>Ingredients:</h3>					
 				<?php
-				$pool = $recipe_item->getIngredientPool ( $GLOBALS['user_type'] );
+				$pool = $recipe_item->getIngredientPool ( $GLOBALS ['user_type'] );
 				foreach ( $pool->getIngredients () as $id => $ingredient ) {
 					?><div class="col-md-6">
 									<div class="input-group">
 										<span class="input-group-addon"> <input
 											id="check-<?php echo $id ?>" type="checkbox"
 											class="ingr-checkbox">
-										</span>
-										<p class="form-control" id="Ingr-<?php echo $id ?>"><?php echo $ingredient?></p>
+										</span> <a href="#"><p class="form-control"
+												id="Ingr-<?php echo $id ?>"><?php echo $ingredient?></p></a>
 									</div>
 								</div>
 		<?php
