@@ -42,7 +42,6 @@ if (!typeIsSelected($sessionData) /*or $sessionData['viewType'] != 'null'*/){
 		<!-- A form that allows the user to select the type of interface they wish to use
 			This is based on how skilled they believe they are at cooking
 		 -->
-	<p>
 	
 	
 	<form class="btn-group" action='#' method="post">
@@ -50,7 +49,10 @@ if (!typeIsSelected($sessionData) /*or $sessionData['viewType'] != 'null'*/){
 		<button class="btn btn-primary" name="viewType" value='<?php echo SEGMENTED ?>'>Segmented</button>
 		<button class="btn btn-primary" name="viewType" value='<?php echo NARRATIVE ?>'>Narrative</button>
 	</form>
-	</p>
+	
+	<form class="btn-group pull-right" action='#' method="post">
+		<button class="btn btn-primary" name="viewType" value='<?php echo DEFAULT_TYPE ?>'>Skip</button>
+	</form>
 </div>
 
 
