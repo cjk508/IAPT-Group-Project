@@ -38,12 +38,14 @@
 |
 */
 
+
 $route['category/(:any)'] = 'category/view/$1';
 $route['recipe/(:any)'] = 'recipe/view/$1';
 $route['news/create'] = 'news/create';
 $route['news/(:any)'] = 'news/view/$1';
 $route['category/(:any)'] = 'category/view/$1';
 $route['recipe/(:any)'] = 'recipe/view/$1';
+$route['search/(:any)'] = 'search/view/$1';
 $route['news'] = 'news';
 $route['recipe'] = 'recipe';
 $route['category'] = 'category';

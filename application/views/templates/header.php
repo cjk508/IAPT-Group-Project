@@ -126,12 +126,26 @@ $(document).ready(function() {
 			</ul>
 		</nav>
 
-		<form class="navbar-search pull-right" style="margin-left: 10px;">
+<!-- 		<form class="navbar-search pull-right" style="margin-left: 10px;">
 			<input type="text" class="search-query" role='search'
 				placeholder="Search"> <span class="glyphicon glyphicon-search"
 				style="margin-left: 3px;"></span>
 		</form>
+ -->
 
+ 		<?php 
+ 			$attributes = array('class' => 'navbar-search pull-right', );
+ 			echo form_open('search/view', $attributes);
+ 			$data = array(
+               'name'        => 'search',
+               'value'       => '',
+               'class'		=> "search-query",
+               'role'		=>'search',
+               'placeholder'	=>'Search',
+             );
+ 			echo form_input($data);
+ 			echo form_close();
+ 		?>
 		<?php
 		// If we're not on the home page.
 		if (! endsWith ( $_SERVER ['PHP_SELF'], "index.php" ) || $sessionData ['viewType'] !== 'null') {
