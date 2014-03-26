@@ -34,10 +34,41 @@ function getUserType($sessionData) {
 	if (array_key_exists ( 'viewType', $sessionData )) {
 		return $sessionData ['viewType'];
 	}
-	// The default type. 
-	return DEFAULT_TYPE; 
+	// The default type.
+	return DEFAULT_TYPE;
 }
 function differentType($sessionData) {
-	return ! isset ( $sessionData ['viewType'] ) || $sessionData ['viewType'] !== $_POST ['viewType']; 
+	return ! isset ( $sessionData ['viewType'] ) || $sessionData ['viewType'] !== $_POST ['viewType'];
+}
+/**
+ * Conditional echo of a string depending on the intended user type.
+ *
+ * @param string $string        	
+ * @param unknown $sessionData        	
+ * @param string $targetType        	
+ */
+function echo_type_depend($string, $sessionData, $targetType) {
+	switch ($sessionData ['viewType']) {
+		case NARRATIVE :
+			if ($targetType == NARRATIVE) {
+				echo $string;
+			}
+			break;
+		
+		case SEGMENTED :
+			if ($targetType == SEGMENTED) {
+				echo $string;
+			}
+			break;
+		case STEP :
+			if ($targetType == STEP) {
+				echo $string;
+			}
+			break;
+		
+		default :
+			echo "";
+			break;
+	}
 }
 

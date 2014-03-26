@@ -103,7 +103,7 @@ $(document).ready(function() {
 				<?php }?>
 				  </ul></li>
 
-				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+				<!-- <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 				    <?php foreach($headerCategories as $headerCategory){ ?>
 					    <li>
 					    	<?php
@@ -118,7 +118,7 @@ $(document).ready(function() {
 							MEAT </a>
 					</li>
 				    <?php }?>
-				  </ul>
+				  </ul> -->
 
 				<li><a
 					href="<?php echo site_url('recipe/'.$headerSurprise->getID()); ?>">
@@ -143,11 +143,11 @@ $(document).ready(function() {
 			</button>
 			<ul class="dropdown-menu" role="menu">
 				<li><a id="<?php echo STEP ?>" href="#" data-toggle="tooltip"
-					data-placement="right" title="Step by step view is very cool">Step-by-Step</a></li>
+					data-placement="right" title="Step by step view is very cool"><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, STEP)?>Step-by-Step</a></li>
 				<li><a id="<?php echo SEGMENTED ?>" href="#" data-toggle="tooltip"
-					data-placement="right" title="Segmented view is very cool">Segmented</a></li>
+					data-placement="right" title="Segmented view is very cool"><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, SEGMENTED)?>Segmented</a></li>
 				<li><a id="<?php echo NARRATIVE ?>" href="#" data-toggle="tooltip"
-					data-placement="right" title="Narrative view is very cool">Narrative</a></li>
+					data-placement="right" title="Narrative view is very cool"><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, NARRATIVE)?>Narrative</a></li>
 			</ul>
 		</div>
 			<?php
