@@ -1,82 +1,10 @@
--- phpMyAdmin SQL Dump
--- version 4.0.6
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Mar 25, 2014 at 10:21 PM
--- Server version: 5.5.33
--- PHP Version: 5.5.3
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
---
--- Database: `iapt131406`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categories`
---
-
-CREATE TABLE `categories` (
-  `category_id` int(11) NOT NULL AUTO_INCREMENT,
-  `category_name` varchar(100) NOT NULL,
-  `category_display_name` varchar(200) NOT NULL,
-  `main_category` int(11) NOT NULL DEFAULT '0',
-  `category_icon_file` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `categories`
---
 
 INSERT INTO `categories` (`category_id`, `category_name`, `category_display_name`, `main_category`, `category_icon_file`) VALUES
 (1, 'Main Dish', 'Main_dish', 0, NULL),
 (2, 'Side Dish', 'Side_dish', 0, NULL),
 (3, 'Dessert', 'Dessert', 0, NULL),
 (4, 'Salad', 'Salad', 0, NULL);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `categories_view`
---
-CREATE TABLE `categories_view` (
-`category_id` int(11)
-,`category_name` varchar(100)
-,`category_display_name` varchar(200)
-,`main_category` int(11)
-,`category_icon_file` varchar(100)
-);
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `category_list_view`
---
-CREATE TABLE `category_list_view` (
-`categories` varchar(343)
-);
--- --------------------------------------------------------
-
---
--- Table structure for table `ingredient_pools`
---
-
-CREATE TABLE `ingredient_pools` (
-  `pool_id` int(11) NOT NULL AUTO_INCREMENT,
-  `recipe_id` int(11) NOT NULL,
-  `pool_name` varchar(200) NOT NULL,
-  `difficulty` enum('narrative','segmented','step') NOT NULL,
-  PRIMARY KEY (`pool_id`,`recipe_id`,`difficulty`),
-  KEY `ingr_pools_fk1_idx` (`recipe_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
-
---
--- Dumping data for table `ingredient_pools`
---
 
 INSERT INTO `ingredient_pools` (`pool_id`, `recipe_id`, `pool_name`, `difficulty`) VALUES
 (1, 1, 'Beef_Burger_Narrative', 'narrative'),
@@ -96,33 +24,6 @@ INSERT INTO `ingredient_pools` (`pool_id`, `recipe_id`, `pool_name`, `difficulty
 (15, 7, 'Vanilla_Slice_Seg', 'segmented'),
 (16, 7, 'Vanilla_Slice_Step', 'step');
 
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `ingredient_pools_view`
---
-CREATE TABLE `ingredient_pools_view` (
-`recipe_id` int(11)
-,`pool_id` int(11)
-,`pool_name` varchar(200)
-,`difficulty` enum('narrative','segmented','step')
-,`ingredients` varchar(343)
-);
--- --------------------------------------------------------
-
---
--- Table structure for table `narrative_method`
---
-
-CREATE TABLE `narrative_method` (
-  `recipe_id` int(11) NOT NULL,
-  `narrative_body` longtext NOT NULL,
-  PRIMARY KEY (`recipe_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `narrative_method`
---
 
 INSERT INTO `narrative_method` (`recipe_id`, `narrative_body`) VALUES
 (1, 'Peel and finely instructions grate the onion and peel and crush the garlic. Finely chop the white part of the lemongrass, then place with the chicken, onion, breadcrumbs, garlic, coriander, lime zest, fish sauce and sugar in a large bowl and mix well with your hands. Shape into 2 patties, cover and chill for at least 10 minutes.\r\nHeat a barbecue or griddle pan until hot. Brush the burgers with a little oil and cook for 4 minutes on each side or until cooked through. Serve the burgers in soft rolls with lettuce, mint, coriander and chilli sauce. \r\n'),
@@ -132,24 +33,6 @@ INSERT INTO `narrative_method` (`recipe_id`, `narrative_body`) VALUES
 (6, 'Soak the black beans in cold water overnight. Drain and rinse well. Put them in a large saucepan with plenty of water and bring to the boil. Cook for 25-30 minute, until soft to the bite. Drain well and set aside.			\r\nHeat the oil in a saucepan set over high heat and add the red pepper and onion. Reduce the heat to low, cover and cook for about 8 minutes. Add the cumin, garlic and chillies and cook for a further 2 minutes. Add the beans, tomatoes, vinegar and passata and bring to the boil. Reduce the heat and simmer rapidly for 10 minutes, until almost all the liquid has evaporated and the tomatoes start to look mushy.\r\nPreheat the grill to high.\r\nTransfer the bean mixture to a flameproof dish and sprinkle the crumbled feta over the top. Cook under the hot grill until the cheese is soft and just starting to brown. Serve hot with corn chips on the side for dipping. '),
 (7, 'Set the oven to heat to a temperature of 240°C or 220°C with a fan assisted oven. Grease a 23cm square, deep edged, cake pan. Then line it with foil taking care to ensure the foil extends a minimum of 10cm over the edges.\r\n \r\nThen grease two other oven trays to place (and bake) the ready-rolled pastry. Bake for approximately fifteen minutes and then cool. Gently flatten the sheets of pastry by hand.\r\n \r\nOnce done measure and trim the sheets to fit into the square cake pan. Place one of the sheets in the bottom of the cake pan pressing down gently.\r\n \r\nAt this point one mixes together the sugar, cornflour, and custard powder in a saucepan. Slowly add the milk till smooth and combined, without any lumps. Turn on the hob burner to medium high and set the saucepan on top. Add in the butter and stir as it melts and the mixture comes to a boil.\r\n \r\nContinue to stir as it thickens, this usually takes around three minutes to attain a good thick consistency.\r\n \r\nNow take it off the heat and stir in the egg yolk and vanilla extract, making sure to mix well and quickly. You can then cover it with cling film and set aside to cool down to room temperature.\r\n \r\nTaking out a small saucepan and a heatproof bowl, set up a ''water bath'' on the hob by filling the saucepan 3/4 full with water and setting it to simmer (low boil). Pop the bowl on top in a lid-like capacity and then pop in the icing sugar, butter and passion fruit pulp from the icing list. Stir that all together over the simmering water until it melts together into a smooth pourable icing. Set aside.\r\n \r\nIn another bowl whip the thickened cream, with a hand mixer, until it forms stif peaks. Then gently fold half of the cream into the custard mixture at a time, using gentle motions and a rounded implement to reduce the number of bubbles in the cream that break.\r\n \r\nOnce all the whipped cream has been combined carefully then spread the mixture out over the puff pastry in the cake pan. Take care to make it as smooth as possible as you don''t want air pockets under the top layer of pastry. When your happy with that, gently place the second measured slice of puff pastry on top, pressing down a bit to ''seat'' the pastry into the custard.\r\n \r\nPour the icing on top, spreading gently so as not to disturbed what ever flakiness the top pastry has. Cover and cool for a minimum of three hours or overnight.');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `recipes`
---
-
-CREATE TABLE `recipes` (
-  `recipe_id` int(11) NOT NULL AUTO_INCREMENT,
-  `recipe_title` varchar(300) NOT NULL,
-  `recipe_date` datetime NOT NULL,
-  `recipe_servings` int(11) NOT NULL,
-  `recipe_image` varchar(200) NOT NULL,
-  PRIMARY KEY (`recipe_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
-
---
--- Dumping data for table `recipes`
---
 
 INSERT INTO `recipes` (`recipe_id`, `recipe_title`, `recipe_date`, `recipe_servings`, `recipe_image`) VALUES
 (1, 'Beef Burgers', '2014-02-27 00:00:00', 2, 'burger.gif'),
@@ -159,39 +42,6 @@ INSERT INTO `recipes` (`recipe_id`, `recipe_title`, `recipe_date`, `recipe_servi
 (6, 'Black Bean Dip', '2014-02-23 00:00:00', 4, 'BlackBeanDip.jpg'),
 (7, 'Vanilla Slice', '2014-03-25 00:00:00', 16, 'vanilla_slice.jpg');
 
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `recipes_view`
---
-CREATE TABLE `recipes_view` (
-`recipe_id` int(11)
-,`recipe_title` varchar(300)
-,`recipe_date` datetime
-,`category` varchar(343)
-,`recipe_servings` int(11)
-,`recipe_image` varchar(200)
-,`narrative_method` longtext
-,`segmented_method` varchar(343)
-,`step_method` varchar(343)
-);
--- --------------------------------------------------------
-
---
--- Table structure for table `recipe_categories`
---
-
-CREATE TABLE `recipe_categories` (
-  `recipe_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  PRIMARY KEY (`recipe_id`,`category_id`),
-  KEY `rc_fk_2_idx` (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `recipe_categories`
---
-
 INSERT INTO `recipe_categories` (`recipe_id`, `category_id`) VALUES
 (1, 1),
 (2, 1),
@@ -200,30 +50,6 @@ INSERT INTO `recipe_categories` (`recipe_id`, `category_id`) VALUES
 (7, 3),
 (4, 4);
 
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `recipe_categories_view`
---
-CREATE TABLE `recipe_categories_view` (
-`recipe_id` int(11)
-,`categories` varchar(343)
-);
--- --------------------------------------------------------
-
---
--- Table structure for table `recipe_ingredients`
---
-
-CREATE TABLE `recipe_ingredients` (
-  `ingredient_pool_id` int(11) NOT NULL,
-  `ingredient_name` varchar(200) NOT NULL,
-  PRIMARY KEY (`ingredient_pool_id`,`ingredient_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `recipe_ingredients`
---
 
 INSERT INTO `recipe_ingredients` (`ingredient_pool_id`, `ingredient_name`) VALUES
 (1, '1 garlic clove'),
@@ -342,23 +168,6 @@ INSERT INTO `recipe_ingredients` (`ingredient_pool_id`, `ingredient_name`) VALUE
 (15, '2 sheets ready-rolled puff pastry'),
 (16, 'Package of ready- rolled puff pastry');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `segmented_method`
---
-
-CREATE TABLE `segmented_method` (
-  `recipe_id` int(11) NOT NULL,
-  `segmented_step_id` int(11) NOT NULL,
-  `segmented_step_description` longtext NOT NULL,
-  PRIMARY KEY (`recipe_id`,`segmented_step_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `segmented_method`
---
-
 INSERT INTO `segmented_method` (`recipe_id`, `segmented_step_id`, `segmented_step_description`) VALUES
 (1, 1, 'Peel and finely grate the onion.'),
 (1, 2, 'Peel and crush the garlic.'),
@@ -421,43 +230,6 @@ INSERT INTO `segmented_method` (`recipe_id`, `segmented_step_id`, `segmented_ste
 (7, 3, 'Meanwhile, combine sugar, cornflour and custard powder in a medium saucepan; gradually add milk stirring until smooth. Add butter; stir over heat until mixture boils and thickens. Simmer, stirring, about 3minutes or until custard is thick and smooth. Remove from heat; stir in egg yolk and extract. Cover surface with clingfilm; cool to room temperature.'),
 (7, 4, 'Make passion fruit icing; place all ingredients into a heatproof bowl over a small saucepan of simmering water; stir until icing is spreadable.'),
 (7, 5, 'Whip cream till peaks form. Fold into custard in two batches. Spread custard mixture over pastry in pan. Top with remaining pastry, trim to fit if necessary; press down slightly. Spread pastry with icing; refrigerate 3 hours or overnight.');
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `sorted_segmented_method_view`
---
-CREATE TABLE `sorted_segmented_method_view` (
-`recipe_id` int(11)
-,`segmented_step_id` int(11)
-,`segmented_step_description` longtext
-);
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `sorted_step_method_view`
---
-CREATE TABLE `sorted_step_method_view` (
-`recipe_id` int(11)
-,`step_id` int(11)
-,`step_description` longtext
-);
--- --------------------------------------------------------
-
---
--- Table structure for table `step_method`
---
-
-CREATE TABLE `step_method` (
-  `recipe_id` int(11) NOT NULL,
-  `step_id` int(11) NOT NULL,
-  `step_description` longtext NOT NULL,
-  PRIMARY KEY (`recipe_id`,`step_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `step_method`
---
 
 INSERT INTO `step_method` (`recipe_id`, `step_id`, `step_description`) VALUES
 (1, 1, 'Peel and finely grate 1 onion and place in a large bowl.'),
@@ -601,107 +373,3 @@ INSERT INTO `step_method` (`recipe_id`, `step_id`, `step_description`) VALUES
 (7, 34, 'Top with the other sheet of the pastry and gently press into the custard.'),
 (7, 35, 'Spread the icing over the top smoothly.'),
 (7, 36, 'Leave to rest overnight or at least 3 hours.');
-
--- --------------------------------------------------------
-
---
--- Structure for view `categories_view`
---
-DROP TABLE IF EXISTS `categories_view`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `categories_view` AS select `categories`.`category_id` AS `category_id`,`categories`.`category_name` AS `category_name`,`categories`.`category_display_name` AS `category_display_name`,`categories`.`main_category` AS `main_category`,`categories`.`category_icon_file` AS `category_icon_file` from `categories` order by `categories`.`category_id`;
-
--- --------------------------------------------------------
-
---
--- Structure for view `category_list_view`
---
-DROP TABLE IF EXISTS `category_list_view`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `category_list_view` AS select concat(concat('[',group_concat(distinct concat('\'',`categories`.`category_name`,'\'') separator ',')),']') AS `categories` from `categories`;
-
--- --------------------------------------------------------
-
---
--- Structure for view `ingredient_pools_view`
---
-DROP TABLE IF EXISTS `ingredient_pools_view`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ingredient_pools_view` AS select `ingredient_pools`.`recipe_id` AS `recipe_id`,`ingredient_pools`.`pool_id` AS `pool_id`,`ingredient_pools`.`pool_name` AS `pool_name`,`ingredient_pools`.`difficulty` AS `difficulty`,concat(concat('[',group_concat(distinct concat('\'',`recipe_ingredients`.`ingredient_name`,'\'') separator ',')),']') AS `ingredients` from (`ingredient_pools` left join `recipe_ingredients` on((`ingredient_pools`.`pool_id` = `recipe_ingredients`.`ingredient_pool_id`))) group by `ingredient_pools`.`difficulty`,`ingredient_pools`.`pool_id` order by `ingredient_pools`.`pool_id`;
-
--- --------------------------------------------------------
-
---
--- Structure for view `recipes_view`
---
-DROP TABLE IF EXISTS `recipes_view`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `recipes_view` AS select `recipes`.`recipe_id` AS `recipe_id`,`recipes`.`recipe_title` AS `recipe_title`,`recipes`.`recipe_date` AS `recipe_date`,`recipe_categories_view`.`categories` AS `category`,`recipes`.`recipe_servings` AS `recipe_servings`,`recipes`.`recipe_image` AS `recipe_image`,`narrative_method`.`narrative_body` AS `narrative_method`,concat(concat('[',group_concat(distinct concat('\'',`sorted_segmented_method_view`.`segmented_step_description`,'\'') separator ',')),']') AS `segmented_method`,concat(concat('[',group_concat(distinct concat('\'',`sorted_step_method_view`.`step_description`,'\'') separator ',')),']') AS `step_method` from ((((`recipes` left join `recipe_categories_view` on((`recipes`.`recipe_id` = `recipe_categories_view`.`recipe_id`))) left join `narrative_method` on((`recipes`.`recipe_id` = `narrative_method`.`recipe_id`))) left join `sorted_segmented_method_view` on((`recipes`.`recipe_id` = `sorted_segmented_method_view`.`recipe_id`))) left join `sorted_step_method_view` on((`recipes`.`recipe_id` = `sorted_step_method_view`.`recipe_id`))) group by `recipes`.`recipe_id` order by `recipes`.`recipe_id`;
-
--- --------------------------------------------------------
-
---
--- Structure for view `recipe_categories_view`
---
-DROP TABLE IF EXISTS `recipe_categories_view`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `recipe_categories_view` AS select `recipe_categories`.`recipe_id` AS `recipe_id`,concat(concat('[',group_concat(distinct concat('\'',`categories`.`category_display_name`,'\'') separator ',')),']') AS `categories` from (`categories` left join `recipe_categories` on((`categories`.`category_id` = `recipe_categories`.`category_id`))) group by `recipe_categories`.`recipe_id` order by `recipe_categories`.`recipe_id`;
-
--- --------------------------------------------------------
-
---
--- Structure for view `sorted_segmented_method_view`
---
-DROP TABLE IF EXISTS `sorted_segmented_method_view`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `sorted_segmented_method_view` AS select `segmented_method`.`recipe_id` AS `recipe_id`,`segmented_method`.`segmented_step_id` AS `segmented_step_id`,`segmented_method`.`segmented_step_description` AS `segmented_step_description` from `segmented_method` order by `segmented_method`.`recipe_id`,`segmented_method`.`segmented_step_id`;
-
--- --------------------------------------------------------
-
---
--- Structure for view `sorted_step_method_view`
---
-DROP TABLE IF EXISTS `sorted_step_method_view`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `sorted_step_method_view` AS select `step_method`.`recipe_id` AS `recipe_id`,`step_method`.`step_id` AS `step_id`,`step_method`.`step_description` AS `step_description` from `step_method` order by `step_method`.`recipe_id`,`step_method`.`step_id`;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `ingredient_pools`
---
-ALTER TABLE `ingredient_pools`
-  ADD CONSTRAINT `ingr_pools_fk1` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `narrative_method`
---
-ALTER TABLE `narrative_method`
-  ADD CONSTRAINT `narrative_fk1` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `recipe_categories`
---
-ALTER TABLE `recipe_categories`
-  ADD CONSTRAINT `rc_fk_1` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `rc_fk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `recipe_ingredients`
---
-ALTER TABLE `recipe_ingredients`
-  ADD CONSTRAINT `ingredients_fk1` FOREIGN KEY (`ingredient_pool_id`) REFERENCES `ingredient_pools` (`pool_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `segmented_method`
---
-ALTER TABLE `segmented_method`
-  ADD CONSTRAINT `segmented_fk1` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `step_method`
---
-ALTER TABLE `step_method`
-  ADD CONSTRAINT `step_fk1` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;

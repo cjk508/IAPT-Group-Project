@@ -137,6 +137,15 @@ footer {
 	background-color: rgba(255, 255, 255, 0.85);
 }
 
+.ingr-list .panel {
+	overflow-y: auto; 
+	max-height: 260px; 
+}
+
+.form-control {
+	height: auto; 
+}
+
 .panel-default {
 	margin-top: 10px;
 	max-height: 83%;

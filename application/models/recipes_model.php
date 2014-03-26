@@ -8,9 +8,8 @@ require_once 'ingredient_pool_object.php';
 class Recipes_model extends CI_Model {
 	public function __construct() {
 		$this->load->database ();
-	}
-	public function test_db() {
-		return "Db is working";
+		// Set the session's concat limit. This is very important. 
+		$this->db->simple_query("SET SESSION group_concat_max_len = 1000000;"); 
 	}
 	/**
 	 * Get a recipe by id.

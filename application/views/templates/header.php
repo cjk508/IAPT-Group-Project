@@ -150,7 +150,7 @@ $(document).ready(function() {
 		// If we're not on the home page.
 		if (! endsWith ( $_SERVER ['PHP_SELF'], "index.php" ) || $sessionData ['viewType'] !== 'null') {
 			?>
-		<div class="btn-group pull-right" style="margin-top: 2px;">
+		<div class="btn-group pull-right" style="margin-top: 2px; right: 15px;">
 			<button type="button" class="btn btn-default dropdown-toggle"
 				data-toggle="dropdown">
 				Viewing preference <span class="caret"></span>

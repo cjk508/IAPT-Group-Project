@@ -58,9 +58,11 @@ $(document).ready(function(){
 		  animatePreparationTo(current); 
 	}); 
 	$('#collapseOne').on('shown.bs.collapse', function () {
-		  $("#preparation").css({"max-height": "26%"});
+		  $("#preparation").css({"max-height": $(window).height()/5});
 		  animatePreparationTo(current); 
 	});
+
+	$("#preparation").css({"max-height": $(window).height()/5});
 
 	$(document).keydown(function(e){
 	    if (e.keyCode == 40 || e.keyCode == 39) { 
@@ -137,14 +139,18 @@ elseif (isSegmented ( $sessionData )) {
 
 <ol class="text-center ticker" id="steps_ticker">
 					<?php
-	
+	try {
+
 	foreach ( $recipe_item->getStepMethod () as $id => $step ) {
 		?>
 						<li><a id="Step-<?php echo $id ?>" href="#"><?php echo $step ?><span
 			class="glyphicon glyphicon-ok-circle"></span></a></li>
 					<?php
 	}
-	
+	}
+	catch (Exception $e) {
+		echo "No step method available currently.";
+	}
 	?>
 	
 					</ol>

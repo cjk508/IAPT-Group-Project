@@ -18,7 +18,7 @@ class Category extends CI_Controller {
 		$this->load->view ( 'categories/view', $data );
 		$this->load->view ( 'templates/footer' );
 	}
-	function view($category = "Main Dish") {
+	function view($category = "Main_Dish") {
 		$data ['categories'] = $this->recipes_model->get_all_categories ();
 		$data ['category_items'] = $this->recipes_model->get_category ( $category );
 		$data ['headerCategories'] = $this->recipes_model->get_all_categories ();
