@@ -33,7 +33,6 @@ if (!typeIsSelected($sessionData) /*or $sessionData['viewType'] != 'null'*/){
 	<p>	
 		Recipes your way! <br> You can cook anything with our site! It is
 		really easy. <br>
-			<?php echo $db_works?>
 		</p>
 		
 		<?php
