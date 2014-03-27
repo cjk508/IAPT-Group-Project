@@ -65,11 +65,15 @@ header {
 	/* border-bottom: 2px white solid; */
 	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
 		0.9)), to(rgba(255, 255, 255, 0.5)));
+	background-image: linear-gradient(to right, rgba(255, 255, 255,
+		0.9), rgba(255, 255, 255, 0.5));
 }
 
 header:HOVER {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
 		0.9)), to(rgba(255, 255, 255, 0.7)));
+	background-image: linear-gradient(to right, rgba(255, 255, 255,
+		0.9), rgba(255, 255, 255, 0.7));
 }
 
 #difficulty_button {
@@ -78,8 +82,11 @@ header:HOVER {
 
 footer {
 	/* background-color: rgba(255, 255, 255, 0.85); */
-	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
-		0.5)), to(rgba(255, 255, 255, 0.9)));
+	/*background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.5)), to(rgba(255, 255, 255, 0.9)));*/
+	background-image: linear-gradient(to right, rgba(255, 255, 255,
+		0.5), rgba(255, 255, 255, 0.9));
+
 	position: absolute;
 	bottom: 0;
 	width: 100%;
