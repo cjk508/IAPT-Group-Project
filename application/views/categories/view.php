@@ -21,23 +21,32 @@
 					<a href ="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <h4 class="media-heading"><?php echo $category_item->getTitle();?></h4></a>
 					<span class="button-box pull-right">
 						<button class="btn btn-primary" name = 'Cook' value = 'Cook <?php echo $category_item->getTitle(); ?>' onclick="window.location='<?php echo site_url('recipe/'.$category_item->getID()) ?>';">Cook</button>
-						<button class="btn btn-primary">Take a Peek</button>
 					</span>
 					<?php
 					$sessionData = $this->session->all_userdata ();
-					echo $sessionData['viewType'];
 					foreach ( $category_item->getIngredientPools () as $pool ) {
 						if ($pool-> getDifficulty() == $sessionData['viewType']) { ?>
 						<ul>
 
 							<?php
-
+							$ingredientCount = 0;
+							$ingredList = "";
 							foreach ( $pool->getIngredients () as $ingredient ) {
+								if ($ingredientCount < 4){
 								?>
+
 								<li><?php echo $ingredient?></li>
 								<?php
+									$ingredientCount++;
+								}
+								else{
+									$ingredList = $ingredList ."\n". $ingredient;
+									$ingredientCount++;
+								}
 							}
 							?>
+							<li><a class="ingredientTooltip" href="#" data-toggle="tooltip"
+									data-placement="right" title="<?php echo $ingredList ?>">more ingredients ...</a></li>
 						</ul>
 						<?php
 						}

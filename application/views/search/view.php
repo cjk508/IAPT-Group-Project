@@ -13,13 +13,12 @@
 			<?php foreach($searchValues as $searchValue) {?>
 			<li class="media">
 				<a class="pull-left" href="<?php echo site_url('recipe/'.$searchValue->getID()); ?>"> <img class="category-media-object"
-					src="<?php echo $searchValue->getImage();?> " alt="">
+					src="<?php echo base_url('assets/images/')."/".$searchValue->getImage();?> " alt="">
 				</a>
 				<span class="media-body">
 					<a href ="<?php echo site_url('recipe/'.$searchValue->getID()); ?>"> <h4 class="media-heading"><?php echo $searchValue->getTitle();?></h4></a>
 					<span class="button-box pull-right">
 						<button class="btn btn-primary" name = 'Cook' value = 'Cook <?php echo $searchValue->getTitle(); ?>' onclick="window.location='<?php echo site_url('recipe/'.$searchValue->getID()) ?>';">Cook</button>
-						<button class="btn btn-primary">Take a Peek</button>
 					</span>
 					<?php
 					$sessionData = $this->session->all_userdata ();
