@@ -11,7 +11,7 @@ function isSelected($type) {
 	return ""; 
 }
 ?>
-		<h3><?php echo  $recipe_item->getTitle()?> <small>In: <?php
+		<h3><?php echo  $recipe_item->getTitle()?> <small><span class = "glyphicon glyphicon-tags"> </span>   <?php
 		foreach ( $recipe_item->getCategory () as $cat ) {
 			echo $cat . "; ";
 		}
