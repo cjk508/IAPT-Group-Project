@@ -11,7 +11,7 @@
 		<ul class="media-list">
 
 			<?php foreach($searchValues as $searchValue) {?>
-			<li class="media">
+			<li class="media recipe_list">
 				<a class="pull-left" href="<?php echo site_url('recipe/'.$searchValue->getID()); ?>"> <img class="category-media-object"
 					src="<?php echo base_url('assets/images/')."/".$searchValue->getImage();?> " alt="">
 				</a>

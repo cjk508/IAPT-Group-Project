@@ -6,15 +6,15 @@
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title">Categories</h3>
+		<h3 class="panel-title"><?php echo $searchCategory; ?></h3>
 	</div>
 	<div class="panel-body category-box">
 
 		<ul class="media-list">
 
 			<?php foreach($category_items as $category_item) {?>
-			<li class="media">
-				<a class="pull-left" href="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <img class="category-media-object"
+			<li class="media recipe_list">
+				<a class="pull-left" href="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <img class="thumbnail category-media-object"
 					src="<?php echo base_url('assets/images/')."/".$category_item->getImage();?> " alt="">
 				</a>
 				<span class="media-body">
@@ -44,7 +44,7 @@
 									$ingredientCount++;
 								}
 							}
-							if ($ingredientCount >=4){ ?>
+							if ($ingredientCount >= 4){ ?>
 							<li><a class="ingredientTooltip" href="#" data-toggle="tooltip"
 									data-placement="right" title="<?php echo $ingredList ?>">more ingredients ...</a></li>
 							<?php } ?>

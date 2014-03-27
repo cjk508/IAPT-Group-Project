@@ -50,6 +50,10 @@ nav {
 	display: inline-block;
 	float: left;
 }
+.recipe_list{
+	border-bottom: gray dotted 0.5px;
+	padding-bottom: 12px;
+}
 
 header,footer {
 	padding: 10px;
