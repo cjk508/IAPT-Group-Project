@@ -125,10 +125,10 @@ elseif (isSegmented ( $sessionData )) {
 					</ol>
 </div>
 <div class="text-center">
-	<button type="button" class="btn btn-default" id="previous_step">Previous</button>
-	<button type="button" class="btn btn-default" id="reset_steps">Go to
+	<button type="button" class="btn btn-default" id="previous_step"><span class = "glyphicon glyphicon-chevron-left"></span>Previous</button>
+	<button type="button" class="btn btn-default" id="reset_steps"><span class = "glyphicon glyphicon-arrow-up"></span>Go to
 		top</button>
-	<button type="button" class="btn btn-default" id="next_step">Next</button>
+	<button type="button" class="btn btn-default" id="next_step">Next<span class = "glyphicon glyphicon-chevron-right"></span></button>
 </div>
 <?php
 } else {

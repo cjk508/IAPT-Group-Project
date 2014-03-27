@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 25, 2014 at 10:21 PM
+-- Generation Time: Mar 27, 2014 at 12:40 PM
 -- Server version: 5.5.33
 -- PHP Version: 5.5.3
 
@@ -34,8 +34,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`category_id`, `category_name`, `category_display_name`, `main_category`, `category_icon_file`) VALUES
-(1, 'Main Dish', 'Main_dish', 0, NULL),
-(2, 'Side Dish', 'Side_dish', 0, NULL),
+(1, 'Main_Dish', 'Main Dish', 0, NULL),
+(2, 'Side_Dish', 'Side Dish', 0, NULL),
 (3, 'Dessert', 'Dessert', 0, NULL),
 (4, 'Salad', 'Salad', 0, NULL);
 
@@ -129,7 +129,7 @@ INSERT INTO `narrative_method` (`recipe_id`, `narrative_body`) VALUES
 (2, 'Preheat the oven to 350 degrees F.  Marinate the sliced tomatoes in French Dressing so they are fully coated.  Take the smoked fish fillets and cut them into pieces 2-3 inches long.  Place all into a small baking dish and add milk.  Bake for 20 minutes or until fish separates into flakes with a fork.  \r\nDrain and reserve ¾ cup of liquid for later.  \r\nGrease a pie pltae and make a crust combining the rice, melted butter and 1 egg.  Turn the crust into the pie plate evenly. \r\nSprinkle the pie crust with half of the shredded Cheddar Cheese and then add slices of fish.  Then, sprinkle the other half of the cheese.  Combined the reserved poaching liquid with 2 eggs and pour into pie plate.  Back for 30 min.  Remove from oven and arrange the tomatoes around the edge, skin up.  Bake for 10 more minutes until set.  Garnish with chopped green onions or chives.\r\n'),
 (3, 'Cook over low heat in a large saucepan, stirring constantly until meat loses its red colour and about half of the liquid has evaporated.  cover and cook about 45 minutes longer.\r\nBoil and mash potatoes and mix in with the meat and allow to cool.  Preheat oven to 450 degrees F.  Prepare psatry for 2-crust, 9 inch pie.  Roll out half and line a 9-inch pie plate.  Fill with cooled meat mixture.  Roll out remainder of dough and cover pie.  Flute and seal edges.  Slash top of crust.  Bake for 10 min and reduce heat to 350 degrees F and bake for 30-40 minutes.'),
 (4, 'Cook the potatoes in a large pan of lightly salted boiling water for 10-12\r\nminutes or until just tender. Add the runner beans and cook for a further 2 minutes. Then drain and rinse under cold running water. Toss the potatoes and beans with the mixed tomatoes, salad onions and spinach and season to taste. For the gremolata, use a vegetable peeler to pare thin strips of rind from the lemon. Carefully remove as much white pith as possible (this is bitter). Finely chop the lemon rind and toss with the garlic and parsley. Season and set aside. Squeeze the juice from the lemon and whizz in a food processor with the peeled tomato and pesto for 10-15 seconds. Pour over the potato mixture and toss through. Scatter over the gremolata to serve.'),
-(6, 'Soak the black beans in cold water overnight. Drain and rinse well. Put them in a large saucepan with plenty of water and bring to the boil. Cook for 25-30 minute, until soft to the bite. Drain well and set aside.			\r\nHeat the oil in a saucepan set over high heat and add the red pepper and onion. Reduce the heat to low, cover and cook for about 8 minutes. Add the cumin, garlic and chillies and cook for a further 2 minutes. Add the beans, tomatoes, vinegar and passata and bring to the boil. Reduce the heat and simmer rapidly for 10 minutes, until almost all the liquid has evaporated and the tomatoes start to look mushy.\r\nPreheat the grill to high.\r\nTransfer the bean mixture to a flameproof dish and sprinkle the crumbled feta over the top. Cook under the hot grill until the cheese is soft and just starting to brown. Serve hot with corn chips on the side for dipping. '),
+(6, 'Soak the black beans in cold water overnight. Drain and rinse well. Put them in a large saucepan with plenty of water and bring to the boil. Cook for 25-30 minute, until soft to the bite. Drain well and set aside.      \r\nHeat the oil in a saucepan set over high heat and add the red pepper and onion. Reduce the heat to low, cover and cook for about 8 minutes. Add the cumin, garlic and chillies and cook for a further 2 minutes. Add the beans, tomatoes, vinegar and passata and bring to the boil. Reduce the heat and simmer rapidly for 10 minutes, until almost all the liquid has evaporated and the tomatoes start to look mushy.\r\nPreheat the grill to high.\r\nTransfer the bean mixture to a flameproof dish and sprinkle the crumbled feta over the top. Cook under the hot grill until the cheese is soft and just starting to brown. Serve hot with corn chips on the side for dipping. '),
 (7, 'Set the oven to heat to a temperature of 240°C or 220°C with a fan assisted oven. Grease a 23cm square, deep edged, cake pan. Then line it with foil taking care to ensure the foil extends a minimum of 10cm over the edges.\r\n \r\nThen grease two other oven trays to place (and bake) the ready-rolled pastry. Bake for approximately fifteen minutes and then cool. Gently flatten the sheets of pastry by hand.\r\n \r\nOnce done measure and trim the sheets to fit into the square cake pan. Place one of the sheets in the bottom of the cake pan pressing down gently.\r\n \r\nAt this point one mixes together the sugar, cornflour, and custard powder in a saucepan. Slowly add the milk till smooth and combined, without any lumps. Turn on the hob burner to medium high and set the saucepan on top. Add in the butter and stir as it melts and the mixture comes to a boil.\r\n \r\nContinue to stir as it thickens, this usually takes around three minutes to attain a good thick consistency.\r\n \r\nNow take it off the heat and stir in the egg yolk and vanilla extract, making sure to mix well and quickly. You can then cover it with cling film and set aside to cool down to room temperature.\r\n \r\nTaking out a small saucepan and a heatproof bowl, set up a ''water bath'' on the hob by filling the saucepan 3/4 full with water and setting it to simmer (low boil). Pop the bowl on top in a lid-like capacity and then pop in the icing sugar, butter and passion fruit pulp from the icing list. Stir that all together over the simmering water until it melts together into a smooth pourable icing. Set aside.\r\n \r\nIn another bowl whip the thickened cream, with a hand mixer, until it forms stif peaks. Then gently fold half of the cream into the custard mixture at a time, using gentle motions and a rounded implement to reduce the number of bubbles in the cream that break.\r\n \r\nOnce all the whipped cream has been combined carefully then spread the mixture out over the puff pastry in the cake pan. Take care to make it as smooth as possible as you don''t want air pockets under the top layer of pastry. When your happy with that, gently place the second measured slice of puff pastry on top, pressing down a bit to ''seat'' the pastry into the custard.\r\n \r\nPour the icing on top, spreading gently so as not to disturbed what ever flakiness the top pastry has. Cover and cool for a minimum of three hours or overnight.');
 
 -- --------------------------------------------------------
@@ -314,6 +314,7 @@ INSERT INTO `recipe_ingredients` (`ingredient_pool_id`, `ingredient_name`) VALUE
 (10, '2 .5 cups of all purpose flour'),
 (10, '2/3 cup of cold unsalted butter, cubed'),
 (10, 'pinch of ground cloves'),
+(11, '3 potatoes'),
 (12, '1 garlic clove, finely chopped'),
 (12, '1 small red chilli, finely chopped'),
 (12, '1 small red onion, thinly sliced'),
@@ -415,7 +416,7 @@ INSERT INTO `segmented_method` (`recipe_id`, `segmented_step_id`, `segmented_ste
 (6, 19, 'Transfer the bean mixture to a flameproof dish.'),
 (6, 20, 'Sprinkle the crumbled feta over the top.'),
 (6, 21, 'Cook under the hot grill until the cheese is soft and just starting to brown.'),
-(6, 22, 'Serve hot with corn chips on the side for dipping. 	'),
+(6, 22, 'Serve hot with corn chips on the side for dipping.   '),
 (7, 1, 'Preheat oven to 240°C/220°C fan-forced. Grease deep, 23cm square cake pan; line with foil, extending the foil 10cm over the sides of pan.'),
 (7, 2, 'Place each pastry sheet on separate greased oven trays. Bake about 15 minutes, cool and flatten pastry with hands; place one pastry sheet in pan, trim to fit if necessary.'),
 (7, 3, 'Meanwhile, combine sugar, cornflour and custard powder in a medium saucepan; gradually add milk stirring until smooth. Add butter; stir over heat until mixture boils and thickens. Simmer, stirring, about 3minutes or until custard is thick and smooth. Remove from heat; stir in egg yolk and extract. Cover surface with clingfilm; cool to room temperature.'),

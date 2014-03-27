@@ -23,6 +23,7 @@ class Category extends CI_Controller {
 		$data ['category_items'] = $this->recipes_model->get_category ( $category );
 		$data ['headerCategories'] = $this->recipes_model->get_all_categories ();
 		$data ['headerSurprise'] = $this->recipes_model->get_surprise ();
+		$data['searchCategory'] = $category;
 		if (empty ( $data ['category_items'] )) {
 			show_404 ();
 		}
