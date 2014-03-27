@@ -1,9 +1,3 @@
-
-
-<script type="text/javascript">
-	
-</script>
-
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title"><?php echo $searchCategory; ?></h3>
@@ -45,8 +39,8 @@
 								}
 							}
 							if ($ingredientCount >= 4){ ?>
-							<li><a class="ingredientTooltip" href="#" data-toggle="tooltip"
-									data-placement="right" title="<?php echo $ingredList ?>">more ingredients ...</a></li>
+							<li><a class="glyphicon glyphicon-info-sign" href="#" data-toggle="tooltip"
+									data-placement="right" title="<?php echo $ingredList ?>"></a></li>
 							<?php } ?>
 						</ul>
 						<?php

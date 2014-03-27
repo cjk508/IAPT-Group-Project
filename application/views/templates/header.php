@@ -141,12 +141,13 @@ $(document).ready(function() {
                'value'       => '',
                'class'		=> "search-query",
                'role'		=>'search',
-               'placeholder'	=>'Search',
+               'placeholder'	=>'Search for recipes',
              );
  			echo form_input($data);
- 			echo form_close();
  		?>
+ 		<span class="glyphicon glyphicon-search"></span>
 		<?php
+		echo form_close();
 		// If we're not on the home page.
 		if (! endsWith ( $_SERVER ['PHP_SELF'], "index.php" ) || $sessionData ['viewType'] !== 'null') {
 			?>

@@ -22,7 +22,7 @@
 					</span>
 					<?php
 					$sessionData = $this->session->all_userdata ();
-					foreach ( $category_item->getIngredientPools () as $pool ) {
+					foreach ( $searchValue->getIngredientPools () as $pool ) {
 						if ($pool-> getDifficulty() == $sessionData['viewType']) { ?>
 						<ul>
 
@@ -43,8 +43,8 @@
 								}
 							}
 							if ($ingredientCount >= 4){ ?>
-							<li><a class="ingredientTooltip" href="#" data-toggle="tooltip"
-									data-placement="right" title="<?php echo $ingredList ?>">more ingredients ...</a></li>
+							<li><a class="glyphicon glyphicon-info-sign" href="#" data-toggle="tooltip"
+									data-placement="right" title="<?php echo $ingredList ?>"></a></li>
 							<?php } ?>
 						</ul>
 						<?php
