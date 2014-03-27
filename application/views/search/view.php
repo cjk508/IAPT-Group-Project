@@ -22,19 +22,30 @@
 					</span>
 					<?php
 					$sessionData = $this->session->all_userdata ();
-					echo $sessionData['viewType'];
-					foreach ( $searchValue->getIngredientPools () as $pool ) {
+					foreach ( $category_item->getIngredientPools () as $pool ) {
 						if ($pool-> getDifficulty() == $sessionData['viewType']) { ?>
 						<ul>
 
 							<?php
-
+							$ingredientCount = 0;
+							$ingredList = "";
 							foreach ( $pool->getIngredients () as $ingredient ) {
+								if ($ingredientCount < 4){
 								?>
+
 								<li><?php echo $ingredient?></li>
 								<?php
+									$ingredientCount++;
+								}
+								else{
+									$ingredList = $ingredList ."\n". $ingredient;
+									$ingredientCount++;
+								}
 							}
-							?>
+							if ($ingredientCount >= 4){ ?>
+							<li><a class="ingredientTooltip" href="#" data-toggle="tooltip"
+									data-placement="right" title="<?php echo $ingredList ?>">more ingredients ...</a></li>
+							<?php } ?>
 						</ul>
 						<?php
 						}

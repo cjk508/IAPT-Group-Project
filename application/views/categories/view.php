@@ -44,9 +44,10 @@
 									$ingredientCount++;
 								}
 							}
-							?>
+							if ($ingredientCount >=4){ ?>
 							<li><a class="ingredientTooltip" href="#" data-toggle="tooltip"
 									data-placement="right" title="<?php echo $ingredList ?>">more ingredients ...</a></li>
+							<?php } ?>
 						</ul>
 						<?php
 						}
