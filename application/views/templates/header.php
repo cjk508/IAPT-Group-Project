@@ -136,7 +136,7 @@ $(document).ready(function() {
 			echo form_input ( $data );
 			?>
  		<!-- <span class="glyphicon glyphicon-search"></span> -->
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
 					<?php 
 					echo form_close ();					
 		// If we're not on the home page.
