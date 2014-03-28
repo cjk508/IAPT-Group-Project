@@ -43,7 +43,7 @@ h3 {
 }
 
 .recipe_list {
-	border-bottom: gray dotted 0.5px;
+	border-bottom: gray dotted 1px;
 	padding-bottom: 12px;
 }
 
