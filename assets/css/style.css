@@ -17,10 +17,11 @@ body {
 .wrapper {
 	max-width: 1000px;
 	margin: 0 auto;
+	margin-top: 20px;
 }
 
 h2 {
-	margin: 2px;
+	margin-top: -8px;
 	font-family: 'Lobster', cursive;
 	text-shadow: 1px 2px 0px #888888;
 }
@@ -30,15 +31,6 @@ h3 {
 	font-size: 25px;
 }
 
-nav {
-	display: inline-block;
-	/* width:40%; */
-	/* margin-top: 17px; */
-	margin-left: 10px;
-	border-left: 1px solid black;
-	padding-left: 10px;
-}
-
 .navbar-search {
 	/* margin-top: 24px; */
 	/* display: inline-block; */
@@ -46,34 +38,40 @@ nav {
 	margin-right: 5px;
 }
 
-.brand {
-	display: inline-block;
-	float: left;
+.navbar {
+	margin-bottom: 5px;
 }
-.recipe_list{
+
+.recipe_list {
 	border-bottom: gray dotted 0.5px;
 	padding-bottom: 12px;
 }
 
 header,footer {
-	padding: 10px;
-	display: block;
-	/* background-color: rgba(255, 255, 255, 0.85); */
+	padding: 7px 8px 2px 8px;
+	position: relative;
+	width: 100%;
+}
+
+footer {
+	position: fixed;
+	display: inline;	
 }
 
 header {
 	/* border-bottom: 2px white solid; */
 	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
 		0.9)), to(rgba(255, 255, 255, 0.5)));
-	background-image: linear-gradient(to right, rgba(255, 255, 255,
-		0.9), rgba(255, 255, 255, 0.5));
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9),
+		rgba(255, 255, 255, 0.5));
+	top: 0px;
 }
 
 header:HOVER {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
 		0.9)), to(rgba(255, 255, 255, 0.7)));
-	background-image: linear-gradient(to right, rgba(255, 255, 255,
-		0.9), rgba(255, 255, 255, 0.7));
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9),
+		rgba(255, 255, 255, 0.7));
 }
 
 #difficulty_button {
@@ -84,19 +82,16 @@ footer {
 	/* background-color: rgba(255, 255, 255, 0.85); */
 	/*background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
 		0.5)), to(rgba(255, 255, 255, 0.9)));*/
-	background-image: linear-gradient(to right, rgba(255, 255, 255,
-		0.5), rgba(255, 255, 255, 0.9));
-
-	position: absolute;
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 0.5),
+		rgba(255, 255, 255, 0.9));
 	bottom: 0;
-	width: 100%;
 }
 
 #alert-area {
-	float: right; 
-	width: 350px; 
-	margin-right: 30px; 
-	margin-top: 30px; 
+	float: right;
+	width: 350px;
+	margin-right: 30px;
+	margin-top: 30px;
 }
 
 .ticker {
@@ -109,7 +104,7 @@ footer {
 	max-height: 80%;
 }
 
-#ingredients .input-group:hover {
+.blue-glow:hover,.thumbnail:hover {
 	border-color: rgba(126, 239, 104, 0.8);
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset, 0 0 8px
 		rgba(126, 239, 104, 0.8);
@@ -149,12 +144,12 @@ footer {
 }
 
 .ingr-list .panel {
-	overflow-y: auto; 
-	max-height: 260px; 
+	overflow-y: auto;
+	max-height: 260px;
 }
 
 .form-control {
-	height: auto; 
+	height: auto;
 }
 
 .panel-default {
@@ -200,57 +195,28 @@ img.media-object {
 }
 
 .largeImageRecipes {
-	width: 100%;
-	height: 84%;
-	background: white;
-	background: rgba(255, 255, 255, .85);
-	margin-top: 10px;
+	
 }
 
 .largeImageRecipes img {
-	width: 100%;
-	height: auto;
+	max-width: 100%;
+}
+
+.featuredRecipe img {
+	max-width: 100%;
 }
 
 .featuredRecipe {
-	height: 95%;
-	width: 35%;
-	display: inline-block;
-	margin: 1%;
+	overflow: hidden;
+	width: 50%;
+	height: 50%;
 }
 
-.otherFour {
-	height: 95%;
-	width: 61%;
-	display: inline-block;
-	margin: 1%;
+.otherFour div div {
+	overflow: hidden;
 }
 
-.topLeft {
-	height: 46%;
-	width: 48%;
-	margin-top: 1%;
-	margin-left: 1%;
-}
-
-.topRight {
-	height: 46%;
-	width: 48%;
-	margin-top: 1%;
-	margin-right: 1%;
-	display: inline-block;
-}
-
-.bottomLeft {
-	height: 46%;
-	width: 48%;
-	margin-left: 1%;
-	margin-top: 2%;
-}
-
-.bottomRight {
-	height: 46%;
-	width: 48%;
-	margin-right: 1%;
-	margin-top: 2%;
+.otherFour img {
+	min-height: 150px;
+	height: 150px;
 }

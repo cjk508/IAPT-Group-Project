@@ -58,7 +58,7 @@ $(document).ready(function(){
 				$pool = $recipe_item->getIngredientPool ( $GLOBALS ['user_type'] );
 				foreach ( $pool->getIngredients () as $id => $ingredient ) {
 					?><div class="col-md-6">
-									<div class="input-group">
+									<div class="input-group blue-glow">
 										<span class="input-group-addon"> <input
 											id="check-<?php echo $id ?>" type="checkbox"
 											class="ingr-checkbox">
