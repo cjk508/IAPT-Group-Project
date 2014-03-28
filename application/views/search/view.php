@@ -28,7 +28,7 @@
 
 							<?php
 							$ingredientCount = 0;
-							$ingredList = "";
+							$ingredList = "<ul>";
 							foreach ( $pool->getIngredients () as $ingredient ) {
 								if ($ingredientCount < 4){
 								?>
@@ -38,13 +38,13 @@
 									$ingredientCount++;
 								}
 								else{
-									$ingredList = $ingredList ."\n". $ingredient;
+									$ingredList = $ingredList ." </li><li>". $ingredient;
 									$ingredientCount++;
 								}
 							}
 							if ($ingredientCount >= 4){ ?>
-							<li><a class="glyphicon glyphicon-info-sign" href="#" data-toggle="tooltip"
-									data-placement="bottom" title="<?php echo $ingredList ?>"></a></li>
+							<li><a class="glyphicon glyphicon-info-sign" href="#" data-html="true" data-toggle="tooltip"
+									data-placement="bottom" title="<?php echo $ingredList ?></li></ul>"></a></li>
 							<?php } ?>
 						</ul>
 						<?php
