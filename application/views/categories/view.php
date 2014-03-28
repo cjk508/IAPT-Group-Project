@@ -40,7 +40,7 @@
 							}
 							if ($ingredientCount >= 4){ ?>
 							<li><a class="glyphicon glyphicon-info-sign" href="#" data-toggle="tooltip"
-									data-placement="right" title="<?php echo $ingredList ?>"></a></li>
+									data-placement="bottom" title="<?php echo $ingredList ?>"></a></li>
 							<?php } ?>
 						</ul>
 						<?php
