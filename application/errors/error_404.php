@@ -54,6 +54,9 @@ p {
 </style>
 </head>
 <body>
+	<header>
+		<a href="<?php echo site_url(); ?>"><h1> Back to Homepage</h1></a>
+	</header>
 	<div id="container">
 		<h1><?php echo $heading; ?></h1>
 		<?php echo $message; ?>
