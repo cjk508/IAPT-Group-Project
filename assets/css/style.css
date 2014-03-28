@@ -55,7 +55,7 @@ header,footer {
 
 footer {
 	position: fixed;
-	display: inline;	
+	display: inline;
 }
 
 header {
@@ -129,6 +129,12 @@ footer {
 
 #ingredients {
 	list-style-position: inside;
+}
+
+#recent-panel {
+	padding: 15px;
+	background: rgb(255, 255, 255);
+	background: rgba(255, 255, 255, .85);
 }
 
 #recipe-contents #main-panel {

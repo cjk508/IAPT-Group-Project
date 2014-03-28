@@ -103,10 +103,8 @@ else {
 	 * </div>
 	 */
 	?>
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">Most Recent Recipes</h3>
-	</div>
+<div class="panel panel-default" id="recent-panel">
+		<h3>Most Recent Recipes</h3>
 	<div class="panel-body">
 	<div class="row"> 
 	<div class="featuredRecipe col-md-6">
