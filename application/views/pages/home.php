@@ -7,7 +7,6 @@
 
 	*/
 html {
-	/*background: <?php //echo "url('" . base_url('assets/images/backgroundImage.jpg') . "')" ?> no-repeat center center fixed;*/
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -69,60 +68,29 @@ if (! typeIsSelected ( $sessionData ) /*or $sessionData['viewType'] != 'null'*/)
 else {
 	
 	?>
-<?php
-	/*
-	 * ****************************** ******* List Home page ******* ******************************* <div class="panel panel-default mostRecent"> <div class="panel-heading"> <h3 class="panel-title">Most Recent Recipes</h3> </div> <div class="panel-body"> <!-- @todo load most recent recipes --> <?php 	foreach($mostRecents as $mostRecent){ ?> <div class="media"> <a class="pull-left" href="<?php echo site_url('recipe/'.$mostRecent->getID()); ?>"> <img class="media-object" src="<?php echo $mostRecent->getImage();?>" alt=""> </a> <div class="media-body"> <a href ="<?php echo site_url('recipe/'.$mostRecent->getID()); ?>"> <h4 class="media-heading"><?php echo $mostRecent->getTitle();?></h4></a> <?php foreach ( $mostRecent->getIngredientPools () as $pool ) { ?> <?php if ( $pool-> getDifficulty() == $sessionData['viewType']){ ?> <ul> <?php foreach ( $pool->getIngredients () as $ingredient ) { ?> <li><?php echo $ingredient?></li> <?php } ?> </ul> <?php } } ?> </div> </div> <?php } ?> </div> </div> <div class="panel panel-default mostPopular pull-right"> <div class="panel-heading"> <h3 class="panel-title">Most Popular Recipes</h3> </div> <div class="panel-body"> <!-- @todo load most popular recipes --> <div class="media"> <a class="pull-left" href="#"> <img class="media-object" src="assets/images/64test.svg" alt=""> </a> <div class="media-body"> <h4 class="media-heading">Recipe 1</h4> Lorem Ipsum Ingredients </div> </div> <div class="media"> <a class="pull-left" href="#"> <img class="media-object" src="assets/images/64test.svg" alt=""> </a> <div class="media-body"> <h4 class="media-heading">Recipe 2</h4> Lorem Ipsum Ingredients </div> </div> <div class="media"> <a class="pull-left" href="#"> <img class="media-object" src="assets/images/64test.svg" alt=""> </a> <div class="media-body"> <h4 class="media-heading">Recipe 3</h4> Lorem Ipsum Ingredients </div> </div> </div> </div>
-	 */
-	
-	?>
 
-<?php
-	
-	/**
-	 * *****************************
-	 * ***** thumbnail Home page *****
-	 * ******************************
-	 * <div class="panel panel-default">
-	 * <div class="panel-heading">
-	 * <h3 class="panel-title">Most Recent Recipes</h3>
-	 * </div>
-	 * <div class="panel-body">
-	 * <div class="row">
-	 * <?php foreach($mostRecents as $mostRecent){ ?>
-	 * <div class="col-sm-3 col-md-4">
-	 * <div class="thumbnail">
-	 * <img class = "media-object" src="<?php echo $mostRecent->getImage();?>" alt="...">
-	 * <div class="caption">
-	 * <h3><?php echo $mostRecent->getTitle();?></h3>
-	 * </div>
-	 * </div>
-	 * </div>
-	 * <?php } ?>
-	 * </div>
-	 * </div>
-	 * </div>
-	 */
-	?>
-<div class="panel panel-default" id="recent-panel">
-		<h3>Most Recent Recipes</h3>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Most Recent Recipes</h3>
+	</div>
 	<div class="panel-body">
-	<div class="row"> 
-	<div class="featuredRecipe col-md-6">
-			<a class=""
-				href="<?php echo site_url('recipe/'.$mostRecents[0]->getID()); ?>">
-				<img class="thumbnail"
-				src="<?php echo base_url('assets/images/')."/".$mostRecents[0]->getImage();?>"
-				alt="...">
-				<h4>
+		<div class="row">
+			<div class="featuredRecipe col-md-6">
+				<a class=""
+					href="<?php echo site_url('recipe/'.$mostRecents[0]->getID()); ?>">
+					<img class="thumbnail"
+					src="<?php echo base_url('assets/images/')."/".$mostRecents[0]->getImage();?>"
+					alt="...">
+					<h4>
 					<?php echo $mostRecents[0]->getTitle(); ?>
 				</h4>
-				<p>
+					<p>
 					<?php
 	
 	foreach ( $mostRecents [0]->getIngredientPools () as $pool ) {
 		if ($pool->getDifficulty () == $sessionData ['viewType']) {
 			?>				
-				<ul>
+					<ul>
 					<?php
 			foreach ( $pool->getIngredients () as $ingredient ) {
 				?>		
@@ -136,86 +104,87 @@ else {
 	}
 	?>
 				</p>
-			</a>
-		</div>
-		<div class="otherFour col-md-6">
-			<div class="row">
-				<div class="col-md-6">
-					<a
-						href="<?php echo site_url('recipe/'.$mostRecents[1]->getID()); ?>">
-						<img class="thumbnail"
-						src="<?php echo base_url('assets/images/')."/".$mostRecents[1]->getImage();?>"
-						alt="...">
-					</a>
-				</div>
-				<div class="col-md-6">
-					<a
-						href="<?php echo site_url('recipe/'.$mostRecents[2]->getID()); ?>">
-						<img class="thumbnail"
-						src="<?php echo base_url('assets/images/')."/".$mostRecents[2]->getImage();?>"
-						alt="...">
-					</a>
-				</div>
+				</a>
 			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<a
-						href="<?php echo site_url('recipe/'.$mostRecents[1]->getID()); ?>">
-						<h4>
+			<div class="otherFour col-md-6">
+				<div class="row">
+					<div class="col-md-6">
+						<a
+							href="<?php echo site_url('recipe/'.$mostRecents[1]->getID()); ?>">
+							<img class="thumbnail"
+							src="<?php echo base_url('assets/images/')."/".$mostRecents[1]->getImage();?>"
+							alt="...">
+						</a>
+					</div>
+					<div class="col-md-6">
+						<a
+							href="<?php echo site_url('recipe/'.$mostRecents[2]->getID()); ?>">
+							<img class="thumbnail"
+							src="<?php echo base_url('assets/images/')."/".$mostRecents[2]->getImage();?>"
+							alt="...">
+						</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<a
+							href="<?php echo site_url('recipe/'.$mostRecents[1]->getID()); ?>">
+							<h4>
 						<?php echo $mostRecents[1]->getTitle(); ?>
 					</h4>
-					</a>
-				</div>
-				<div class="col-md-6">
-					<a
-						href="<?php echo site_url('recipe/'.$mostRecents[2]->getID()); ?>">
-						<h4>
+						</a>
+					</div>
+					<div class="col-md-6">
+						<a
+							href="<?php echo site_url('recipe/'.$mostRecents[2]->getID()); ?>">
+							<h4>
 						<?php echo $mostRecents[2]->getTitle(); ?>
 					</h4>
-					</a>
+						</a>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<a
-						href="<?php echo site_url('recipe/'.$mostRecents[3]->getID()); ?>">
-						<img class="thumbnail"
-						src="<?php echo base_url('assets/images/')."/".$mostRecents[3]->getImage();?>"
-						alt="...">
-					</a>
+				<div class="row">
+					<div class="col-md-6">
+						<a
+							href="<?php echo site_url('recipe/'.$mostRecents[3]->getID()); ?>">
+							<img class="thumbnail"
+							src="<?php echo base_url('assets/images/')."/".$mostRecents[3]->getImage();?>"
+							alt="...">
+						</a>
+					</div>
+					<div class="col-md-6">
+						<a
+							href="<?php echo site_url('recipe/'.$mostRecents[4]->getID()); ?>">
+							<img class="thumbnail"
+							src="<?php echo base_url('assets/images/')."/".$mostRecents[4]->getImage();?>"
+							alt="...">
+						</a>
+					</div>
 				</div>
-				<div class="col-md-6">
-					<a
-						href="<?php echo site_url('recipe/'.$mostRecents[4]->getID()); ?>">
-						<img class="thumbnail"
-						src="<?php echo base_url('assets/images/')."/".$mostRecents[4]->getImage();?>"
-						alt="...">
-					</a>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					
-					<a
-						href="<?php echo site_url('recipe/'.$mostRecents[3]->getID()); ?>">
-					<h4>
+				<div class="row">
+					<div class="col-md-6">
+
+						<a
+							href="<?php echo site_url('recipe/'.$mostRecents[3]->getID()); ?>">
+							<h4>
 						<?php echo $mostRecents[3]->getTitle(); ?>
 					</h4>
-					
-					</a>
-				</div>
-				<div class="col-md-6">
-				<a
-						href="<?php echo site_url('recipe/'.$mostRecents[4]->getID()); ?>">
-					<h4>
+
+						</a>
+					</div>
+					<div class="col-md-6">
+						<a
+							href="<?php echo site_url('recipe/'.$mostRecents[4]->getID()); ?>">
+							<h4>
 						<?php echo $mostRecents[4]->getTitle(); ?>
 					</h4>
-					
-					</a>
 
+						</a>
+
+					</div>
 				</div>
 			</div>
-		</div></div>
+		</div>
 	</div>
 </div>
 

@@ -26,7 +26,6 @@ $(document).ready(function() {
 	$sessionData = array (
 			'viewType' => $_POST ['viewType'] 
 	);
-	// var_dump( $sessionData);
 	$this->session->set_userdata ( $sessionData );
 }
 ?>
@@ -85,8 +84,6 @@ $(document).ready(function() {
 
 
 	<header>
-		<!--  <a href="<?php echo site_url(); ?>"><h2 class="brand">The Cook Book</h2>
-		</a>	 -->
 		<nav class="navbar navbar-default" role="navigation"
 			style="width: 100%;">
 			<div class="container-fluid">
@@ -135,8 +132,7 @@ $(document).ready(function() {
 			);
 			echo form_input ( $data );
 			?>
- 		<!-- <span class="glyphicon glyphicon-search"></span> -->
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
 					<?php 
 					echo form_close ();					
 		// If we're not on the home page.
@@ -163,67 +159,6 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</nav>
-		<!--  
-		<nav>
-			<ul class="nav nav-pills">
-				<li class="active"><a href="<?php echo site_url();?>">Home</a></li>
-				<li class="dropdown"><a id="dLabel" role="button"
-					data-toggle="dropdown" href="#"> Categories <span class="caret"></span>
-				</a>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-				  <?php
-						foreach ( $categories as $category ) {
-							?> 					
-				    <li><a
-							href="<?php echo base_url()."category/".$category-> getCategoryName() ?>"> <?php echo $category-> getCategoryDisplayName()?> </a></li>
-				<?php }?>
-				  </ul></li>
-
-				<li><a
-					href="<?php echo site_url('recipe/'.$headerSurprise->getID()); ?>">
-						Surprise Me! </a></li>
-			</ul>
-		</nav>
- 		<?php
-			$attributes = array (
-					'class' => 'navbar-search pull-right' 
-			);
-			echo form_open ( 'search/view', $attributes );
-			$data = array (
-					'name' => 'search',
-					'value' => '',
-					'maxlength'   => '100',
-					'class' => "search-query",
-					'role' => 'search',
-					'placeholder' => 'Search for recipes', 
-			);
-			echo form_input ( $data );
-			?>
- 		<span class="glyphicon glyphicon-search"></span>
-		<?php
-		echo form_close ();
-		// If we're not on the home page.
-		if (! endsWith ( $_SERVER ['PHP_SELF'], "index.php" ) || $sessionData ['viewType'] !== 'null') {
-			?>
-		<div class="btn-group pull-right"
-			style="margin-top: 3px; right: 15px;">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown">
-				Viewing preference <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a id="<?php echo STEP ?>" href="#" data-toggle="tooltip"
-					data-placement="right" title="Step by step view is very cool"><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, STEP)?>Step-by-Step</a></li>
-				<li><a id="<?php echo SEGMENTED ?>" href="#" data-toggle="tooltip"
-					data-placement="right" title="Segmented view is very cool"><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, SEGMENTED)?>Segmented</a></li>
-				<li><a id="<?php echo NARRATIVE ?>" href="#" data-toggle="tooltip"
-					data-placement="right" title="Narrative view is very cool"><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, NARRATIVE)?>Narrative</a></li>
-			</ul>
-		</div>
-			<?php
-		}
-		?>
-		-->
 	</header>
 	<div id="alert-area"></div>
 	<div class="wrapper">
