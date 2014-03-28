@@ -12,9 +12,15 @@ class Search extends CI_Controller {
 		$data['searchValues'] = $this->recipes_model->recipe_Search($search_term);
 		$data['headerSurprise'] = $this->recipes_model->get_surprise();
 		$data ['categories'] = $this->recipes_model->get_all_categories ();
+		
+		if (empty ( $data ['searchValues'] ) or empty($this->input->post('search'))) {
 
-		$this->load->view ( 'templates/header',$data );
-		$this->load->view('search/view',$data);
-		$this->load->view ( 'templates/footer' );
+			show_404 ();
+
+		} else {
+			$this->load->view ( 'templates/header',$data );
+			$this->load->view('search/view',$data);
+			$this->load->view ( 'templates/footer' );
+		}		
 	}
 }
