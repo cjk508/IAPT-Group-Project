@@ -1,4 +1,9 @@
 <?php
+/**
+ * Defines a caregory object, which contains information about a category. 
+ * 
+ *
+ */
 class Category_object {
 	public $category_id;
 	public $category_name;

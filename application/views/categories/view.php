@@ -7,49 +7,56 @@
 		<ul class="media-list">
 
 			<?php foreach($category_items as $category_item) {?>
-			<li class="media recipe_list">
-				<a class="pull-left" href="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <img class="thumbnail category-media-object"
-					src="<?php echo base_url('assets/images/')."/".$category_item->getImage();?> " alt="">
-				</a>
-				<span class="media-body">
-					<a href ="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <h4 class="media-heading"><?php echo $category_item->getTitle();?></h4></a>
-					<span class="button-box pull-right">
-						<button class="btn btn-primary" name = 'Cook' value = 'Cook <?php echo $category_item->getTitle(); ?>' onclick="window.location='<?php echo site_url('recipe/'.$category_item->getID()) ?>';">Cook</button>
-					</span>
+			<li class="media recipe_list"><a class="pull-left"
+				href="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <img
+					class="thumbnail category-media-object"
+					src="<?php echo base_url('assets/images/')."/".$category_item->getImage();?> "
+					alt="">
+			</a> <span class="media-body"> <a
+					href="<?php echo site_url('recipe/'.$category_item->getID()); ?>">
+						<h4 class="media-heading"><?php echo $category_item->getTitle();?></h4>
+				</a> <span class="button-box pull-right">
+						<button class="btn btn-primary" name='Cook'
+							value='Cook <?php echo $category_item->getTitle(); ?>'
+							onclick="window.location='<?php echo site_url('recipe/'.$category_item->getID()) ?>';">Cook</button>
+				</span>
 					<?php
-					$sessionData = $this->session->all_userdata ();
-					foreach ( $category_item->getIngredientPools () as $pool ) {
-						if ($pool-> getDifficulty() == $sessionData['viewType']) { ?>
+				$sessionData = $this->session->all_userdata ();
+				foreach ( $category_item->getIngredientPools () as $pool ) {
+					if ($pool->getDifficulty () == $sessionData ['viewType']) {
+						?>
 						<ul>
 
 							<?php
-							$ingredientCount = 0;
-							$ingredList = "<ul>";
-							foreach ( $pool->getIngredients () as $ingredient ) {
-								if ($ingredientCount < 4){
+						$ingredientCount = 0;
+						$ingredList = "<ul>";
+						foreach ( $pool->getIngredients () as $ingredient ) {
+							if ($ingredientCount < 4) {
 								?>
 
 								<li><?php echo $ingredient?></li>
 								<?php
-									$ingredientCount++;
-								}
-								else{
-									$ingredList = $ingredList ." </li><li>". $ingredient;
-									$ingredientCount++;
-								}
+								$ingredientCount ++;
+							} else {
+								$ingredList = $ingredList . " </li><li>" . $ingredient;
+								$ingredientCount ++;
 							}
-							if ($ingredientCount >= 4){ ?>
-							<li><a class="glyphicon glyphicon-info-sign" href="#" data-html="true" data-toggle="tooltip"
-									data-placement="bottom" title="<?php echo $ingredList ?></li></ul>"></a></li>
+						}
+						if ($ingredientCount >= 4) {
+							?>
+							<li><a class="glyphicon glyphicon-info-sign" href="#"
+							data-html="true" data-toggle="tooltip" data-placement="bottom"
+							title="<?php echo $ingredList ?></li>					
+					</ul>"></a></li>
 							<?php } ?>
 						</ul>
 						<?php
-						}
 					}
-					?>
+				}
+				?>
 				</span>
-				
-			</li>
+
+		</li>
 			<?php } ?>
 		</ul>
 

@@ -1,22 +1,3 @@
-<?php ?>
-<style>
-/**
-
-	This styling is only relevant to the homepage
-	@todo if there is a more efficient way of implementing this style then use that
-
-	*/
-html {
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
-
-body {
-	background: transparent;
-}
-</style>
 <?php
 /**
  * If the session variable has not been set then show the default welcome screen
@@ -57,8 +38,6 @@ if (! typeIsSelected ( $sessionData ) /*or $sessionData['viewType'] != 'null'*/)
 	</form>
 </div>
 
-
-
 <?php
 } 
 
@@ -69,125 +48,75 @@ else {
 	
 	?>
 
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">Most Recent Recipes</h3>
-	</div>
-	<div class="panel-body">
+<div class="panel panel-default recent-panel">
+	<h3>Most Recent Recipes <small>Still warm.</small></h3>
+	<div>
 		<div class="row">
 			<div class="featuredRecipe col-md-6">
 				<a class=""
 					href="<?php echo site_url('recipe/'.$mostRecents[0]->getID()); ?>">
+					<div>
 					<img class="thumbnail"
 					src="<?php echo base_url('assets/images/')."/".$mostRecents[0]->getImage();?>"
-					alt="...">
+					alt="..."></div>
 					<h4>
-					<?php echo $mostRecents[0]->getTitle(); ?>
-				</h4>
-					<p>
-					<?php
-	
-	foreach ( $mostRecents [0]->getIngredientPools () as $pool ) {
-		if ($pool->getDifficulty () == $sessionData ['viewType']) {
-			?>				
-					<ul>
-					<?php
-			foreach ( $pool->getIngredients () as $ingredient ) {
-				?>		
-				<li><?php echo $ingredient?></li>
-									<?php
-			}
-			?>
-							</ul>
-						<?php
-		}
+					<?php echo $mostRecents[0]->getTitle(); ?> <small><span
+							class="glyphicon glyphicon-tags"> </span>   <?php
+	foreach ( $mostRecents [0]->getCategory () as $cat ) {
+		echo $cat . "; ";
 	}
-	?>
-				</p>
+	?></small>
+					</h4>
 				</a>
 			</div>
 			<div class="otherFour col-md-6">
+			<?php
+	
+	// Create rows with 2 recipes each.
+	foreach ( array (
+			1,
+			3 
+	) as $index ) {
+		?> 
 				<div class="row">
-					<div class="col-md-6">
+			<?php
+		for($i = $index; $i < $index + 2; $i ++) {
+			?>
 						<a
-							href="<?php echo site_url('recipe/'.$mostRecents[1]->getID()); ?>">
-							<img class="thumbnail"
-							src="<?php echo base_url('assets/images/')."/".$mostRecents[1]->getImage();?>"
-							alt="...">
-						</a>
-					</div>
-					<div class="col-md-6">
-						<a
-							href="<?php echo site_url('recipe/'.$mostRecents[2]->getID()); ?>">
-							<img class="thumbnail"
-							src="<?php echo base_url('assets/images/')."/".$mostRecents[2]->getImage();?>"
-							alt="...">
-						</a>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<a
-							href="<?php echo site_url('recipe/'.$mostRecents[1]->getID()); ?>">
-							<h4>
-						<?php echo $mostRecents[1]->getTitle(); ?>
-					</h4>
-						</a>
-					</div>
-					<div class="col-md-6">
-						<a
-							href="<?php echo site_url('recipe/'.$mostRecents[2]->getID()); ?>">
-							<h4>
-						<?php echo $mostRecents[2]->getTitle(); ?>
-					</h4>
-						</a>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<a
-							href="<?php echo site_url('recipe/'.$mostRecents[3]->getID()); ?>">
-							<img class="thumbnail"
-							src="<?php echo base_url('assets/images/')."/".$mostRecents[3]->getImage();?>"
-							alt="...">
-						</a>
-					</div>
-					<div class="col-md-6">
-						<a
-							href="<?php echo site_url('recipe/'.$mostRecents[4]->getID()); ?>">
-							<img class="thumbnail"
-							src="<?php echo base_url('assets/images/')."/".$mostRecents[4]->getImage();?>"
-							alt="...">
-						</a>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
+						href="<?php echo site_url('recipe/'.$mostRecents[$i]->getID()); ?>">
+						<div class="col-md-6">
+						<div class="img-container thumbnail">
+							<img class=""
+								src="<?php echo base_url('assets/images/')."/".$mostRecents[$i]->getImage();?>"
+								alt="...">
+						</div>
+							<div class="row">
 
-						<a
-							href="<?php echo site_url('recipe/'.$mostRecents[3]->getID()); ?>">
-							<h4>
-						<?php echo $mostRecents[3]->getTitle(); ?>
-					</h4>
-
-						</a>
-					</div>
-					<div class="col-md-6">
-						<a
-							href="<?php echo site_url('recipe/'.$mostRecents[4]->getID()); ?>">
-							<h4>
-						<?php echo $mostRecents[4]->getTitle(); ?>
-					</h4>
-
-						</a>
-
-					</div>
+								<h4>
+						<?php echo $mostRecents[$i]->getTitle(); ?> <small><span
+										class="glyphicon glyphicon-tags"> </span>   <?php
+				foreach ( $mostRecents [$i]->getCategory () as $cat ) {
+				echo $cat . "; ";
+			}
+			?></small>
+								</h4>
+							</div>
+					
+					</a>
 				</div>
+				<?php
+		}
+		?>
+				</div>
+				<?php if ($index ===1) { ?>
+				<hr>
+				<?php }?>
+			<?php } ?>					
 			</div>
-		</div>
 	</div>
 </div>
+</div>
 
-<?php 
+<?php
 }
 ?>

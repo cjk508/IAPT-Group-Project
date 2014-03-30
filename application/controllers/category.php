@@ -1,4 +1,9 @@
 <?php
+/**
+ * The Category controller is responsible for loading categories. 
+ * 
+ *
+ */
 class Category extends CI_Controller {
 	public function __construct() {
 		parent::__construct ();

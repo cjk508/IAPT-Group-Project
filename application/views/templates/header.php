@@ -31,7 +31,7 @@ $(document).ready(function() {
 ?>
 <html>
 <head>
-<title>Cook Book</title>
+<title>The Cook Book -- Cooking made easy</title>
 	<?php
 	echo link_tag ( 'assets/css/bootstrap.css' );
 	echo link_tag ( 'assets/css/style.css' );

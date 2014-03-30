@@ -18,7 +18,9 @@ function isSelected($type) {
 				?></small>
 		</h3>
 		<?php
+		// Load the ingredients panel
 		require_once 'ingredients_panel.php';
+		// Load the preparation panel
 		require_once 'preparation_panel.php';
 		?>
 </div>

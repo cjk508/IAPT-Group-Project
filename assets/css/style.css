@@ -218,11 +218,52 @@ img.media-object {
 	height: 50%;
 }
 
-.otherFour div div {
+.otherFour .col-md-6 {
+	height: 191px;
+	overflow: visible;
+}
+
+hr {
+	margin-top: 2px;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+.otherFour .img-container {
 	overflow: hidden;
+	height: 150px;
+	width: 100%;
 }
 
 .otherFour img {
-	min-height: 150px;
-	height: 150px;
+	display: block;
+}
+
+.otherFour .row .row {
+	margin-bottom: 10px;
+}
+
+.otherFour .thumbnail {
+	margin-left: -15px;
+	margin-bottom: 4px;
+}
+
+.recent-panel {
+	padding: 15px;
+	background: rgb(255, 255, 255);
+	background: rgba(255, 255, 255, .85);
+}
+
+.recent-panel .panel-body {
+	padding: 0px;
+}
+
+.panel-body h4:hover {
+	text-decoration: underline;
+}
+
+#overlay1 {
+	position: absolute;
+    top: 0;
+    left: 0;
 }
