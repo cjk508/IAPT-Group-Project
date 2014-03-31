@@ -121,6 +121,8 @@ $(document).ready(function() {
 			$attributes = array (
 					'class' => 'navbar-form navbar-right navbar-search' 
 			);
+			echo "<a href='#' data-toggle='tooltip' data-placement='bottom'
+									title='you can search for ingredients or recipes.'>";			
 			echo form_open ( 'search/view', $attributes );
 			$data = array (
 					'name' => 'search',
@@ -131,9 +133,11 @@ $(document).ready(function() {
 					'rules'=>'required',
 					'placeholder' => 'Search for recipes' 
 			);
-			echo form_input ( $data );
+			echo form_input ( $data ); 
+
 			?>
 					<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+					</a>
 			<?php 
 			echo form_close ();					
 		// If we're not on the home page.
