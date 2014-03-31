@@ -5,8 +5,11 @@
 	<div class="panel-body category-box">
 
 		<ul class="media-list">
-
-			<?php foreach($searchValues as $searchValue) {?>
+<?php if(is_null($searchValues) == TRUE){
+			echo "Sorry there are no results for '". $searchTerm."'";
+		}
+		else{
+			foreach($searchValues as $searchValue) {?>
 			<li class="media recipe_list"><a class="pull-left"
 				href="<?php echo site_url('recipe/'.$searchValue->getID()); ?>"> <img
 					class="category-media-object"
@@ -22,44 +25,45 @@
 				</span>
 					<?php
 				$sessionData = $this->session->all_userdata ();
-				foreach ( $searchValue->getIngredientPools () as $pool ) {
-					if ($pool->getDifficulty () == $sessionData ['viewType']) {
-						?>
-						<ul>
 
-							<?php
-						$ingredientCount = 0;
-						$ingredList = "<ul>";
-						foreach ( $pool->getIngredients () as $ingredient ) {
-							if ($ingredientCount < 4) {
-								?>
-
-								<li><?php echo $ingredient?></li>
-								<?php
-								$ingredientCount ++;
-							} else {
-								$ingredList = $ingredList . " </li><li>" . $ingredient;
-								$ingredientCount ++;
-							}
-						}
-						if ($ingredientCount >= 4) {
+					foreach ( $searchValue->getIngredientPools () as $pool ) {
+						if ($pool->getDifficulty () == $sessionData ['viewType']) {
 							?>
-							<li><a class="glyphicon glyphicon-info-sign" href="#"
-							data-html="true" data-toggle="tooltip" data-placement="bottom"
-							title="<?php echo $ingredList ?></li>
-					
-					</ul>"></a></li>
-							<?php } ?>
-						</ul>
-						<?php
+							<ul>
+
+								<?php
+							$ingredientCount = 0;
+							$ingredList = "<ul>";
+							foreach ( $pool->getIngredients () as $ingredient ) {
+								if ($ingredientCount < 4) {
+									?>
+
+									<li><?php echo $ingredient?></li>
+									<?php
+									$ingredientCount ++;
+								} else {
+									$ingredList = $ingredList . " </li><li>" . $ingredient;
+									$ingredientCount ++;
+								}
+							}
+							if ($ingredientCount >= 4) {
+								?>
+								<li><a class="glyphicon glyphicon-info-sign" href="#"
+								data-html="true" data-toggle="tooltip" data-placement="bottom"
+								title="<?php echo $ingredList ?></li>
+						
+						</ul>"></a></li>
+								<?php } ?>
+							</ul>
+							<?php
+						}
 					}
-				}
-				?>
-				</span>
+					?>
+					</span>
 
-		</li>
+			</li>
+				<?php } ?>
+			</ul>
 			<?php } ?>
-		</ul>
-
 	</div>
 </div>
