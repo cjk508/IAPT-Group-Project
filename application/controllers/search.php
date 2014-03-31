@@ -16,13 +16,22 @@ class Search extends CI_Controller {
 	public function view($args) {
 		$search_term = $this->input->post('search');
 
-		$data['searchValues'] = $this->recipes_model->recipe_Search($search_term);
+		$ingredient_Results= $this->recipes_model->ingredient_Search($search_term);
+		$recipe_Results= $this->recipes_model->recipe_Search($search_term);
 		$data['headerSurprise'] = $this->recipes_model->get_surprise();
 		$data ['categories'] = $this->recipes_model->get_all_categories ();
 		
 		$this->form_validation->set_rules('submit', 'submit', 'required');
 		$this->form_validation->set_message('required', 'Search term is required');
-		
+		if(is_array($ingredient_Results) and is_array($recipe_Results)){
+			$data['searchValues'] = array_merge($ingredient_Results, $recipe_Results);
+		}
+		else if (is_array($ingredient_Results)){
+			$data['searchValues'] = $ingredient_Results;
+		}
+		else if (is_array($recipe_Results)){
+			$data['searchValues'] = $recipe_Results;
+		}
 		if ($this->form_validation->run() == FALSE)
 		{
 			$this->load->view ( 'templates/header',$data );

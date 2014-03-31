@@ -25,7 +25,7 @@ class Recipes_model extends CI_Model {
 		return $this->_processSingleResult ( $result );
 	}
 	/**
-	 * Get a recipe by id.
+	 * Get a recipe by name
 	 *
 	 *
 	 * @param string $searchTerm	The value that is being searched for
@@ -33,6 +33,18 @@ class Recipes_model extends CI_Model {
 	public function recipe_Search($searchTerm) {
 		$this->db->like ( 'recipe_title', $searchTerm  );
 		$result = $this->db->get('recipes_view');
+		return $this->_processMultipleResults ( $result );
+	}
+	/**
+	 * Get a ingredient by name.
+	 *
+	 *
+	 * @param string $searchTerm	The value that is being searched for
+	 */
+	public function ingredient_Search($searchTerm) {
+		$query_1 ="select recipes_view.* from `ingredient_pools_view` INNER JOIN `recipes_view` on 
+					recipes_view.recipe_id=ingredient_pools_view.recipe_id where `ingredients` like '%".(string)$searchTerm."%'";
+		$result = $this->db->query ( $query_1 );
 		return $this->_processMultipleResults ( $result );
 	}
 	/**
