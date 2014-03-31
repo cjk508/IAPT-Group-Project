@@ -101,7 +101,6 @@ $(document).ready(function() {
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="<?php echo site_url(); ?>">Home</a></li>
 						<li class="dropdown"><a id="dLabel" role="button"
 							data-toggle="dropdown" href="#"> Categories <span class="caret"></span>
 						</a>
@@ -126,15 +125,17 @@ $(document).ready(function() {
 			$data = array (
 					'name' => 'search',
 					'value' => '',
-					'class' => "form-control",
+					'class' => "form-group",
 					'role' => 'search',
+					'label' => 'search',
+					'rules'=>'required',
 					'placeholder' => 'Search for recipes' 
 			);
 			echo form_input ( $data );
 			?>
 					<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-					<?php 
-					echo form_close ();					
+			<?php 
+			echo form_close ();					
 		// If we're not on the home page.
 		if (! endsWith ( $_SERVER ['PHP_SELF'], "index.php" ) || $sessionData ['viewType'] !== 'null') {
 			?>
