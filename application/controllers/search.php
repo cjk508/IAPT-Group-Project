@@ -15,12 +15,18 @@ class Search extends CI_Controller {
 	}
 	public function view($args) {
 		
-		$this->form_validation->set_rules('search', 'search', 'required|min_length[3]|min_length[50]');
+		$this->form_validation->set_rules('search', 'search', 'required|min_length[3]|max_length[50]');
 	
 		if ($this->form_validation->run() == TRUE)
 		{
 			$search_term = $this->input->post('search');
 			$ingredient_Results= $this->recipes_model->ingredient_Search($search_term);
+
+
+
+
+
+
 			$recipe_Results= $this->recipes_model->recipe_Search($search_term);
 			if(is_array($ingredient_Results) and is_array($recipe_Results)){
 				$data['searchValues'] = array_merge($ingredient_Results, $recipe_Results);
@@ -52,9 +58,5 @@ class Search extends CI_Controller {
 			$this->load->view('search/invalid', $data);
 			$this->load->view ( 'templates/footer' );
 		}
-	}
-
-	private function merge_Results($ingredient_Results, $recipe_Results){
-
 	}
 }

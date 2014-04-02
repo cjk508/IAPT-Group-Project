@@ -43,7 +43,7 @@ class Recipes_model extends CI_Model {
 	 */
 	public function ingredient_Search($searchTerm) {
 		$query_1 ="select recipes_view.* from `ingredient_pools_view` INNER JOIN `recipes_view` on 
-					recipes_view.recipe_id=ingredient_pools_view.recipe_id where `ingredients` like '%".(string)$searchTerm."%'";
+					recipes_view.recipe_id=ingredient_pools_view.recipe_id where `ingredients` like '%".(string)$searchTerm."%' Group by recipes_view.recipe_id;";
 		$result = $this->db->query ( $query_1 );
 		return $this->_processMultipleResults ( $result );
 	}
