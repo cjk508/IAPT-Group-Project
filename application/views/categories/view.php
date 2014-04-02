@@ -20,42 +20,29 @@
 							value='Cook <?php echo $category_item->getTitle(); ?>'
 							onclick="window.location='<?php echo site_url('recipe/'.$category_item->getID()) ?>';">Cook</button>
 				</span>
-					<?php
-				$sessionData = $this->session->all_userdata ();
-				foreach ( $category_item->getIngredientPools () as $pool ) {
-					if ($pool->getDifficulty () == $sessionData ['viewType']) {
-						?>
-						<ul>
+						<?php
+					$sessionData = $this->session->all_userdata ();
 
-							<?php
-						$ingredientCount = 0;
-						$ingredList = "<ul>";
-						foreach ( $pool->getIngredients () as $ingredient ) {
-							if ($ingredientCount < 4) {
+						foreach ( $category_item->getIngredientPools () as $pool ) {
+							if ($pool->getDifficulty () == $sessionData ['viewType']) {
 								?>
-
-								<li><?php echo $ingredient?></li>
 								<?php
-								$ingredientCount ++;
-							} else {
-								$ingredList = $ingredList . " </li><li>" . $ingredient;
-								$ingredientCount ++;
+								$ingredList = "<ul>";
+								foreach ( $pool->getIngredients () as $ingredient ) {
+										$ingredList = $ingredList . " </li><li>" . $ingredient;
+								}?>
+									<a href="#"
+									data-html="true" data-toggle="tooltip" data-placement="bottom"
+									title="<?php echo $ingredList ?></li>
+							
+							</ul>">Ingredients... <span class="glyphicon glyphicon-info-sign"> </span></a>
+								<?php
 							}
 						}
-						if ($ingredientCount >= 4) {
-							?>
-							<li><a class="glyphicon glyphicon-info-sign" href="#"
-							data-html="true" data-toggle="tooltip" data-placement="bottom"
-							title="<?php echo $ingredList ?></li>					
-					</ul>"></a></li>
-							<?php } ?>
-						</ul>
-						<?php
-					}
-				}
-				?>
-				</span>
+						?>
+						</span>
 
+				</li>
 		</li>
 			<?php } ?>
 		</ul>

@@ -29,32 +29,16 @@
 					foreach ( $searchValue->getIngredientPools () as $pool ) {
 						if ($pool->getDifficulty () == $sessionData ['viewType']) {
 							?>
-							<ul>
-
-								<?php
-							$ingredientCount = 0;
+							<?php
 							$ingredList = "<ul>";
 							foreach ( $pool->getIngredients () as $ingredient ) {
-								if ($ingredientCount < 4) {
-									?>
-
-									<li><?php echo $ingredient?></li>
-									<?php
-									$ingredientCount ++;
-								} else {
 									$ingredList = $ingredList . " </li><li>" . $ingredient;
-									$ingredientCount ++;
-								}
-							}
-							if ($ingredientCount >= 4) {
-								?>
-								<li><a class="glyphicon glyphicon-info-sign" href="#"
+							}?>
+								<a href="#"
 								data-html="true" data-toggle="tooltip" data-placement="bottom"
 								title="<?php echo $ingredList ?></li>
 						
-						</ul>"></a></li>
-								<?php } ?>
-							</ul>
+						</ul>">Ingredients... <span class="glyphicon glyphicon-info-sign"> </span></a>
 							<?php
 						}
 					}
