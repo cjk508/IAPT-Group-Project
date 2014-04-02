@@ -10,12 +10,24 @@ function isSelected($type) {
 	return "";
 }
 ?>
-		<h3><?php echo  $recipe_item->getTitle()?> <small><span
-				class="glyphicon glyphicon-tags"> </span>   <?php
-				foreach ( $recipe_item->getCategory () as $cat ) {
-					echo $cat . "; ";
+		<h3><?php echo  $recipe_item->getTitle()?> <small>
+				Serves <?php echo $recipe_item->getServings();?>
+				<span class="glyphicon glyphicon-tags"> </span>   <?php
+				foreach ( $recipe_item->getCategory () as $cat ) { ?>
+					<a href='<?php echo base_url()?>category/<?php echo $cat; ?>'> 
+					
+					<?php 
+						echo $cat;
+						if ( sizeof($recipe_item->getCategory())!= 1  and $forCount < sizeof($recipe_item->getCategory()) ){
+							echo '; ';
+						}
+					?>
+
+					</a>
+				<?php 
 				}
-				?></small>
+				?>
+				</small>
 		</h3>
 		<?php
 		// Load the ingredients panel
