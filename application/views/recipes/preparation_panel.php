@@ -90,7 +90,15 @@ $(document).ready(function(){
 
 <div class="panel panel-default" id="preparation">
 	<div class="panel-heading navbar-example">
-		<h3 class="panel-title">Preparation</h3>
+		<h3 class="panel-title">Preparation: <span class ="steps"> Number of Steps - <?php
+			if (isSegmented($sessionData)){
+				echo sizeof($recipe_item->getSegmentedMethod());
+			}
+			else{
+				echo sizeof($recipe_item->getStepMethod());	
+			}
+			?>
+		</span></h3>
 	</div> 
 <?php
 if (! typeIsSelected ( $sessionData ) or isNarrative ( $sessionData )) {
@@ -106,7 +114,7 @@ if (! typeIsSelected ( $sessionData ) or isNarrative ( $sessionData )) {
 } 
 
 elseif (isSegmented ( $sessionData )) {
-	?>
+	?>	
 <script type="text/javascript">$(document).ready(function(){
 						$("#preparation").css({"overflow-y": "hidden"}); 
 					});</script>
@@ -143,8 +151,9 @@ elseif (isSegmented ( $sessionData )) {
 
 	foreach ( $recipe_item->getStepMethod () as $id => $step ) {
 		?>
-						<li><a id="Step-<?php echo $id ?>" href="#"><?php echo $step ?><span
-			class="glyphicon glyphicon-ok-circle"></span></a></li>
+						<li><a id="Step-<?php echo $id ?>" href="#"><?php echo $step ?>
+							<span class="glyphicon glyphicon-ok-circle"></span></a>
+						</li>
 					<?php
 	}
 	}

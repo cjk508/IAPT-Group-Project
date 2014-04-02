@@ -32,6 +32,10 @@ function isSelected($type) {
 		<?php
 		// Load the ingredients panel
 		require_once 'ingredients_panel.php';
+		if (typeIsSelected ( $sessionData ) or !isNarrative ( $sessionData )) {
+		?>
+		<?php
+		}	
 		// Load the preparation panel
 		require_once 'preparation_panel.php';
 		?>
