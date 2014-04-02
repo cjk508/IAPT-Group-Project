@@ -66,7 +66,7 @@ else {
 								<a href='<?php echo base_url()?>category/<?php echo $cat; ?>'>
 								<?php 
 									echo $cat;
-									if ( sizeof($mostRecents[$i]->getCategory())!= 1  and $forCount < sizeof($mostRecents[$i]->getCategory()) ){
+									if ( sizeof($mostRecents[0]->getCategory())!= 1  and $forCount < sizeof($mostRecents[0]->getCategory()) ){
 										echo '; ';
 									}
 								?>
