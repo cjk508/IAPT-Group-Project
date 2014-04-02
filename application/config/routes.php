@@ -47,6 +47,7 @@ $route['category/(:any)'] = 'category/view/$1';
 $route['recipe/(:any)'] = 'recipe/view/$1';
 $route['search/(:any)'] = 'search/view/$1';
 $route['news'] = 'news';
+$route['search'] = 'search/$1';
 $route['recipe'] = 'recipe';
 $route['category'] = 'category';
 $route['(:any)'] = 'pages/view/$1';

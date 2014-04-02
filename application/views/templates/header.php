@@ -126,7 +126,7 @@ $(document).ready(function() {
 			echo form_open ( 'search/view', $attributes );
 			$data = array (
 					'name' => 'search',
-					'value' => '',
+					'value' => set_value('search'),
 					'class' => "form-group",
 					'role' => 'search',
 					'label' => 'search',
