@@ -60,12 +60,18 @@ else {
 					src="<?php echo base_url('assets/images/')."/".$mostRecents[0]->getImage();?>"
 					alt="..."></div>
 					<h4>
-					<?php echo $mostRecents[0]->getTitle(); ?> <small><span
-							class="glyphicon glyphicon-tags"> </span>   <?php
-	foreach ( $mostRecents [0]->getCategory () as $cat ) {
-		echo $cat . "; ";
-	}
-	?></small>
+					<?php echo $mostRecents[0]->getTitle(); ?>
+						<small><span class="glyphicon glyphicon-tags"> </span>   
+							<?php foreach ( $mostRecents [0]->getCategory () as $cat ) {?>
+								<a href='<?php echo base_url()?>category/<?php echo $cat; ?>'>
+								<?php 
+									echo $cat;
+									if ( sizeof($mostRecents[$i]->getCategory())!= 1  and $forCount < sizeof($mostRecents[$i]->getCategory()) ){
+										echo '; ';
+									}
+								?>
+							<?php } ?>
+						</small>
 					</h4>
 				</a>
 			</div>
@@ -92,14 +98,25 @@ else {
 						</div>
 							<div class="row">
 
-								<h4>
-						<?php echo $mostRecents[$i]->getTitle(); ?> <small><span
-										class="glyphicon glyphicon-tags"> </span>   <?php
-				foreach ( $mostRecents [$i]->getCategory () as $cat ) {
-				echo $cat . "; ";
-			}
-			?></small>
-								</h4>
+							<h4>
+							<?php echo $mostRecents[$i]->getTitle(); ?>
+								<small><span class="glyphicon glyphicon-tags"> </span>   
+									<?php
+									$forCount = 0;
+									foreach ( $mostRecents [$i]->getCategory () as $cat ) {?>
+										<a href='<?php echo base_url()?>category/<?php echo $cat; ?>'> 
+									
+										<?php 
+											echo $cat;
+											if ( sizeof($mostRecents[$i]->getCategory())!= 1  and $forCount < sizeof($mostRecents[$i]->getCategory()) ){
+												echo '; ';
+											}
+										?>
+
+										</a>
+									<?php } ?>
+								</small>
+							</h4>
 							</div>
 					
 					</a>
