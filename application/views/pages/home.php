@@ -61,7 +61,7 @@ else {
 					alt="..."></div>
 					<h4>
 					<?php echo $mostRecents[0]->getTitle(); ?>
-						<small><span class="glyphicon glyphicon-tags"> </span>   
+						<small>Serves <?php echo $mostRecents[0]->getServings();?> ;<span class="glyphicon glyphicon-tags"> </span>   
 							<?php foreach ( $mostRecents [0]->getCategory () as $cat ) {?>
 								<a href='<?php echo base_url()?>category/<?php echo $cat; ?>'>
 								<?php 
@@ -100,7 +100,7 @@ else {
 
 							<h4>
 							<?php echo $mostRecents[$i]->getTitle(); ?>
-								<small><span class="glyphicon glyphicon-tags"> </span>   
+								<small>Serves <?php echo $mostRecents[$i]->getServings();?> ;<span class="glyphicon glyphicon-tags"> </span>   
 									<?php
 									$forCount = 0;
 									foreach ( $mostRecents [$i]->getCategory () as $cat ) {?>

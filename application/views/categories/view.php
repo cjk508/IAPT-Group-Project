@@ -14,8 +14,9 @@
 					alt="">
 			</a> <span class="media-body"> <a
 					href="<?php echo site_url('recipe/'.$category_item->getID()); ?>">
-						<h4 class="media-heading"><?php echo $category_item->getTitle();?></h4>
-				</a> <span class="button-box pull-right">
+						<h4 class="media-heading"><?php echo $category_item->getTitle();?></h4></a> 
+						<div class="servings">Serves <?php echo $category_item->getServings();?></div>
+					<span class="button-box pull-right">
 						<button class="btn btn-primary" name='Cook'
 							value='Cook <?php echo $category_item->getTitle(); ?>'
 							onclick="window.location='<?php echo site_url('recipe/'.$category_item->getID()) ?>';">Cook</button>

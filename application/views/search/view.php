@@ -18,6 +18,8 @@
 			</a> <span class="media-body"> <a
 					href="<?php echo site_url('recipe/'.$searchValue->getID()); ?>">
 						<h4 class="media-heading"><?php echo $searchValue->getTitle();?></h4>
+						<div class="servings">Serves <?php echo $searchValue->getServings();?></div>
+						
 				</a> <span class="button-box pull-right">
 						<button class="btn btn-primary" name='Cook'
 							value='Cook <?php echo $searchValue->getTitle(); ?>'

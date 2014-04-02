@@ -11,7 +11,7 @@ function isSelected($type) {
 }
 ?>
 		<h3><?php echo  $recipe_item->getTitle()?> <small>
-				Serves <?php echo $recipe_item->getServings();?>
+				Serves <?php echo $recipe_item->getServings();?> ;
 				<span class="glyphicon glyphicon-tags"> </span>   <?php
 				foreach ( $recipe_item->getCategory () as $cat ) { ?>
 					<a href='<?php echo base_url()?>category/<?php echo $cat; ?>'> 
