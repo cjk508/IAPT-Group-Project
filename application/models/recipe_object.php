@@ -12,6 +12,10 @@ class Recipe_object {
 	public $category;
 	// The path to the image of the recipe
 	public $recipe_image;
+	// The alternative of the image
+	public $recipe_image_alt;
+	// The short description of the recipe
+	public $recipe_description;
 	// Array of Ingredient_pool
 	public $ingredient_pools;
 	// The date the recipe was created
@@ -31,6 +35,12 @@ class Recipe_object {
 	}
 	public function getImage() {
 		return $this->recipe_image;
+	}
+	public function getImageAlt() {
+		return $this->recipe_image_alt;
+	}
+	public function getDescription() {
+		return $this->recipe_description;
 	}
 	public function getSegmentedMethod() {
 		if (! is_array ( $this->segmented_method )) {

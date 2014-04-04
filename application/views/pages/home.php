@@ -58,7 +58,7 @@ else {
 					<div>
 					<img class="thumbnail"
 					src="<?php echo base_url('assets/images/')."/".$mostRecents[0]->getImage();?>"
-					alt="..."></div>
+					alt="<?php echo $mostRecents[0]->getImageAlt()?>"></div>
 					<h4>
 					<?php echo $mostRecents[0]->getTitle(); ?>
 						<small>Serves <?php echo $mostRecents[0]->getServings();?> ;<span class="glyphicon glyphicon-tags"> </span>   
@@ -94,7 +94,7 @@ else {
 						<div class="img-container thumbnail">
 							<img class=""
 								src="<?php echo base_url('assets/images/')."/".$mostRecents[$i]->getImage();?>"
-								alt="...">
+								alt="<?php echo $mostRecents[$i]->getImageAlt()?>">
 						</div>
 							<div class="row">
 

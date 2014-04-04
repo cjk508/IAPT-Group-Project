@@ -39,7 +39,7 @@ $(document).ready(function(){
 		current = $("#steps_ticker").children(":first"); 
 		current.find("a").css( "color", highlight );
 	}); 
-	$("#steps_ticker a").click(function(event) {
+	$("#steps_ticker li").click(function(event) {
 		step = $("#" + event.target.id); 
 		decoration = step.css("text-decoration"); 
 		if (decoration.indexOf("undefined") != -1 || decoration.indexOf("none") != -1) {			
@@ -56,12 +56,14 @@ $(document).ready(function(){
 	$('#collapseOne').on('hidden.bs.collapse', function () {
 		  $("#preparation").css({"max-height": "60%"});
 		  animatePreparationTo(current); 
+		  $("#accordion h4 span").attr("class","glyphicon glyphicon-arrow-down");
 	}); 
 	$('#collapseOne').on('shown.bs.collapse', function () {
 		  $("#preparation").css({"max-height": $(window).height()/5});
 		  animatePreparationTo(current); 
+		  $("#accordion h4 span").attr("class","glyphicon glyphicon-arrow-up");
 	});
-
+	$("#collapseOne").css({"max-height": $(window).height()/3.25});
 	$("#preparation").css({"max-height": $(window).height()/5});
 
 	$(document).keydown(function(e){
@@ -72,19 +74,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	if (annyang) {
-	  var commands = {
-	    'next step': function() {
-	    	$("#next_step").trigger("click");
-	    }, 'previous step': function() {
-	    	$("#previous_step").trigger("click");
-	    }, 'go to top': function() {
-	    	$("#reset_steps").trigger("click");
-	    }
-	  };
-	  annyang.addCommands(commands);
-	  annyang.start();
-	}
+	
 });
 </script>
 

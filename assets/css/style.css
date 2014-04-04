@@ -152,6 +152,7 @@ footer {
 .ingr-list .panel {
 	overflow-y: auto;
 	max-height: 260px;
+	margin-top: 0px;
 }
 
 .form-control {
@@ -210,17 +211,19 @@ img.media-object {
 
 .featuredRecipe img {
 	max-width: 100%;
+	min-height: 100%;
 }
 
 .featuredRecipe {
-	overflow: hidden;
+	/* overflow: hidden; */
 	width: 50%;
-	height: 50%;
+	height: 47%;
+	min-height: 370px;
 }
 
 .otherFour .col-md-6 {
-	height: 191px;
-	overflow: visible;
+	/* height: 191px; */
+	/* overflow: visible; */
 }
 
 hr {
@@ -240,7 +243,8 @@ hr {
 }
 
 .otherFour .row .row {
-	margin-bottom: 10px;
+	/* margin-bottom: 10px; */
+	max-height: 55px;
 }
 
 .otherFour .thumbnail {
@@ -266,4 +270,7 @@ hr {
 	position: absolute;
     top: 0;
     left: 0;
+}
+
+#collapseOne {
 }
