@@ -39,13 +39,16 @@ $(document).ready(function(){
 		current = $("#steps_ticker").children(":first"); 
 		current.find("a").css( "color", highlight );
 	}); 
-	$("#steps_ticker li").click(function(event) {
+	$("#steps_ticker a").click(function(event) {
 		step = $("#" + event.target.id); 
 		decoration = step.css("text-decoration"); 
 		if (decoration.indexOf("undefined") != -1 || decoration.indexOf("none") != -1) {			
 			$("#" + event.target.id).css("text-decoration", "line-through"); 
 			step.find("span").removeClass("glyphicon-ok-circle"); 
 			step.find("span").addClass("glyphicon-ok-sign"); 
+			if (current.find("a").attr('id') === step.attr('id')) {				
+				$("#next_step").trigger("click");
+			}
 		} else {
 			$("#" + event.target.id).css("text-decoration", "none"); 
 			step.find("span").addClass("glyphicon-ok-circle"); 
@@ -63,7 +66,6 @@ $(document).ready(function(){
 		  animatePreparationTo(current); 
 		  $("#accordion h4 span").attr("class","glyphicon glyphicon-arrow-up");
 	});
-	$("#collapseOne").css({"max-height": $(window).height()/3.25});
 	$("#preparation").css({"max-height": $(window).height()/5});
 
 	$(document).keydown(function(e){
@@ -80,15 +82,21 @@ $(document).ready(function(){
 
 <div class="panel panel-default" id="preparation">
 	<div class="panel-heading navbar-example">
-		<h3 class="panel-title">Preparation: <span class ="steps"> Number of Steps - <?php
-			if (isSegmented($sessionData)){
-				echo sizeof($recipe_item->getSegmentedMethod());
+		<h3 class="panel-title">
+			Preparation: <span class="steps">
+			<?php
+			if (! isNarrative ( $sessionData )) {
+				?>				
+			 Number of Steps - <?php
+				if (isSegmented ( $sessionData )) {
+					echo sizeof ( $recipe_item->getSegmentedMethod () );
+				} else {
+					echo sizeof ( $recipe_item->getStepMethod () );
+				}
 			}
-			else{
-				echo sizeof($recipe_item->getStepMethod());	
-			}
-			?>
-		</span></h3>
+			?>				
+		</span>
+		</h3>
 	</div> 
 <?php
 if (! typeIsSelected ( $sessionData ) or isNarrative ( $sessionData )) {
@@ -96,15 +104,15 @@ if (! typeIsSelected ( $sessionData ) or isNarrative ( $sessionData )) {
 				<script type="text/javascript">$(document).ready(function(){
 						$("#preparation").css({"overflow-y": "auto"}); 
 					});</script>
-	<div class="panel-body">
-		<p><?php echo $recipe_item-> getNarrativeMethod()?></p>
+	<div class="panel-body" style="margin-left: 10px; margin-right: 10px;">
+		<p style="font-size: 18px; text-align: justify;"><?php echo $recipe_item-> getNarrativeMethod()?></p>
 	</div>
 </div>
 <?php
 } 
 
 elseif (isSegmented ( $sessionData )) {
-	?>	
+	?>
 <script type="text/javascript">$(document).ready(function(){
 						$("#preparation").css({"overflow-y": "hidden"}); 
 					});</script>
@@ -118,15 +126,8 @@ elseif (isSegmented ( $sessionData )) {
 					<?php
 	}
 	
-	?>
-	
+	?>	
 					</ol>
-</div>
-<div class="text-center">
-	<button type="button" class="btn btn-default" id="previous_step"><span class = "glyphicon glyphicon-chevron-left"></span>Previous</button>
-	<button type="button" class="btn btn-default" id="reset_steps"><span class = "glyphicon glyphicon-arrow-up"></span>Go to
-		top</button>
-	<button type="button" class="btn btn-default" id="next_step">Next<span class = "glyphicon glyphicon-chevron-right"></span></button>
 </div>
 <?php
 } else {
@@ -138,28 +139,38 @@ elseif (isSegmented ( $sessionData )) {
 <ol class="text-center ticker" id="steps_ticker">
 					<?php
 	try {
-
-	foreach ( $recipe_item->getStepMethod () as $id => $step ) {
-		?>
-						<li><a id="Step-<?php echo $id ?>" href="#"><?php echo $step ?>
-							<span class="glyphicon glyphicon-ok-circle"></span></a>
-						</li>
+		
+		foreach ( $recipe_item->getStepMethod () as $id => $step ) {
+			?>
+						<li><a id="Step-<?php echo $id ?>" href="#"><?php echo $step?>
+							<span class="glyphicon glyphicon-ok-circle"></span></a></li>
 					<?php
-	}
-	}
-	catch (Exception $e) {
+		}
+	} catch ( Exception $e ) {
 		echo "No step method available currently.";
 	}
 	?>
 	
 					</ol>
 </div>
+
+<?php
+}
+// Preparation navigation buttons
+if (isSegmented ( $sessionData ) || isStep ( $sessionData )) {
+	?>
 <div class="text-center">
+	<a data-toggle="tooltip" data-placement="top"
+		title="Did you know that you can use the arrow keys of your keyboard to change the steps?"
+		style="margin-right: 10px;"><span
+		class="glyphicon glyphicon-info-sign"></span></a>
 	<button type="button" class="btn btn-default" id="previous_step">Previous</button>
 	<button type="button" class="btn btn-default" id="reset_steps">Go to
 		top</button>
 	<button type="button" class="btn btn-default" id="next_step">Next</button>
 </div>
+
 <?php
 }
+
 ?>

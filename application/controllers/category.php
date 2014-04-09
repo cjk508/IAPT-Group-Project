@@ -18,7 +18,7 @@ class Category extends CI_Controller {
 		}
 		$data ['headerCategories'] = $this->recipes_model->get_all_categories ();
 		$data ['headerSurprise'] = $this->recipes_model->get_surprise ();
-		$data['searchCategory'] = $category;
+		$data ['searchCategory'] = $category;
 		
 		$this->load->view ( 'templates/header', $data );
 		$this->load->view ( 'categories/view', $data );
@@ -32,8 +32,11 @@ class Category extends CI_Controller {
 		}
 		$data ['headerCategories'] = $this->recipes_model->get_all_categories ();
 		$data ['headerSurprise'] = $this->recipes_model->get_surprise ();
-		$data['searchCategory'] = $category;
-		
+		foreach ( $data ['categories'] as $cat ) {
+			if ($cat->getCategoryName () === $category) {
+				$data ['searchCategory'] = $cat->getCategoryDisplayName ();
+			}
+		}
 		$this->load->view ( 'templates/header', $data );
 		$this->load->view ( 'categories/view', $data );
 		$this->load->view ( 'templates/footer' );

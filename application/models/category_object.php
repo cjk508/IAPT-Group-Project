@@ -10,6 +10,7 @@ class Category_object {
 	public $category_display_name;
 	public $main_category;
 	public $category_icon_file;
+	public $category_description;
 	function getCategoryId() {
 		return ( int ) $this->category_id;
 	}
@@ -24,5 +25,8 @@ class Category_object {
 	}
 	function getIconFileName() {
 		return $this->category_icon_file;
+	}
+	function getCategoryDescription() {
+		return $this->category_description;
 	}
 }

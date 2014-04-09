@@ -113,54 +113,58 @@ $(document).ready(function() {
 				<?php }?>
 				  </ul></li>
 
-						<li><a
+						<li><a data-toggle="tooltip" data-placement="bottom"
+							title="Pick a recipe completely at random."
 							href="<?php echo site_url('recipe/'.$headerSurprise->getID()); ?>">
 								Surprise Me! </a></li>
 					</ul>
 					<?php
-			$attributes = array (
-					'class' => 'navbar-form navbar-right navbar-search' 
-			);
-			echo "<a href='#' data-toggle='tooltip' data-placement='bottom'
-									title='you can search for ingredients or recipes.'>";			
-			echo form_open ( 'search/view', $attributes );
-			$data = array (
-					'name' => 'search',
-					'value' => set_value('search'),
-					'class' => "form-group",
-					'role' => 'search',
-					'label' => 'search',
-					'rules'=>'required',
-					'placeholder' => 'Search for recipes' 
-			);
-			echo form_input ( $data ); 
-
-			?>
-					<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+					$attributes = array (
+							'class' => 'navbar-form navbar-right navbar-search' 
+					);
+					echo "<a href='#' data-toggle='tooltip' data-placement='bottom'
+									title='you can search for ingredients or recipes.'>";
+					echo form_open ( 'search/view', $attributes );
+					$data = array (
+							'name' => 'search',
+							'value' => set_value ( 'search' ),
+							'class' => "form-control",
+							'role' => 'search',
+							'label' => 'search',
+							'rules' => 'required',
+							'placeholder' => 'Search recipe/ingredient e.g. lime' 
+					);
+					echo form_input ( $data );
+					
+					?>
+					<button type="submit" class="btn btn-default">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
 					</a>
-			<?php 
-			echo form_close ();					
-		// If we're not on the home page.
-		if (! endsWith ( $_SERVER ['PHP_SELF'], "index.php" ) || $sessionData ['viewType'] !== 'null') {
-			?>
+			<?php
+			echo form_close ();
+			// If we're not on the home page.
+			if (! endsWith ( $_SERVER ['PHP_SELF'], "index.php" ) || $sessionData ['viewType'] !== 'null') {
+				?>
 		<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"> Viewing preference <b class="caret"></b>
 						</a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a id="<?php echo STEP ?>" href="#" data-toggle="tooltip"
-									data-placement="right" title="Step by step view is very cool"><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, STEP)?>Step-by-Step</a></li>
-								<li><a id="<?php echo SEGMENTED ?>" href="#"
-									data-toggle="tooltip" data-placement="right"
-									title="Segmented view is very cool"><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, SEGMENTED)?>Segmented</a></li>
 								<li><a id="<?php echo NARRATIVE ?>" href="#"
 									data-toggle="tooltip" data-placement="right"
-									title="Narrative view is very cool"><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, NARRATIVE)?>Narrative</a></li>
+									title="Instructions are displayed as a whole block of text. Particularly good for those with good memory!"><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, NARRATIVE)?>Whole</a></li>
+								<li><a id="<?php echo SEGMENTED ?>" href="#"
+									data-toggle="tooltip" data-placement="right"
+									title="Instructions are portioned out like slices of pizza - split into several steps making it easier to follow."><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, SEGMENTED)?>Segmented</a></li>
+								<li><a id="<?php echo STEP ?>" href="#" data-toggle="tooltip"
+									data-placement="right"
+									title="Instructions are finely cut and easy to follow, so you can take one step at a time."><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, STEP)?>Finely cut</a></li>
 							</ul></li>
 					</ul>
 			<?php
-		}
-		?>
+			}
+			?>
 				</div>
 			</div>
 		</nav>
