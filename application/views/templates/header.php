@@ -72,17 +72,9 @@ $(document).ready(function() {
 	    $("#alert-area").append($("<div class='alert " + type + " fade in' data-alert><p> " + message + " </p></div>"));
 	    $(".alert").delay(2000).fadeOut("slow", function () { $(this).remove(); });
 	}
-	 $(document).ready(function() {		
-		
-	 	// newAlert('alert-info', 'Oh yeah!');
-	 }); 
-
 	</script>
 </head>
-
 <body>
-
-
 	<header>
 		<nav class="navbar navbar-default" role="navigation"
 			style="width: 100%;">

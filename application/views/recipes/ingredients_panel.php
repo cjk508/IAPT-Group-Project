@@ -17,11 +17,11 @@ $(document).ready(function(){
 		var ingr_id = $(this).attr('id');
 		toggleDecoration(ingr_id); 
 	});
-	$("#ingr-panel").css({"max-height": $(window).height()/3.25});
+	$("#collapseOne").css({"max-height": $(window).height()/3.25});
 });
 </script>
 
-<div class="panel-group" id="accordion" id="ingr-panel">
+<div class="panel-group ingr-panel" id="accordion">
 	<div class="panel panel-default">
 		<div class="panel-heading ">
 			<h4 class="panel-title">
@@ -33,7 +33,6 @@ $(document).ready(function(){
 			<div class="panel-body">
 				<div id="ingredients" class="row">
 					<div class="col-md-4">
-
 						<div class="thumbnail"> <img class="img-rounded"
 							alt="<?php echo $recipe_item->getImageAlt()?>"
 							src="<?php echo base_url('assets/images/')."/".$recipe_item->getImage()?>">

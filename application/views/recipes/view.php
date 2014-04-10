@@ -11,15 +11,17 @@ $(document).ready(function(){
 			if (annyang) {		
 				  // Annyang Voice Commands
 				  var commands = {
-				    'next step': function() {
+				    'next': function() {
 				    	$("#next_step").trigger("click");
-				    }, 'previous step': function() {
+				    }, 'previous': function() {
 				    	$("#previous_step").trigger("click");
 				    }, 'go to top': function() {
 				    	$("#reset_steps").trigger("click");
 				    }
 				  };
 				  annyang.addCommands(commands);
+				  annyang.setLanguage('en');
+				  annyang.debug();
 				  annyang.start();
 			}
 			setTimeout(function() {
@@ -67,13 +69,13 @@ function isSelected($type) {
 				</small>
 			<?php if (!isNarrative ( $sessionData )) {?>				
 				<button id="voice-toggle" type="button"
-					class="btn btn-default pull-right" data-toggle="button"
-					data-animation="true" data-placement="right"
-					data-content="Try saying 'next step'." data-trigger="manual"
-					title="This experimental feature will allow you to change the current step through voice commands. ">
-					<span class="glyphicon glyphicon-record"></span> Enable voice
-					control
-				</button>
+				class="btn btn-default pull-right" data-toggle="button"
+				data-animation="true" data-placement="right"
+				data-content="Try saying 'next' or 'previous'." data-trigger="manual"
+				title="This experimental feature will allow you to change the current step through voice commands. ">
+				<span class="glyphicon glyphicon-record"></span> Enable voice
+				control
+			</button>
 			<?php }?>
 		</h3>
 		<?php
