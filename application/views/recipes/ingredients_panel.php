@@ -17,7 +17,10 @@ $(document).ready(function(){
 		var ingr_id = $(this).attr('id');
 		toggleDecoration(ingr_id); 
 	});
-	//$(".ingr-list").css({"max-height": $(window).height()/3.25});
+	$("#collapseOne").css({"max-height": $(window).height()/3.25});
+	$(".ingr-list .panel, .thumbnail").css({"max-height": $(window).height()/3.5});
+	$(".thumbnail img").css({"max-height": $(window).height()/3.65});
+	//$(".ingr-list").css({"height": $(window).height()/4});
 });
 </script>
 
