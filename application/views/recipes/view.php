@@ -47,22 +47,26 @@ function isSelected($type) {
 	}
 	return "";
 }
+// var_dump($recipe_item);
 ?>
 		<h3><?php echo  $recipe_item->getTitle()?> <small>
 				Serves <?php echo $recipe_item->getServings();?> ;
 				<span class="glyphicon glyphicon-tags"> </span>   <?php
 				foreach ( $recipe_item->getCategory () as $cat ) {
+					$display_name = $cat->getCategoryDisplayName ();
+					$url = $cat->getCategoryName ();
 					?>
-					<a href='<?php echo base_url()?>category/<?php echo $cat; ?>'> 
+					<a href='<?php echo base_url()?>category/<?php echo $url; ?>'> 
 					
 					<?php
-					echo $cat;
-					if (sizeof ( $recipe_item->getCategory () ) != 1 and $forCount < sizeof ( $recipe_item->getCategory () )) {
+					echo $display_name;
+					if (sizeof ( $display_name ) != 1 and $forCount < sizeof ( $display_name )) {
 						echo '; ';
 					}
 					?>
 
-					</a>
+					</a> <span class="glyphicon glyphicon-time"></span> <?php echo $recipe_item->getRecipeCookTime()?> minutes to prepare.
+					
 				<?php
 				}
 				?>
@@ -71,7 +75,8 @@ function isSelected($type) {
 				<button id="voice-toggle" type="button"
 				class="btn btn-default pull-right" data-toggle="button"
 				data-animation="true" data-placement="right"
-				data-content="Try saying 'next' or 'previous'." data-trigger="manual"
+				data-content="Try saying 'next' or 'previous'."
+				data-trigger="manual"
 				title="This experimental feature will allow you to change the current step through voice commands. ">
 				<span class="glyphicon glyphicon-record"></span> Enable voice
 				control

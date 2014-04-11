@@ -16,8 +16,7 @@ if (isset ( $_POST ['viewType'] )) {
 	if ($sessionData ['viewType'] !== $_POST ['viewType']) {
 		?>
 <script type="text/javascript">
-$(document).ready(function() {
-	
+$(document).ready(function() {	
 		newAlert('alert-info', 'Your new view type is <?php echo $_POST ['viewType'] ?>');
 });
 		 </script>
@@ -138,7 +137,15 @@ $(document).ready(function() {
 			// If we're not on the home page.
 			if (! endsWith ( $_SERVER ['PHP_SELF'], "index.php" ) || $sessionData ['viewType'] !== 'null') {
 				?>
-		<ul class="nav navbar-nav navbar-right">
+					<a class="navbar-brand navbar-right" style="margin-left: 5px;"><small><b>Current style: </b>
+						<?php
+				
+				echo_type_depend ( "Whole", $sessionData, NARRATIVE );
+				echo_type_depend ( "Segmented", $sessionData, SEGMENTED );
+				echo_type_depend ( "Finely cut", $sessionData, STEP );
+				?></small>
+					</a>
+					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"> Viewing preference <b class="caret"></b>
 						</a>

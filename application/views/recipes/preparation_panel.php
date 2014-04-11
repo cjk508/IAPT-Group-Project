@@ -51,7 +51,7 @@ $(document).ready(function(){
 			}
 		} else {
 			$("#" + event.target.id).css("text-decoration", "none"); 
-			step.find("span").addClass("glyphicon-ok-circle"); 
+			//step.find("span").addClass("glyphicon-ok-circle"); 
 			step.find("span").removeClass("glyphicon-ok-sign"); 
 		}
 	}); 
@@ -122,7 +122,7 @@ elseif (isSegmented ( $sessionData )) {
 	foreach ( $recipe_item->getSegmentedMethod () as $id => $step ) {
 		?>
 						<li><a id="Step-<?php echo $id ?>" href="#"><?php echo $step ?><span
-			class="glyphicon glyphicon-ok-circle"></span></a></li>
+			class="glyphicon"></span></a></li>
 					<?php
 	}
 	
@@ -143,7 +143,7 @@ elseif (isSegmented ( $sessionData )) {
 		foreach ( $recipe_item->getStepMethod () as $id => $step ) {
 			?>
 						<li><a id="Step-<?php echo $id ?>" href="#"><?php echo $step?>
-							<span class="glyphicon glyphicon-ok-circle"></span></a></li>
+							<span class="glyphicon"></span></a></li>
 					<?php
 		}
 	} catch ( Exception $e ) {

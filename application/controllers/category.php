@@ -26,7 +26,11 @@ class Category extends CI_Controller {
 	}
 	function view($category = "Main_Dish") {
 		$data ['categories'] = $this->recipes_model->get_all_categories ();
-		$data ['category_items'] = $this->recipes_model->get_category ( $category );
+		if ($category === "Quick_meals") {
+			$data ['category_items'] = $this->recipes_model->get_quick_meals(); 
+		} else {
+			$data ['category_items'] = $this->recipes_model->get_category ( $category );
+		}
 		if (empty ( $data ['category_items'] )) {
 			show_404 ();
 		}

@@ -25,10 +25,12 @@ if (! typeIsSelected ( $sessionData ) /*or $sessionData['viewType'] != 'null'*/)
 			title="Instructions are displayed as a whole block of text. Particularly good for those with good memory!"
 			value='<?php echo NARRATIVE ?>'>Whole</button>
 		<button class="btn btn-primary" name="viewType" data-toggle="tooltip"
-			data-placement="top" title="Instructions are portioned out like slices of pizza - split into several steps making it easier to follow."
+			data-placement="top"
+			title="Instructions are portioned out like slices of pizza - split into several steps making it easier to follow."
 			value='<?php echo SEGMENTED ?>'>Segmented</button>
 		<button class="btn btn-primary" name="viewType" data-toggle="tooltip"
-			data-placement="top" title="Instructions are finely cut and easy to follow, so you can take one step at a time."
+			data-placement="top"
+			title="Instructions are finely cut and easy to follow, so you can take one step at a time."
 			value='<?php echo STEP ?>'>Finely cut</button>
 	</form>
 	<form class="btn-group pull-right" action='#' method="post">
@@ -58,7 +60,7 @@ else {
 					title="<?php echo $mostRecents[0]-> getDescription();?>" class=""
 					href="<?php echo site_url('recipe/'.$mostRecents[0]->getID()); ?>">
 					<div>
-						<img class="thumbnail"
+						<img class="thumbnail blue-glow"
 							src="<?php echo base_url('assets/images/')."/".$mostRecents[0]->getImage();?>"
 							alt="<?php echo $mostRecents[0]->getImageAlt()?>">
 					</div>
@@ -66,15 +68,21 @@ else {
 					<?php echo $mostRecents[0]->getTitle(); ?>
 						<small>Serves <?php echo $mostRecents[0]->getServings();?> ;<span
 							class="glyphicon glyphicon-tags"> </span>   
-							<?php foreach ( $mostRecents [0]->getCategory () as $cat ) {?>
-								<a href='<?php echo base_url()?>category/<?php echo $cat; ?>'>
+							<?php
+	
+	foreach ( $mostRecents [0]->getCategory () as $cat ) {
+		$url = $cat->getCategoryName ();
+		$display_name = $cat->getCategoryDisplayName ();
+		?>
+								<a href='<?php echo base_url()?>category/<?php echo $url ?>'>
 								<?php
-		echo $cat;
-		if (sizeof ( $mostRecents [0]->getCategory () ) != 1 and $forCount < sizeof ( $mostRecents [0]->getCategory () )) {
+		echo $display_name;
+		if (sizeof ( $display_name ) != 1 and $forCount < sizeof ( $display_name )) {
 			echo '; ';
 		}
 		?>
 							<?php } ?>
+							<span class="glyphicon glyphicon-time"></span> <?php echo $mostRecents [0]->getRecipeCookTime()?> min.
 						</small>
 					</h4>
 				</a>
@@ -96,7 +104,7 @@ else {
 						title="<?php echo $mostRecents[$i]-> getDescription();?>"
 						href="<?php echo site_url('recipe/'.$mostRecents[$i]->getID()); ?>">
 						<div class="col-md-6">
-							<div class="img-container thumbnail">
+							<div class="img-container thumbnail blue-glow">
 								<img class=""
 									src="<?php echo base_url('assets/images/')."/".$mostRecents[$i]->getImage();?>"
 									alt="<?php echo $mostRecents[$i]->getImageAlt()?>">
@@ -110,18 +118,21 @@ else {
 									<?php
 			$forCount = 0;
 			foreach ( $mostRecents [$i]->getCategory () as $cat ) {
+				$url = $cat->getCategoryName ();
+				$display_name = $cat->getCategoryDisplayName ();
 				?>
-										<a href='<?php echo base_url()?>category/<?php echo $cat; ?>'> 
+										<a href='<?php echo base_url()?>category/<?php echo $url; ?>'> 
 									
 										<?php
-				echo $cat;
-				if (sizeof ( $mostRecents [$i]->getCategory () ) != 1 and $forCount < sizeof ( $mostRecents [$i]->getCategory () )) {
+				echo $display_name;
+				if (sizeof ( $display_name ) != 1 and $forCount < sizeof ( $display_name )) {
 					echo '; ';
 				}
 				?>
 
 										</a>
 									<?php } ?>
+									<span class="glyphicon glyphicon-time"></span> <?php echo $mostRecents [$i]->getRecipeCookTime()?> min.
 								</small>
 								</h4>
 							</div>

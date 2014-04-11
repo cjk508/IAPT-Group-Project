@@ -17,7 +17,7 @@ $(document).ready(function(){
 		var ingr_id = $(this).attr('id');
 		toggleDecoration(ingr_id); 
 	});
-	$("#collapseOne").css({"max-height": $(window).height()/3.25});
+	//$(".ingr-list").css({"max-height": $(window).height()/3.25});
 });
 </script>
 
@@ -33,28 +33,34 @@ $(document).ready(function(){
 			<div class="panel-body">
 				<div id="ingredients" class="row">
 					<div class="col-md-4">
-						<div class="thumbnail"> <img class="img-rounded"
-							alt="<?php echo $recipe_item->getImageAlt()?>"
-							src="<?php echo base_url('assets/images/')."/".$recipe_item->getImage()?>">
+						<div class="thumbnail">
+							<img class="img-rounded"
+								alt="<?php echo $recipe_item->getImageAlt()?>"
+								src="<?php echo base_url('assets/images/')."/".$recipe_item->getImage()?>">
 
 						</div>
 					</div>
 					<div class="col-md-8 ingr-list">
 						<div class="panel panel-default">
 							<div class="panel-body">
-								<h3>Ingredients:</h3>					
 				<?php
-				$pool = $recipe_item->getIngredientPool ( $GLOBALS ['user_type'] );
-				foreach ( $pool->getIngredients () as $id => $ingredient ) {
-					?><div class="ingr" id="Ingr-<?php echo $id ?>">
+				$pools = $recipe_item->getIngredientPool ( $GLOBALS ['user_type'] );
+				$count = - 1;
+				foreach ( $pools as $pool ) {
+					?>
+					<h3>Ingredients for <?php echo $pool-> getTitle(); $count++; ?></h3>					
+					<?php
+					foreach ( $pool->getIngredients () as $id => $ingredient ) {
+						?><div class="ingr" id="Ingr-<?php echo $id + $count ?>">
 									<div class="input-group blue-glow">
 										<span class="input-group-addon"> <input
-											id="check-<?php echo $id ?>" type="checkbox"
+											id="check-<?php echo $id + $count ?>" type="checkbox"
 											class="ingr-checkbox">
 										</span> <a href="#"><p class="form-control"><?php echo $ingredient?></p></a>
 									</div>
 								</div>
 		<?php
+					}
 				}
 				?>
 						</div>

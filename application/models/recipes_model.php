@@ -8,8 +8,8 @@ require_once 'ingredient_pool_object.php';
 class Recipes_model extends CI_Model {
 	public function __construct() {
 		$this->load->database ();
-		// Set the session's concat limit. This is very important. 
-		$this->db->simple_query("SET SESSION group_concat_max_len = 1000000;"); 
+		// Set the session's concat limit. This is very important.
+		$this->db->simple_query ( "SET SESSION group_concat_max_len = 1000000;" );
 	}
 	/**
 	 * Get a recipe by id.
@@ -28,22 +28,24 @@ class Recipes_model extends CI_Model {
 	 * Get a recipe by name
 	 *
 	 *
-	 * @param string $searchTerm	The value that is being searched for
+	 * @param string $searchTerm
+	 *        	value that is being searched for
 	 */
 	public function recipe_Search($searchTerm) {
-		$this->db->like ( 'recipe_title', $searchTerm  );
-		$result = $this->db->get('recipes_view');
+		$this->db->like ( 'recipe_title', $searchTerm );
+		$result = $this->db->get ( 'recipes_view' );
 		return $this->_processMultipleResults ( $result );
 	}
 	/**
 	 * Get a ingredient by name.
 	 *
 	 *
-	 * @param string $searchTerm	The value that is being searched for
+	 * @param string $searchTerm
+	 *        	value that is being searched for
 	 */
 	public function ingredient_Search($searchTerm) {
-		$query_1 ="select recipes_view.* from `ingredient_pools_view` INNER JOIN `recipes_view` on 
-					recipes_view.recipe_id=ingredient_pools_view.recipe_id where `ingredients` like '%".(string)$searchTerm."%' Group by recipes_view.recipe_id;";
+		$query_1 = "select recipes_view.* from `ingredient_pools_view` INNER JOIN `recipes_view` on 
+					recipes_view.recipe_id=ingredient_pools_view.recipe_id where `ingredients` like '%" . ( string ) $searchTerm . "%' Group by recipes_view.recipe_id;";
 		$result = $this->db->query ( $query_1 );
 		return $this->_processMultipleResults ( $result );
 	}
@@ -98,6 +100,17 @@ class Recipes_model extends CI_Model {
 		return $this->_processMultipleResults ( $result );
 	}
 	/**
+	 * Get quick to make recipes. 
+	 * 
+	 * @param number $max_duration max recipe duration 
+	 * @return list of recipes
+	 */
+	public function get_quick_meals($max_duration = 20) {
+		$query_1 = "select * from `recipes_view` where `recipe_cook_time` <= " . ( string ) $max_duration;
+		$result = $this->db->query ( $query_1 );
+		return $this->_processMultipleResults ( $result );
+	}
+	/**
 	 * Get a random recipe from the database.
 	 */
 	public function get_surprise() {
@@ -137,7 +150,26 @@ class Recipes_model extends CI_Model {
 				'recipe_id' => $id 
 		) );
 		if ($ingredient_pools->num_rows () > 0) {
-			return $ingredient_pools->result ( 'Ingredient_pool' );
+			$result = $ingredient_pools->result ( 'Ingredient_pool' );
+			// var_dump($result);
+			return $result;
+		}
+		return NULL;
+	}
+	/**
+	 * Helper method to get the categories associated with a recipe id.
+	 *
+	 *
+	 * @param int $id
+	 *        	the id of the recipe
+	 */
+	private function _getCategories($id) {
+		$categories = $this->db->get_where ( 'recipe_categories_view_2', array (
+				'recipe_id' => $id 
+		) );
+		if ($categories->num_rows () > 0) {
+			$result = $categories->result ( 'Category_object' );
+			return $result;
 		}
 		return NULL;
 	}
@@ -153,6 +185,8 @@ class Recipes_model extends CI_Model {
 		if ($result->num_rows () > 0) {
 			$recipe_data = $result->result ( $output_class );
 			$recipe_data [0]->ingredient_pools = $this->_getIngredientPool ( $recipe_data [0]->getId () );
+			$recipe_data [0]->categories = $this->_getCategories ( $recipe_data [0]->getId () );
+			// var_dump($recipe_data [0]->ingredient_pools);
 			return $recipe_data [0];
 		}
 		return NULL;
@@ -171,6 +205,7 @@ class Recipes_model extends CI_Model {
 			if ($output_class === 'Recipe_object') {
 				foreach ( $recipe_data as $recipe ) {
 					$recipe->ingredient_pools = $this->_getIngredientPool ( $recipe->getId () );
+					$recipe->categories = $this->_getCategories ( $recipe->getId () );
 				}
 			}
 			return $recipe_data;

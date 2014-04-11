@@ -16,7 +16,7 @@ $(document).ready(function(){
 				<div class="col-md-2">
 					<a class="pull-left"
 						href="<?php echo site_url('recipe/'.$category_item->getID()); ?>">
-						<img class="thumbnail category-media-object"
+						<img class="thumbnail category-media-object blue-glow"
 						alt="<?php echo $category_item->getImageAlt()?>"
 						src="<?php echo base_url('assets/images/')."/".$category_item->getImage();?>">
 					</a>

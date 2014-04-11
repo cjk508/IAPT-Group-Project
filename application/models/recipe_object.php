@@ -9,7 +9,7 @@ class Recipe_object {
 	// The title of the recipe
 	public $recipe_title;
 	// The recipe category
-	public $category;
+	public $categories;
 	// The path to the image of the recipe
 	public $recipe_image;
 	// The alternative of the image
@@ -30,6 +30,11 @@ class Recipe_object {
 	// The step method of the recipe.
 	// It is an array of ordered steps.
 	public $step_method;
+	// The recipe preparation time.
+	public $recipe_cook_time;
+	public function getRecipeCookTime() {
+		return $this->recipe_cook_time;
+	}
 	public function getNarrativeMethod() {
 		return $this->narrative_method;
 	}
@@ -61,10 +66,10 @@ class Recipe_object {
 		return $this->recipe_id;
 	}
 	public function getCategory() {
-		if (! is_array ( $this->category )) {
+		/*if (! is_array ( $this->category )) {
 			eval ( '$this->category = ' . $this->category . ";" );
-		}
-		return $this->category;
+		}*/
+		return $this->categories;
 	}
 	public function getIngredientPools() {
 		return $this->ingredient_pools;
@@ -76,11 +81,12 @@ class Recipe_object {
 		return $this->recipe_servings;
 	}
 	public function getIngredientPool($difficulty) {
+		$pools = array ();
 		foreach ( $this->getIngredientPools () as $pool ) {
-			if (strcmp ( $pool->getDifficulty (), $difficulty )) {
-				return $pool;
+			if ($pool->getDifficulty () === $difficulty) {
+				array_push ( $pools, $pool );
 			}
 		}
-		return NULL;
+		return $pools;
 	}
 }
