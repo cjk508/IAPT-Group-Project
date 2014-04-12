@@ -56,6 +56,10 @@ $(document).ready(function(){
 			$("#" + event.target.id).css("text-decoration", "none"); 
 			//step.find("span").addClass("glyphicon-ok-circle"); 
 			step.find("span").removeClass("glyphicon-ok-sign"); 
+			var par = $("#" + event.target.id).parent();
+			if ( current.index()-1 == par.index() ){
+				$("#previous_step").click();
+			}
 		}
 	}); 
 
