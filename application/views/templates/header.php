@@ -123,6 +123,7 @@ $(document).ready(function() {
 							'role' => 'search',
 							'label' => 'search',
 							'rules' => 'required',
+							'id' => 'search',
 							'placeholder' => 'Search recipe/ingredient e.g. lime' 
 					);
 					echo form_input ( $data );
