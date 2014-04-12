@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="" style="margin-bottom: 0px;">Category <?php echo $searchCategory; ?></h3>
+		<h3 class="" style="margin-bottom: 0px;">Category - <?php echo $searchCategory; ?></h3>
 	</div>
 	<div class="panel-body category-box">	
 		<ul class="media-list">

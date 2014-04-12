@@ -51,7 +51,6 @@ $(document).ready(function(){
 				$count = - 1;
 				foreach ( $pools as $pool ) {
 					?>
-					<h3>Ingredients for <?php echo $pool-> getTitle(); $count++; ?></h3>					
 					<?php
 					foreach ( $pool->getIngredients () as $id => $ingredient ) {
 						?><div class="ingr" id="Ingr-<?php echo $id + $count ?>">
