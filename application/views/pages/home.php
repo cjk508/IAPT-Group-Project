@@ -23,19 +23,19 @@ if (! typeIsSelected ( $sessionData ) /*or $sessionData['viewType'] != 'null'*/)
 		<button class="btn btn-primary" name="viewType" data-toggle="tooltip"
 			data-placement="top"
 			title="Instructions are displayed as a whole block of text. Particularly good for those with good memory!"
-			value='<?php echo NARRATIVE ?>'>Whole</button>
+			value='<?php echo NARRATIVE ?>'>Advanced</button>
 		<button class="btn btn-primary" name="viewType" data-toggle="tooltip"
 			data-placement="top"
 			title="Instructions are portioned out like slices of pizza - split into several steps making it easier to follow."
-			value='<?php echo SEGMENTED ?>'>Segmented</button>
+			value='<?php echo SEGMENTED ?>'>Intermediate</button>
 		<button class="btn btn-primary" name="viewType" data-toggle="tooltip"
 			data-placement="top"
 			title="Instructions are finely cut and easy to follow, so you can take one step at a time."
-			value='<?php echo STEP ?>'>Finely cut</button>
+			value='<?php echo STEP ?>'>Novice</button>
 	</form>
 	<form class="btn-group pull-right" action='#' method="post">
 		<button class="btn btn-primary" name="viewType"
-			value='<?php echo DEFAULT_TYPE ?>'>Skip</button>
+			value='<?php echo DEFAULT_TYPE ?>'>Decide Later</button>
 	</form>
 </div>
 

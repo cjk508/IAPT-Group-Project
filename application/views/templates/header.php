@@ -145,21 +145,21 @@ $(document).ready(function() {
 							<ul class="dropdown-menu" role="menu">
 								<li><a id="<?php echo NARRATIVE ?>" href="#"
 									data-toggle="tooltip" data-html="true" data-placement="right"
-									title="<style>.tooltip-inner{min-width:150px});</style>Instructions are displayed as a whole block of text. Particularly good for those with good memory!"><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, NARRATIVE)?>Whole</a></li>
+									title="<style>.tooltip-inner{min-width:150px});</style>Instructions are displayed as a whole block of text. Particularly good for those with good memory!"><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, NARRATIVE)?>Advanced</a></li>
 								<li><a id="<?php echo SEGMENTED ?>" href="#"
 									data-toggle="tooltip" data-html="true" data-placement="right"
-									title="<style>.tooltip-inner{min-width:150px});</style>Instructions are portioned out like slices of pizza - split into several steps making it easier to follow."><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, SEGMENTED)?>Segmented</a></li>
+									title="<style>.tooltip-inner{min-width:150px});</style>Instructions are portioned out like slices of pizza - split into several steps making it easier to follow."><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, SEGMENTED)?>Intermediate</a></li>
 								<li><a id="<?php echo STEP ?>" href="#" data-toggle="tooltip"
 									data-placement="right" data-html="true"
-									title="<style>.tooltip-inner{min-width:150px});</style>Instructions are finely cut and easy to follow, so you can take one step at a time."><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, STEP)?>Finely cut</a></li>
+									title="<style>.tooltip-inner{min-width:150px});</style>Instructions are finely cut and easy to follow, so you can take one step at a time."><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, STEP)?>Novice</a></li>
 							</ul></li>
 					</ul>
 					<a class="navbar-brand navbar-right" style="margin-left: 5px;"><small><b>Current style: </b>
 						<?php
 				
-						echo_type_depend ( "Whole", $sessionData, NARRATIVE );
-						echo_type_depend ( "Segmented", $sessionData, SEGMENTED );
-						echo_type_depend ( "Finely cut", $sessionData, STEP );
+						echo_type_depend ( "Advanced", $sessionData, NARRATIVE );
+						echo_type_depend ( "Intermediate", $sessionData, SEGMENTED );
+						echo_type_depend ( "Novice", $sessionData, STEP );
 						?>
 						</small>
 					</a>
