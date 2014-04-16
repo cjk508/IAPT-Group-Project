@@ -47,7 +47,6 @@ function isSelected($type) {
 	}
 	return "";
 }
-// var_dump($recipe_item);
 ?>
 		<h3><?php echo  $recipe_item->getTitle()?> <small>
 				Serves <?php echo $recipe_item->getServings();?> ;
@@ -59,18 +58,18 @@ function isSelected($type) {
 					<a href='<?php echo base_url()?>category/<?php echo $url; ?>'> 
 					
 					<?php
-					echo $display_name;
+					echo $display_name . ";";
 					if (sizeof ( $display_name ) != 1 and $forCount < sizeof ( $display_name )) {
 						echo '; ';
 					}
 					?>
 
-					</a> <span class="glyphicon glyphicon-time"></span> <?php echo $recipe_item->getRecipeCookTime()?> minutes to prepare.
+					</a>
 					
 				<?php
 				}
 				?>
-				</small>
+				 <span class="glyphicon glyphicon-time"></span> <?php echo $recipe_item->getRecipeCookTime()?> minutes to prepare.</small>
 			<?php if (!isNarrative ( $sessionData )) {?>				
 				<button id="voice-toggle" type="button"
 				class="btn btn-default pull-right" data-toggle="button"

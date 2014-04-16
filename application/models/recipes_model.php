@@ -58,7 +58,7 @@ class Recipes_model extends CI_Model {
 	 */
 	public function get_category($category) {
 		if ($this->_valid_category ( $category )) {
-			$query_1 = "select * from `recipes_view` where `category` like '%" . ( string ) $category . "%'";
+			$query_1 = "select * from `recipes_view` where `category` like '%" . ( string ) $category . "%'" . " or " . " `category_url` like '%" . ( string ) $category . "%'";
 			$result = $this->db->query ( $query_1 );
 			return $this->_processMultipleResults ( $result );
 		}
@@ -71,10 +71,22 @@ class Recipes_model extends CI_Model {
 	 * @return array: a list of categories for the website.
 	 */
 	public function get_all_categories() {
+		$query_1 = "select * from `categories_view` where `main_category` = 0";
+		$result = $this->db->query ( $query_1 );
+		return $this->_processMultipleResults ( $result, 'Category_object' );
+	}
+	/**
+	 * Get all the categories for the recipes.
+	 *
+	 *
+	 * @return array: a list of categories for the website.
+	 */
+	public function get_all_categories2() {
 		$query_1 = "select * from `categories_view`";
 		$result = $this->db->query ( $query_1 );
 		return $this->_processMultipleResults ( $result, 'Category_object' );
 	}
+	
 	/**
 	 * Check if a category call is valid.
 	 *
@@ -100,9 +112,11 @@ class Recipes_model extends CI_Model {
 		return $this->_processMultipleResults ( $result );
 	}
 	/**
-	 * Get quick to make recipes. 
-	 * 
-	 * @param number $max_duration max recipe duration 
+	 * Get quick to make recipes.
+	 *
+	 *
+	 * @param number $max_duration
+	 *        	max recipe duration
 	 * @return list of recipes
 	 */
 	public function get_quick_meals($max_duration = 20) {
