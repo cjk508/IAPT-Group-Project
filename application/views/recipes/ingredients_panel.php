@@ -1,5 +1,9 @@
 <script type="text/javascript">
-$(document).ready(function(){	
+// JS to handle the ingredients panel. 
+$(document).ready(function(){
+	/**
+	 * Toggle decoration of an ingredient with an id. 
+	 */
 	function toggleDecoration(id) {
 		step = $("#" + id); 
 		checkbox = step.find("input"); 
@@ -13,17 +17,18 @@ $(document).ready(function(){
 			text.css("text-decoration", "none"); 
 		}
 	}	
+	// Highlight ingredient on click, and trigger checkbox. 
 	$('.ingr').click(function(event) {
 		var ingr_id = $(this).attr('id');
 		toggleDecoration(ingr_id); 
 	});
+	// Some recalculation of height of panels. 
 	$("#collapseOne").css({"max-height": $(window).height()/3.25});
 	$(".ingr-list .panel, .thumbnail").css({"max-height": $(window).height()/3.5});
 	$(".thumbnail img").css({"max-height": $(window).height()/3.65});
-	//$(".ingr-list").css({"height": $(window).height()/4});
 });
 </script>
-
+<!-- Begin ingredients panel for a recipe -->
 <div class="panel-group ingr-panel" id="accordion">
 	<div class="panel panel-default">
 		<div class="panel-heading ">
@@ -36,6 +41,7 @@ $(document).ready(function(){
 			<div class="panel-body">
 				<div id="ingredients" class="row">
 					<div class="col-md-4">
+						<!-- Image of recipe -->
 						<div class="thumbnail">
 							<img class="img-rounded"
 								alt="<?php echo $recipe_item->getImageAlt()?>"
@@ -47,6 +53,7 @@ $(document).ready(function(){
 						<div class="panel panel-default">
 							<div class="panel-body">
 				<?php
+				// For every ingredient pool, print its recipes.
 				$pools = $recipe_item->getIngredientPool ( $GLOBALS ['user_type'] );
 				$count = - 1;
 				foreach ( $pools as $pool ) {
@@ -73,3 +80,4 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
+<!-- End ingredients panel -->

@@ -4,10 +4,15 @@
  * Ingredient pools are used in Recipes and contain the ingredients of the recipe.
  */
 class Ingredient_pool {
+	// The id of the recipe, this ingredient pool belongs to.
 	public $recipe_id;
+	// The id of the ingredient pool.
 	public $pool_id;
+	// The name of the ingredient pool.
 	public $pool_name;
+	// A list of ingredients, that belong to the pool.
 	public $ingredients;
+	// The pool difficulty.
 	public $difficulty;
 	public function getId() {
 		return $this->recipe_id;

@@ -44,16 +44,16 @@ $(document).ready(function() {
 <script type="text/javascript"
 	src="<?php echo base_url('assets/js/jquery.collagePlus.min.js'); ?>"></script>
 <script type="text/javascript">
+	// Background images. 
 	var images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg'];
 	 $('html').css({'background': 'url(<?php echo base_url()?>assets/images/' + images[Math.floor(Math.random() * images.length)] + ') no-repeat center center fixed'});
 	 $('html').css({'background-size': '100%'});
 
 	 $(document).ready(function() {		
 		<?php
-		
+		// Alerts.
 		foreach ( unserialize ( DIFFICULTIES ) as $item ) {
-			?>		
-			
+			?>			
 		    $("#<?php echo $item ?>").click(function() {
 			    var current = <?php echo $sessionData ['viewType'] ?>; 
 		    	$.post(window.location.object, {viewType: "<?php echo $item ?>"}, function() {
@@ -66,7 +66,7 @@ $(document).ready(function() {
 		<?php } ?>		
 		$('a').tooltip();	 
 	});
-
+	// Push a new alert to screen. 
 	 function newAlert (type, message) {
 	    $("#alert-area").append($("<div class='alert " + type + " fade in' data-alert><p> " + message + " </p></div>"));
 	    $(".alert").delay(2000).fadeOut("slow", function () { $(this).remove(); });
@@ -75,6 +75,7 @@ $(document).ready(function() {
 </head>
 <body>
 	<header>
+		<!-- Header navigation start -->
 		<nav class="navbar navbar-default" role="navigation"
 			style="width: 100%;">
 			<div class="container-fluid">
@@ -134,52 +135,24 @@ $(document).ready(function() {
 					</button>
 					</a>
 			<?php
-			echo form_close ();	
+			echo form_close ();
 			// If we're not on the home page.
-			/*if (! endsWith ( $_SERVER ['PHP_SELF'], "index.php" ) || $sessionData ['viewType'] !== 'null') {
-				?>
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"> Viewing preference <b class="caret"></b>
-						</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a id="<?php echo NARRATIVE ?>" href="#"
-									data-toggle="tooltip" data-html="true" data-placement="right"
-									title="<style>.tooltip-inner{min-width:150px});</style>Instructions are displayed as a whole block of text. Particularly good for those with good memory!"><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, NARRATIVE)?>Advanced</a></li>
-								<li><a id="<?php echo SEGMENTED ?>" href="#"
-									data-toggle="tooltip" data-html="true" data-placement="right"
-									title="<style>.tooltip-inner{min-width:150px});</style>Instructions are portioned out like slices of pizza - split into several steps making it easier to follow."><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, SEGMENTED)?>Intermediate</a></li>
-								<li><a id="<?php echo STEP ?>" href="#" data-toggle="tooltip"
-									data-placement="right" data-html="true"
-									title="<style>.tooltip-inner{min-width:150px});</style>Instructions are finely cut and easy to follow, so you can take one step at a time."><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, STEP)?>Novice</a></li>
-							</ul></li>
-					</ul>
-					<a class="navbar-brand navbar-right" style="margin-left: 5px;"><small><b>Current style: </b>
-						<?php
-				
-						echo_type_depend ( "Advanced", $sessionData, NARRATIVE );
-						echo_type_depend ( "Intermediate", $sessionData, SEGMENTED );
-						echo_type_depend ( "Novice", $sessionData, STEP );
-						?>
-						</small>
-					</a>
-			<?php
-			}*/
+			/*
+			 * if (! endsWith ( $_SERVER ['PHP_SELF'], "index.php" ) || $sessionData ['viewType'] !== 'null') { ?> <ul class="nav navbar-nav navbar-right"> <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Viewing preference <b class="caret"></b> </a> <ul class="dropdown-menu" role="menu"> <li><a id="<?php echo NARRATIVE ?>" href="#" data-toggle="tooltip" data-html="true" data-placement="right" title="<style>.tooltip-inner{min-width:150px});</style>Instructions are displayed as a whole block of text. Particularly good for those with good memory!"><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, NARRATIVE)?>Advanced</a></li> <li><a id="<?php echo SEGMENTED ?>" href="#" data-toggle="tooltip" data-html="true" data-placement="right" title="<style>.tooltip-inner{min-width:150px});</style>Instructions are portioned out like slices of pizza - split into several steps making it easier to follow."><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, SEGMENTED)?>Intermediate</a></li> <li><a id="<?php echo STEP ?>" href="#" data-toggle="tooltip" data-placement="right" data-html="true" title="<style>.tooltip-inner{min-width:150px});</style>Instructions are finely cut and easy to follow, so you can take one step at a time."><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, STEP)?>Novice</a></li> </ul></li> </ul> <a class="navbar-brand navbar-right" style="margin-left: 5px;"><small><b>Current style: </b> <?php echo_type_depend ( "Advanced", $sessionData, NARRATIVE ); echo_type_depend ( "Intermediate", $sessionData, SEGMENTED ); echo_type_depend ( "Novice", $sessionData, STEP ); ?> </small> </a> <?php }
+			 */
 			if (! endsWith ( $_SERVER ['PHP_SELF'], "index.php" ) || $sessionData ['viewType'] !== 'null') {
 				?>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"> <b>Current style: </b>
 								<?php
-							
-								echo_type_depend ( "Advanced", $sessionData, NARRATIVE );
-								echo_type_depend ( "Intermediate", $sessionData, SEGMENTED );
-								echo_type_depend ( "Novice", $sessionData, STEP );
-								?>
+				
+				echo_type_depend ( "Advanced", $sessionData, NARRATIVE );
+				echo_type_depend ( "Intermediate", $sessionData, SEGMENTED );
+				echo_type_depend ( "Novice", $sessionData, STEP );
+				?>
 							<b class="caret"></b>
-							</a>
-							 
-						</a>
+						</a> </a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a id="<?php echo NARRATIVE ?>" href="#"
 									data-toggle="tooltip" data-html="true" data-placement="right"
@@ -188,8 +161,7 @@ $(document).ready(function() {
 									data-toggle="tooltip" data-html="true" data-placement="right"
 									title="<style>.tooltip-inner{min-width:150px});</style>Instructions are portioned out like slices of pizza - split into several steps making it easier to follow."><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, SEGMENTED)?>Intermediate</a></li>
 								<li><a id="<?php echo STEP ?>" href="#" data-toggle="tooltip"
-									data-placement="right" data-html="true"
-									title="<style>.tooltip-inner{min-width:150px});</style>Instructions are finely cut and easy to follow, so you can take one step at a time."><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, STEP)?>Novice</a></li>
+									data-placement="right" data-html="true" title="<style>.tooltip-inner{min-width:150px});</style>Instructions are finely cut and easy to follow, so you can take one step at a time."><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, STEP)?>Novice</a></li>
 							</ul></li>
 					</ul>
 					
@@ -199,6 +171,7 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</nav>
+		<!-- End navigation -->
 	</header>
 	<div id="alert-area"></div>
 	<div class="wrapper">

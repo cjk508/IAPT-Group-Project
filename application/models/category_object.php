@@ -1,16 +1,16 @@
 <?php
 /**
  * Defines a caregory object, which contains information about a category. 
- * 
- *
  */
 class Category_object {
+	// The category id.
 	public $category_id;
+	// The category name.
 	public $category_name;
+	// The category display name, used in formatting to screen.
 	public $category_display_name;
+	// The index of the main category. If none is 0.
 	public $main_category;
-	public $category_icon_file;
-	public $category_description;
 	function getCategoryId() {
 		return ( int ) $this->category_id;
 	}
@@ -22,11 +22,5 @@ class Category_object {
 	}
 	function getMainCategoryId() {
 		return ( int ) $this->main_category;
-	}
-	function getIconFileName() {
-		return $this->category_icon_file;
-	}
-	function getCategoryDescription() {
-		return $this->category_description;
 	}
 }

@@ -66,9 +66,6 @@ class Recipe_object {
 		return $this->recipe_id;
 	}
 	public function getCategory() {
-		/*if (! is_array ( $this->category )) {
-			eval ( '$this->category = ' . $this->category . ";" );
-		}*/
 		return $this->categories;
 	}
 	public function getIngredientPools() {
@@ -80,6 +77,14 @@ class Recipe_object {
 	public function getServings() {
 		return $this->recipe_servings;
 	}
+	/**
+	 * Get an array of Ingredient_pool objects, that belong to a recipe.
+	 *
+	 *
+	 * @param string $difficulty
+	 *        	the target difficulty
+	 * @return array: array of Ingredient_pool
+	 */
 	public function getIngredientPool($difficulty) {
 		$pools = array ();
 		foreach ( $this->getIngredientPools () as $pool ) {

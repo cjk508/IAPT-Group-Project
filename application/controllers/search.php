@@ -1,10 +1,12 @@
 <?php
+/**
+ * The Search controller handles search requests. 
+ */
 class Search extends CI_Controller {
 	public function __construct() {
 		parent::__construct ();
+		// Load model. 
 		$this->load->model ( 'recipes_model' );
-	}
-	public function index() {
 	}
 	public function invalid($args) {
 		$data ['headerSurprise'] = $this->recipes_model->get_surprise ();
@@ -31,7 +33,7 @@ class Search extends CI_Controller {
 			}
 			// $data['searchValues'] = merge_Results($ingredient_Results, $recipe_Results);
 			$data ['headerSurprise'] = $this->recipes_model->get_surprise ();
-			$data ['categories'] = $this->recipes_model->get_all_categories ();
+			$data ['categories'] = $this->recipes_model->get_all_main_categories ();
 			$data ['searchTerm'] = $search_term;
 			
 			$this->load->view ( 'templates/header', $data );
@@ -39,7 +41,7 @@ class Search extends CI_Controller {
 			$this->load->view ( 'templates/footer' );
 		} else {
 			$data ['headerSurprise'] = $this->recipes_model->get_surprise ();
-			$data ['categories'] = $this->recipes_model->get_all_categories ();
+			$data ['categories'] = $this->recipes_model->get_all_main_categories ();
 			$data ['searchTerm'] = $search_term = $this->input->post ( 'search' );
 			$this->load->view ( 'templates/header', $data );
 			$this->load->view ( 'search/invalid', $data );

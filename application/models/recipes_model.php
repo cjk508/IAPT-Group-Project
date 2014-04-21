@@ -58,30 +58,34 @@ class Recipes_model extends CI_Model {
 	 */
 	public function get_category($category) {
 		if ($this->_valid_category ( $category )) {
-			$query_1 = "select * from `recipes_view` where `category` like '%" . ( string ) $category . "%'" . " or " . " `category_url` like '%" . ( string ) $category . "%'";
-			$result = $this->db->query ( $query_1 );
-			return $this->_processMultipleResults ( $result );
+			if ($category === "Quick_meals") {
+				return $this->get_quick_meals ();
+			} else {
+				$query_1 = "select * from `recipes_view` where `category` like '%" . ( string ) $category . "%'" . " or " . " `category_url` like '%" . ( string ) $category . "%'";
+				$result = $this->db->query ( $query_1 );
+				return $this->_processMultipleResults ( $result );
+			}
 		}
 		return NULL;
 	}
 	/**
-	 * Get all the categories for the recipes.
+	 * Get all the categories for the recipes, withouth subcategories.
 	 *
 	 *
 	 * @return array: a list of categories for the website.
 	 */
-	public function get_all_categories() {
+	public function get_all_main_categories() {
 		$query_1 = "select * from `categories_view` where `main_category` = 0";
 		$result = $this->db->query ( $query_1 );
 		return $this->_processMultipleResults ( $result, 'Category_object' );
 	}
 	/**
-	 * Get all the categories for the recipes.
+	 * Get all the categories for the recipes, including subcategories.
 	 *
 	 *
 	 * @return array: a list of categories for the website.
 	 */
-	public function get_all_categories2() {
+	public function get_all_categories() {
 		$query_1 = "select * from `categories_view`";
 		$result = $this->db->query ( $query_1 );
 		return $this->_processMultipleResults ( $result, 'Category_object' );

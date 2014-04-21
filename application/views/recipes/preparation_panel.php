@@ -1,5 +1,6 @@
 
 <script type="text/javascript">
+// JS to support step switching of the preparation panel. 
 $(document).ready(function(){
 	function animatePreparationTo(element) {
 		$('#preparation').animate({
@@ -75,6 +76,7 @@ $(document).ready(function(){
 	});
 	$("#preparation").css({"max-height": $(window).height()/5});
 
+	// Keyboard control of prep panel. 
 	$(document).keydown(function(e){
 	    if (e.keyCode == 40 || e.keyCode == 39) { 
 	       $("#next_step").trigger("click");
@@ -85,7 +87,7 @@ $(document).ready(function(){
 	
 });
 </script>
-
+<!-- Begin preparation panel -->
 <div class="panel panel-default">
 	<div class="panel-heading navbar-example">
 		<h3 class="panel-title">
@@ -105,6 +107,7 @@ $(document).ready(function(){
 		</h3>
 	</div> 
 <?php
+// If no type is selected, or presentation style is narrative, display plain preparation panel.
 if (! typeIsSelected ( $sessionData ) or isNarrative ( $sessionData )) {
 	?>
 				<script type="text/javascript">$(document).ready(function(){
@@ -116,9 +119,8 @@ if (! typeIsSelected ( $sessionData ) or isNarrative ( $sessionData )) {
 	</div>
 </div>
 <?php
-} 
-
-elseif (isSegmented ( $sessionData )) {
+} elseif (isSegmented ( $sessionData )) {
+	// Display segmented preparation panel.
 	?>
 <div class="panel-body" id="preparation">
 	<ol class="text-center ticker" id="steps_ticker">
@@ -136,7 +138,7 @@ elseif (isSegmented ( $sessionData )) {
 </div>
 </div>
 <?php
-} else {
+} else { // Display step preparation panel.
 	?>
 <div class="panel-body" id="preparation">
 	<ol class="text-center ticker" id="steps_ticker">

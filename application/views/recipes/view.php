@@ -1,6 +1,9 @@
+<!-- Beginning the body of a recipe. -->
+
 <script type="text/javascript">
 $(document).ready(function(){
 	// Enable experimental voice recognition functionality. 
+	// It uses the Annyang library. 
 	$('#voice-toggle').click(function() {
 		$(this).tooltip('toggle'); 
 		$(this).popover('toggle'); 		
@@ -36,6 +39,8 @@ $(document).ready(function(){
 });
 </script>
 
+
+<!-- Start recipe panel -->
 <div id="recipe-contents">
 	<div class="panel panel-default" id="main-panel">
 <?php
@@ -48,6 +53,7 @@ function isSelected($type) {
 	return "";
 }
 ?>
+<!-- Header of recipe, containing title, categories, preparation time, voice control button -->
 		<h3><?php echo  $recipe_item->getTitle()?> <small>
 				Serves <?php echo $recipe_item->getServings();?> ;
 				<span class="glyphicon glyphicon-tags"> </span>   <?php
@@ -93,4 +99,4 @@ function isSelected($type) {
 		require_once 'preparation_panel.php';
 		?>
 </div>
-</div>
+</div><!-- End recipe panel.  -->
