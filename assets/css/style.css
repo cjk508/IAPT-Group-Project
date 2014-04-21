@@ -117,7 +117,7 @@ footer {
 
 #recipe-contents #preparation {
 	max-height: 26%;
-	overflow-y: hidden;
+	overflow-y: scroll;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;

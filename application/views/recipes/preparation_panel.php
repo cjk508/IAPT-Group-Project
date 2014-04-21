@@ -1,4 +1,5 @@
-	<script type="text/javascript">
+
+<script type="text/javascript">
 $(document).ready(function(){
 	function animatePreparationTo(element) {
 		$('#preparation').animate({
@@ -54,7 +55,6 @@ $(document).ready(function(){
 			}
 		} else {
 			$("#" + event.target.id).css("text-decoration", "none"); 
-			//step.find("span").addClass("glyphicon-ok-circle"); 
 			step.find("span").removeClass("glyphicon-ok-sign"); 
 			var par = $("#" + event.target.id).parent();
 			if ( current.index()-1 == par.index() ){
@@ -81,8 +81,7 @@ $(document).ready(function(){
 	    } else if (e.keyCode == 37 || e.keyCode == 38) {
 	    	$("#previous_step").trigger("click");
 		}
-	});
-	
+	});	
 	
 });
 </script>
@@ -94,11 +93,11 @@ $(document).ready(function(){
 			<?php
 			if (! isNarrative ( $sessionData )) {
 				?>				
-			 Number of Steps - <span id="currentStep"> 1 </span> <?php 
+			 Number of Steps - <span id="currentStep"> 1 </span> <?php
 				if (isSegmented ( $sessionData )) {
-					echo " / ".sizeof ( $recipe_item->getSegmentedMethod () );
+					echo " / " . sizeof ( $recipe_item->getSegmentedMethod () );
 				} else {
-					echo " / ".sizeof ( $recipe_item->getStepMethod () );
+					echo " / " . sizeof ( $recipe_item->getStepMethod () );
 				}
 			}
 			?>				
@@ -111,7 +110,8 @@ if (! typeIsSelected ( $sessionData ) or isNarrative ( $sessionData )) {
 				<script type="text/javascript">$(document).ready(function(){
 						$("#preparation").css({"overflow-y": "auto"}); 
 					});</script>
-	<div class="panel-body" id="preparation" style="margin-left: 10px; margin-right: 10px;">
+	<div class="panel-body" id="preparation"
+		style="margin-left: 10px; margin-right: 10px;">
 		<p style="font-size: 18px; text-align: justify;"><?php echo $recipe_item-> getNarrativeMethod()?></p>
 	</div>
 </div>
@@ -120,57 +120,44 @@ if (! typeIsSelected ( $sessionData ) or isNarrative ( $sessionData )) {
 
 elseif (isSegmented ( $sessionData )) {
 	?>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$("#preparation").css({"overflow-y": "hidden"}); 
-			});
-		</script>
-		<div class="panel-body" id="preparation">
-			<ol class="text-center ticker"  id="steps_ticker">
+<div class="panel-body" id="preparation">
+	<ol class="text-center ticker" id="steps_ticker">
 				<?php
-				foreach ( $recipe_item->getSegmentedMethod () as $id => $step ) { ?>
-					<li>
-						<a id="Step-<?php echo $id ?>" href="#">
+	foreach ( $recipe_item->getSegmentedMethod () as $id => $step ) {
+		?>
+					<li><a id="Step-<?php echo $id ?>" href="#">
 							<?php echo $step ?><span class="glyphicon"></span>
-						</a>
-					</li>
+		</a></li>
 				<?php
-				}
-
-				?>	
+	}
+	
+	?>	
 			</ol>
-		</div>
-	</div>
+</div>
+</div>
 <?php
 } else {
 	?>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$("#preparation").css({"overflow-y": "hidden"}); 
-		});
-	</script>
-		<div class="panel-body" id="preparation">
-			<ol class="text-center ticker" id="steps_ticker">
+<div class="panel-body" id="preparation">
+	<ol class="text-center ticker" id="steps_ticker">
 			<?php
-			try {
-
-				foreach ( $recipe_item->getStepMethod () as $id => $step ) {	?>
-					<li>
-						<a id="Step-<?php echo $id ?>" href="#">
-							<?php echo $step?><span class="glyphicon"></span>
-						</a>
-					</li>
-			<?php
-				}
-			}
-			catch ( Exception $e ) {
-				echo "No step method available currently.";
-			}
+	try {
+		
+		foreach ( $recipe_item->getStepMethod () as $id => $step ) {
 			?>
+					<li><a id="Step-<?php echo $id ?>" href="#">
+							<?php echo $step?><span class="glyphicon"></span>
+		</a></li>
+			<?php
+		}
+	} catch ( Exception $e ) {
+		echo "No step method available currently.";
+	}
+	?>
 
 			</ol>
-		</div>			
-	</div>
+</div>
+</div>
 
 <?php
 }
@@ -183,7 +170,8 @@ if (isSegmented ( $sessionData ) || isStep ( $sessionData )) {
 		style="margin-right: 10px;"><span
 		class="glyphicon glyphicon-info-sign"></span></a>
 	<button type="button" class="btn btn-default" id="previous_step">Previous</button>
-	<button type="button" class="btn btn-default" id="reset_steps">Go to Start</button>
+	<button type="button" class="btn btn-default" id="reset_steps">Go to
+		Start</button>
 	<button type="button" class="btn btn-default" id="next_step">Next</button>
 </div>
 
