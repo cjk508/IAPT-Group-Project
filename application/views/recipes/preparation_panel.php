@@ -136,7 +136,7 @@ if (! typeIsSelected ( $sessionData ) or isNarrative ( $sessionData )) {
 	?>	
 			</ol>
 </div>
-</div>
+
 <?php
 } else { // Display step preparation panel.
 	?>
@@ -159,22 +159,23 @@ if (! typeIsSelected ( $sessionData ) or isNarrative ( $sessionData )) {
 
 			</ol>
 </div>
-</div>
+
 
 <?php
 }
 // Preparation navigation buttons
 if (isSegmented ( $sessionData ) || isStep ( $sessionData )) {
 	?>
-<div class="text-center">
-	<a data-toggle="tooltip" data-placement="top"
-		title="Did you know that you can use the arrow keys of your keyboard to change the steps?"
-		style="margin-right: 10px;"><span
-		class="glyphicon glyphicon-info-sign"></span></a>
-	<button type="button" class="btn btn-default" id="previous_step">Previous</button>
-	<button type="button" class="btn btn-default" id="reset_steps">Go to
-		Start</button>
-	<button type="button" class="btn btn-default" id="next_step">Next</button>
+	<div class="text-center panel-footer">
+		<a data-toggle="tooltip" data-placement="top"
+			title="Did you know that you can use the arrow keys of your keyboard to change the steps?"
+			style="margin-right: 10px;"><span
+			class="glyphicon glyphicon-info-sign"></span></a>
+		<button type="button" class="btn btn-default" id="previous_step">Previous</button>
+		<button type="button" class="btn btn-default" id="reset_steps">Go to
+			Start</button>
+		<button type="button" class="btn btn-default" id="next_step">Next</button>
+	</div>
 </div>
 
 <?php
