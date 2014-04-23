@@ -20,11 +20,11 @@ $(document).ready(function(){
 				$tempAllCategories = $category_item->getCategory();
 				foreach ($tempAllCategories as $tempAllCategory) {
 					echo $tempAllCategory->getCategoryName(). ' ';
+					array_push($AllCategories, $tempAllCategory );
 				}
 				echo ' Serves'. $category_item->getServings() .' Time' . $category_item->getRecipeCookTime();
-				
 				array_push($CookingTimes, $category_item->getRecipeCookTime());
-				array_push($AllCategories, $tempAllCategory );
+				
 				array_push($Servings, $category_item->getServings());
 			?>"><a class="pull-left"
 				href="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <img
@@ -90,6 +90,7 @@ $(document).ready(function(){
 				</span>
 			</li>
 				<?php } ?>
+
 		</ul>
 
 	</div>
@@ -100,24 +101,13 @@ $(document).ready(function(){
 	</div>
 	<?php 
 		//Remove all duplicate values for the array, leaving just one instance of each filtering option
-		$tempPrevious = null;
-		$tempArray = array();
-		for ($i=0; $i < sizeof($AllCategories); $i++) { 
-			if ($tempPrevious == $AllCategories[$i]->getCategoryName()){
-				//array_splice($AllCategories, $i, 1);
-				$tempPrevious = $AllCategories[$i]->getCategoryName();
-			}
-			else{
-				array_push($tempArray, $AllCategories[$i]);
-				$tempPrevious = $AllCategories[$i]->getCategoryName();
-			}
-		}
-		$AllCategories = $tempArray;
+		$AllCategories = array_unique($AllCategories, SORT_STRING);
 		$Servings = array_unique($Servings);
 		$CookingTimes = array_unique($CookingTimes);
 	?>
 	<div class = "panel-body ">
 		<?php
+
 		if (sizeof($AllCategories) > 1 ){
 		?>
 		<h4>Category</h4>

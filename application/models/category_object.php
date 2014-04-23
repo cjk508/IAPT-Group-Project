@@ -23,4 +23,7 @@ class Category_object {
 	function getMainCategoryId() {
 		return ( int ) $this->main_category;
 	}
+	public function __toString() {
+	    return $this->category_display_name;
+	}
 }
