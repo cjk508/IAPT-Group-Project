@@ -213,14 +213,17 @@ img.media-object {
 }
 
 .media-list>li>span {
-	width: 85%;
+	width: 80%;
 	float: right;
 }
 
 .largeImageRecipes {
 	
 }
-
+.recipe_info_box{
+	max-width:75%;
+	display: inline-block;
+}
 .largeImageRecipes img {
 	max-width: 100%;
 }

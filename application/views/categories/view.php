@@ -26,50 +26,70 @@ $(document).ready(function(){
 				array_push($CookingTimes, $category_item->getRecipeCookTime());
 				array_push($AllCategories, $tempAllCategory->getCategoryName() );
 				array_push($Servings, $category_item->getServings());
-			?>">
-				<div class="col-md-2">
-					<a class="pull-left"
-						href="<?php echo site_url('recipe/'.$category_item->getID()); ?>">
-						<img class="thumbnail category-media-object blue-glow"
-						alt="<?php echo $category_item->getImageAlt()?>"
-						src="<?php echo base_url('assets/images/')."/".$category_item->getImage();?>">
-					</a>
-				</div>
-				<div class="col-md-8">
-					<a
-						href="<?php echo site_url('recipe/'.$category_item->getID()); ?>">
-						<h4 class="media-heading"><?php echo $category_item->getTitle();?></h4>
-					</a>
-					<p><?php echo $category_item->getDescription(); ?></p>
-					<p>
-						<i>Serves <?php echo $category_item->getServings();?></i>
-					</p>
-					 <?php
-				$sessionData = $this->session->all_userdata ();
-				foreach ( $category_item->getIngredientPools () as $pool ) {
-					if ($pool->getDifficulty () == $sessionData ['viewType']) {
-						$ingredList = "<ul>";
-						foreach ( $pool->getIngredients () as $ingredient ) {
-							$ingredList = $ingredList . "<li>" . $ingredient . "</li>";
-						}
-						?>
-									<a href="#" class="ingr-tooltip" data-html="true" data-toggle="tooltip"
-						data-placement="auto bottom" data-container="body" title="<?php echo $ingredList."</ul>"?>">Ingredients...
-						<span class="glyphicon glyphicon-info-sign"> </span>
-					</a>
+			?>"><a class="pull-left"
+				href="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <img
+					class="category-media-object"
+					src="<?php echo base_url('assets/images/')."/".$category_item->getImage();?> "
+					alt="">
+			</a> <span class="media-body"> <a
+					href="<?php echo site_url('recipe/'.$category_item->getID()); ?>">
+					<div class = "recipe_info_box">	
+						<h4 class="media-heading"><?php echo $category_item->getTitle();?></h4></a>
+						<p><?php echo $category_item->getDescription(); ?></p>
+						<p class="servings">Serves <?php echo $category_item->getServings();?></p>
+						<p> <span class = "glyphicon glyphicon-tags"></span>
+						<?php
+							$forCount = 0;
+							foreach ($category_item->getCategory() as $cat) {
+								$url = $cat->getCategoryName();
+								$display_name = $cat->getCategoryDisplayName();
+								?>
+								<a href = '<?php echo base_url()?>category/<?php echo $url; ?>'>
 								<?php
+									echo $display_name; 
+									echo '; ';
+									echo "</a>";
+
+							}
+						?>
+						</p>
+						<p>
+							<span class="glyphicon glyphicon-time"></span>
+						<?php
+							echo $category_item->getRecipeCookTime();
+						?> mins.
+						</p>
+						
+				</a>
+					<?php
+				$sessionData = $this->session->all_userdata ();
+
+					foreach ( $category_item->getIngredientPools () as $pool ) {
+						if ($pool->getDifficulty () == $sessionData ['viewType']) {
+							?>
+							<?php
+							$ingredList = "<ul>";
+							foreach ( $pool->getIngredients () as $ingredient ) {
+									$ingredList = $ingredList . " </li><li>" . $ingredient;
+							}?>
+								<a href="#"
+								data-html="true" data-toggle="tooltip" data-placement="bottom"
+								title="<?php echo $ingredList ?></li>
+						
+						</ul>"><?php echo $pool->getTitle();?> <span class="glyphicon glyphicon-info-sign"> </span></a>
+							<?php
+						}
 					}
-				}
-				?>
+					?>
+					</span>
 				</div>
-				<div class="col-md-2">
-					<button class="btn btn-primary" name='Cook Recipe'
-						value='Cook <?php echo $category_item->getTitle(); ?>'
-						onclick="window.location='<?php echo site_url('recipe/'.$category_item->getID()) ?>';">Cook
-						Recipe</button>
-				</div>
+				<span class="button-box pull-right">
+						<button class="btn btn-primary" name='Cook'
+							value='Cook <?php echo $category_item->getTitle(); ?>'
+							onclick="window.location='<?php echo site_url('recipe/'.$category_item->getID()) ?>';">Cook Recipe</button>
+				</span>
 			</li>
-			<?php } ?>
+				<?php } ?>
 		</ul>
 
 	</div>
