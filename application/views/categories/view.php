@@ -121,10 +121,21 @@ $(document).ready(function(){
 </div>	
 
 <script type="text/javascript">
+var categoryLog = new Array();
+var servesLog = new Array();
+var timeLog = new Array();
 var checkedLog = new Array();
 function toggleFilter(className, checkBoxObject){
 	if (checkBoxObject.checked){
-		checkedLog.push(checkBoxObject.value);	
+		if (checkBoxObject.value.indexOf( "Serves") > -1){
+			servesLog.push(checkBoxObject.value);	
+		}
+		else if (checkBoxObject.value.indexOf("Time") > -1){
+			timeLog.push(checkBoxObject.value);	
+		}
+		else{
+			categoryLog.push(checkBoxObject.value);	
+		}
 	}
 	else{
 		removeValueFromLog(checkBoxObject.value);	
@@ -138,21 +149,45 @@ function toggleFilter(className, checkBoxObject){
 
 function filterItem(recipe){
 	var classList = recipe.className.split(/\s+/);
-	var visible = false;
-
+	var visible = [false,false,false];
 	for (var i = classList.length - 1; i >= 0; i--) {
-		for (var j = checkedLog.length - 1; j >= 0; j--) {
-			if (checkedLog[j] == classList[i]){
-				visible = true;
+		if (categoryLog.length > 0) {	
+			for (var j = categoryLog.length - 1; j >= 0; j--) {	
+				if (categoryLog[j] == classList[i]){
+					visible[0] = true;
+				}
 			}
 		}
+		else {
+			visible[0] = true;
+		}
+		if (servesLog.length > 0) {	
+			for (var j = servesLog.length - 1; j >= 0; j--) {	
+				if (servesLog[j] == classList[i]){
+					visible[1] = true;
+				}
+			}
+		}
+		else {
+			visible[1] = true;
+		}
+		if (timeLog.length > 0) {	
+			for (var j = timeLog.length - 1; j >= 0; j--) {	
+				if (timeLog[j] == classList[i]){
+					visible[2] = true;
+				}
+			}
+		}
+		else {
+			visible[2] = true;
+		}
 	}
-
-	if (visible == true){
+	alert(visible);
+	if (visible[0] == true && visible[1] == true && visible[2] == true){
 		$(recipe).removeClass("hidden");
 	}
 	else{
-		if (checkedLog.length == 0){
+		if (categoryLog.length == 0 && servesLog.length == 0 && timeLog.length == 0 ){
 			$(recipe).removeClass("hidden");
 		}
 		else{
@@ -163,11 +198,27 @@ function filterItem(recipe){
 
 function removeValueFromLog(cbValue){
 	var deletedOne = false;
-	for (var i = checkedLog.length - 1; i >= 0; i--) {
-		if (checkedLog[i] == cbValue && deletedOne == false){
-			checkedLog.splice(i, 1);
+	for (var i = categoryLog.length - 1; i >= 0; i--) {
+		if (categoryLog[i] == cbValue && deletedOne == false){
+			categoryLog.splice(i, 1);
 			deletedOne = true;
 		}
 	};
+	if (deletedOne == false){
+		for (var i = servesLog.length - 1; i >= 0; i--) {
+			if (servesLog[i] == cbValue && deletedOne == false){
+				servesLog.splice(i, 1);
+				deletedOne = true;
+			}
+		};
+		if (deletedOne == false){
+			for (var i = timeLog.length - 1; i >= 0; i--) {
+				if (timeLog[i] == cbValue && deletedOne == false){
+					timeLog.splice(i, 1);
+					deletedOne = true;
+				}
+			};
+		}
+	}
 }
 </script>
