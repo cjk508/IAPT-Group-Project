@@ -24,7 +24,7 @@ $(document).ready(function(){
 				echo ' Serves'. $category_item->getServings() .' Time' . $category_item->getRecipeCookTime();
 				
 				array_push($CookingTimes, $category_item->getRecipeCookTime());
-				array_push($AllCategories, $tempAllCategory->getCategoryName() );
+				array_push($AllCategories, $tempAllCategory );
 				array_push($Servings, $category_item->getServings());
 			?>"><a class="pull-left"
 				href="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <img
@@ -100,23 +100,40 @@ $(document).ready(function(){
 	</div>
 	<?php 
 		//Remove all duplicate values for the array, leaving just one instance of each filtering option
-		$AllCategories = array_unique($AllCategories);
+		$tempPrevious = null;
+		$tempArray = array();
+		for ($i=0; $i < sizeof($AllCategories); $i++) { 
+			if ($tempPrevious == $AllCategories[$i]->getCategoryName()){
+				//array_splice($AllCategories, $i, 1);
+				$tempPrevious = $AllCategories[$i]->getCategoryName();
+			}
+			else{
+				array_push($tempArray, $AllCategories[$i]);
+				$tempPrevious = $AllCategories[$i]->getCategoryName();
+			}
+		}
+		$AllCategories = $tempArray;
 		$Servings = array_unique($Servings);
 		$CookingTimes = array_unique($CookingTimes);
 	?>
 	<div class = "panel-body ">
+		<?php
+		if (sizeof($AllCategories) > 1 ){
+		?>
 		<h4>Category</h4>
 		<ul class="list-group">
 			<?php foreach ($AllCategories as $AllCategory) {
-				if ($AllCategory != $comparisonCategory){?>
+				if ($AllCategory->getCategoryDisplayName() != $searchCategory){?>
 				<div class="input-group">
 				      <span class="input-group-addon">
-				        <input type="checkbox" value = "<?php echo $AllCategory; ?>" onclick="toggleFilter('<?php echo $AllCategory; ?>', this)"> <?php echo $AllCategory; ?>
+				        <input type="checkbox" value = "<?php echo $AllCategory->getCategoryName(); ?>" onclick="toggleFilter('<?php echo $AllCategory->getCategoryName(); ?>', this)"> <?php echo $AllCategory->getCategoryDisplayName(); ?>
 				      </span>
 				</div>
 			<?php }
 			} ?>
 		</ul>
+		<?php }
+		if (sizeof($Servings) > 0){?>
 		<h4>Servings</h4>
 		<ul class="list-group">
 			<?php foreach ($Servings as $Serving) {?>
@@ -127,6 +144,8 @@ $(document).ready(function(){
 				</div>
 			<?php } ?>
 		</ul>
+		<?php }
+		if (sizeof($CookingTimes) > 0 ){?>
 		<h4>Prep Time</h4>
 		<ul class="list-group">
 			<?php foreach ($CookingTimes as $CookingTime) {?>
@@ -137,6 +156,7 @@ $(document).ready(function(){
 				</div>
 			<?php } ?>
 		</ul>
+		<?php } ?>
 	</div>
 </div>	
 
