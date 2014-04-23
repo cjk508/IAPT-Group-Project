@@ -182,7 +182,6 @@ function filterItem(recipe){
 			visible[2] = true;
 		}
 	}
-	alert(visible);
 	if (visible[0] == true && visible[1] == true && visible[2] == true){
 		$(recipe).removeClass("hidden");
 	}
