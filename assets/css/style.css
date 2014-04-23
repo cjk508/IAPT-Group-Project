@@ -169,14 +169,26 @@ footer {
 }
 
 .category-box {
-	max-height: 83%;
-	overflow-y: scroll;
+	height: 80%;
+	overflow-y:scroll;
+	width:74%;
+}
+
+.filter-box{
+	height: 80%;
+	overflow-y:scroll;
+	width: 24%;
+	float:right;
+	margin-right: 1%;
 }
 
 .mostRecent {
 	overflow-y: scroll;
 	width: 49%;
 	display: inline-block;
+}
+.hidden{
+	display: none;
 }
 
 img.category-media-object {

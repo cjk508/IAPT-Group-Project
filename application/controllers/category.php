@@ -37,6 +37,7 @@ class Category extends CI_Controller {
 		foreach ( $this->recipes_model->get_all_categories () as $cat ) {
 			if ($cat->getCategoryName () === $category) {
 				$data ['searchCategory'] = $cat->getCategoryDisplayName ();
+				$data ['comparisonCategory'] = $cat->getCategoryName ();
 			}
 		}
 		// Load views. 

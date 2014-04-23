@@ -1,18 +1,32 @@
 <script type="text/javascript">
 $(document).ready(function(){
-	$(".category-box").css({"max-height": $(window).height()/1.5});
+	$(".category-box").css({"max-height": $(window).height()*0.83});
 	 $(".ingr-tooltip").tooltip();
 });
 </script>
-
-<div class="panel panel-default">
+<?php 
+	$CookingTimes = array();
+	$Servings = array();
+	$AllCategories = array();
+?>
+<div class="panel panel-default category-box pull-right">
 	<div class="panel-heading">
 		<h3 class="" style="margin-bottom: 0px;">Category - <?php echo $searchCategory; ?></h3>
 	</div>
-	<div class="panel-body category-box">	
+	<div class="panel-body category-body">	
 		<ul class="media-list">
 			<?php foreach($category_items as $category_item) {?>
-			<li class="recipe_list row blue-glow">
+			<li class="recipe_list row blue-glow <?php
+				$tempAllCategories = $category_item->getCategory();
+				foreach ($tempAllCategories as $tempAllCategory) {
+					echo $tempAllCategory->getCategoryName(). ' ';
+				}
+				echo ' Serves'. $category_item->getServings() .' Time' . $category_item->getRecipeCookTime();
+				
+				array_push($CookingTimes, $category_item->getRecipeCookTime());
+				array_push($AllCategories, $tempAllCategory->getCategoryName() );
+				array_push($Servings, $category_item->getServings());
+			?>">
 				<div class="col-md-2">
 					<a class="pull-left"
 						href="<?php echo site_url('recipe/'.$category_item->getID()); ?>">
@@ -60,3 +74,100 @@ $(document).ready(function(){
 
 	</div>
 </div>
+<div class="panel panel-default filter-box">
+	<div class = "panel-heading"> 
+		<h3 style ="margin-bottom: 0px;">Filtering Options</h3>
+	</div>
+	<?php 
+		//Remove all duplicate values for the array, leaving just one instance of each filtering option
+		$AllCategories = array_unique($AllCategories);
+		$Servings = array_unique($Servings);
+		$CookingTimes = array_unique($CookingTimes);
+	?>
+	<div class = "panel-body ">
+		<h4>Category</h4>
+		<ul class="list-group">
+			<?php foreach ($AllCategories as $AllCategory) {
+				if ($AllCategory != $comparisonCategory){?>
+				<div class="input-group">
+				      <span class="input-group-addon">
+				        <input type="checkbox" value = "<?php echo $AllCategory; ?>" onclick="toggleFilter('<?php echo $AllCategory; ?>', this)"> <?php echo $AllCategory; ?>
+				      </span>
+				</div>
+			<?php }
+			} ?>
+		</ul>
+		<h4>Servings</h4>
+		<ul class="list-group">
+			<?php foreach ($Servings as $Serving) {?>
+				<div class="input-group">
+				      <span class="input-group-addon">
+				        <input type="checkbox" value = "<?php echo 'Serves'.$Serving; ?>" onclick="toggleFilter('<?php echo 'Serves'.$Serving; ?>', this)"> <?php echo $Serving; ?>
+				      </span>
+				</div>
+			<?php } ?>
+		</ul>
+		<h4>Prep Time</h4>
+		<ul class="list-group">
+			<?php foreach ($CookingTimes as $CookingTime) {?>
+				<div class="input-group">
+				      <span class="input-group-addon">
+				        <input type="checkbox" value = "<?php echo 'Time'.$CookingTime; ?>" onclick = "toggleFilter('<?php echo 'Time'.$CookingTime;?>', this)"> <?php echo $CookingTime. " minutes"; ?>
+				      </span>
+				</div>
+			<?php } ?>
+		</ul>
+	</div>
+</div>	
+
+<script type="text/javascript">
+var checkedLog = new Array();
+function toggleFilter(className, checkBoxObject){
+	if (checkBoxObject.checked){
+		checkedLog.push(checkBoxObject.value);	
+	}
+	else{
+		removeValueFromLog(checkBoxObject.value);	
+	}
+
+	var elements = document.getElementsByClassName("recipe_list");
+	for (var i = 0; i < elements.length; i++) {
+		filterItem(elements[i]);
+	}	
+}
+
+function filterItem(recipe){
+	var classList = recipe.className.split(/\s+/);
+	var visible = false;
+
+	for (var i = classList.length - 1; i >= 0; i--) {
+		for (var j = checkedLog.length - 1; j >= 0; j--) {
+			if (checkedLog[j] == classList[i]){
+				visible = true;
+			}
+		}
+	}
+
+	if (visible == true){
+		$(recipe).removeClass("hidden");
+	}
+	else{
+		if (checkedLog.length == 0){
+			$(recipe).removeClass("hidden");
+		}
+		else{
+			$(recipe).addClass("hidden");	
+		}
+	}
+}
+
+function removeValueFromLog(cbValue){
+	var deletedOne = false;
+	for (var i = checkedLog.length - 1; i >= 0; i--) {
+		if (checkedLog[i] == cbValue && deletedOne == false){
+			checkedLog.splice(i, 1);
+			deletedOne = true;
+		}
+	};
+}
+</script>
