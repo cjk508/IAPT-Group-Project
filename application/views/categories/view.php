@@ -4,50 +4,18 @@ $(document).ready(function(){
 	 $(".ingr-tooltip").tooltip();
 });
 </script>
-<?php
-$CookingTimes = array ();
-$Servings = array ();
-$AllCategories = array ();
+<?php 
+	$CookingTimes = array();
+	$Servings = array();
+	$AllCategories = array();
 ?>
 <div class="panel panel-default category-box pull-right">
 	<div class="panel-heading">
 		<h3 class="" style="margin-bottom: 0px;">Category - <?php echo $searchCategory; ?></h3>
 	</div>
-	<div class="panel-body category-body">
+	<div class="panel-body category-body">	
 		<ul class="media-list">
 			<?php foreach($category_items as $category_item) {?>
-<<<<<<< HEAD
-			<li
-				class="recipe_list row blue-glow <?php
-				$tempAllCategories = $category_item->getCategory ();
-				foreach ( $tempAllCategories as $tempAllCategory ) {
-					echo $tempAllCategory->getCategoryName () . ' ';
-				}
-				echo ' Serves' . $category_item->getServings () . ' Time' . $category_item->getRecipeCookTime ();
-				
-				array_push ( $CookingTimes, $category_item->getRecipeCookTime () );
-				array_push ( $AllCategories, $tempAllCategory->getCategoryName () );
-				array_push ( $Servings, $category_item->getServings () );
-				?>">
-				<div class="col-md-2">
-					<a class="pull-left"
-						href="<?php echo site_url('recipe/'.$category_item->getID()); ?>">
-						<img class="thumbnail category-media-object blue-glow"
-						alt="<?php echo $category_item->getImageAlt()?>"
-						src="<?php echo base_url('assets/images/')."/".$category_item->getImage();?>">
-					</a>
-				</div>
-				<div class="col-md-8">
-					<a
-						href="<?php echo site_url('recipe/'.$category_item->getID()); ?>">
-						<h4 class="media-heading"><?php echo $category_item->getTitle();?></h4>
-					</a>
-					<p><?php echo $category_item->getDescription(); ?></p>
-					<p>
-						<i>Serves <?php echo $category_item->getServings();?></i>
-					</p>
-					 <?php
-=======
 			<li class="recipe_list row blue-glow <?php
 				$tempAllCategories = $category_item->getCategory();
 				foreach ($tempAllCategories as $tempAllCategory) {
@@ -56,7 +24,7 @@ $AllCategories = array ();
 				}
 				echo ' Serves'. $category_item->getServings() .' Time' . $category_item->getRecipeCookTime();
 				array_push($CookingTimes, $category_item->getRecipeCookTime());
-				
+
 				array_push($Servings, $category_item->getServings());
 			?>"><a class="pull-left"
 				href="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <img
@@ -94,7 +62,6 @@ $AllCategories = array ();
 						
 				</a>
 					<?php
->>>>>>> 91cf24ffb51012f47c4c096bcb166051591fdd65
 				$sessionData = $this->session->all_userdata ();
 
 					foreach ( $category_item->getIngredientPools () as $pool ) {
@@ -112,27 +79,9 @@ $AllCategories = array ();
 						</ul>"><?php echo $pool->getTitle();?> <span class="glyphicon glyphicon-info-sign"> </span></a>
 							<?php
 						}
-<<<<<<< HEAD
-						?>
-									<a href="#" class="ingr-tooltip" data-html="true"
-						data-toggle="tooltip" data-placement="auto bottom"
-						data-container="body" title="<?php echo $ingredList."</ul>"?>">Ingredients...
-						<span class="glyphicon glyphicon-info-sign"> </span>
-					</a>
-								<?php
-					}
-				}
-				?>
-				</div>
-				<div class="col-md-2">
-					<button class="btn btn-primary category-button" name='Go to individual recipe page'
-						value='Cook <?php echo $category_item->getTitle(); ?>'
-						onclick="window.location='<?php echo site_url('recipe/'.$category_item->getID()) ?>';">Cook</button>
-=======
 					}
 					?>
 					</span>
->>>>>>> 91cf24ffb51012f47c4c096bcb166051591fdd65
 				</div>
 				<span class="button-box pull-right">
 						<button class="btn btn-primary" name='Cook'
@@ -147,29 +96,9 @@ $AllCategories = array ();
 	</div>
 </div>
 <div class="panel panel-default filter-box">
-	<div class="panel-heading">
-		<h3 style="margin-bottom: 0px;">Filtering Options</h3>
+	<div class = "panel-heading"> 
+		<h3 style ="margin-bottom: 0px;">Filtering Options</h3>
 	</div>
-<<<<<<< HEAD
-	<?php
-	// Remove all duplicate values for the array, leaving just one instance of each filtering option
-	$AllCategories = array_unique ( $AllCategories );
-	$Servings = array_unique ( $Servings );
-	$CookingTimes = array_unique ( $CookingTimes );
-	?>
-	<div class="panel-body ">
-		<h4>Category</h4>
-		<ul class="list-group">
-			<?php
-			
-foreach ( $AllCategories as $AllCategory ) {
-				if ($AllCategory != $comparisonCategory) {
-					?>
-				<div class="input-group">
-				<span class="input-group-addon"> <input type="checkbox"
-					value="<?php echo $AllCategory; ?>"
-					onclick="toggleFilter('<?php echo $AllCategory; ?>', this)"> <?php echo $AllCategory; ?>
-=======
 	<?php 
 		//Remove all duplicate values for the array, leaving just one instance of each filtering option
 		$AllCategories = array_unique($AllCategories, SORT_STRING);
@@ -188,14 +117,10 @@ foreach ( $AllCategories as $AllCategory ) {
 				<div class="input-group">
 				      <span class="input-group-addon">
 				        <input type="checkbox" value = "<?php echo $AllCategory->getCategoryName(); ?>" onclick="toggleFilter('<?php echo $AllCategory->getCategoryName(); ?>', this)"> <?php echo $AllCategory->getCategoryDisplayName(); ?>
->>>>>>> 91cf24ffb51012f47c4c096bcb166051591fdd65
 				      </span>
-			</div>
-			<?php
-				
-}
-			}
-			?>
+				</div>
+			<?php }
+			} ?>
 		</ul>
 		<?php }
 		if (sizeof($Servings) > 0){?>
@@ -203,11 +128,10 @@ foreach ( $AllCategories as $AllCategory ) {
 		<ul class="list-group">
 			<?php foreach ($Servings as $Serving) {?>
 				<div class="input-group">
-				<span class="input-group-addon"> <input type="checkbox"
-					value="<?php echo 'Serves'.$Serving; ?>"
-					onclick="toggleFilter('<?php echo 'Serves'.$Serving; ?>', this)"> <?php echo $Serving; ?>
+				      <span class="input-group-addon">
+				        <input type="checkbox" value = "<?php echo 'Serves'.$Serving; ?>" onclick="toggleFilter('<?php echo 'Serves'.$Serving; ?>', this)"> <?php echo $Serving; ?>
 				      </span>
-			</div>
+				</div>
 			<?php } ?>
 		</ul>
 		<?php }
@@ -216,16 +140,15 @@ foreach ( $AllCategories as $AllCategory ) {
 		<ul class="list-group">
 			<?php foreach ($CookingTimes as $CookingTime) {?>
 				<div class="input-group">
-				<span class="input-group-addon"> <input type="checkbox"
-					value="<?php echo 'Time'.$CookingTime; ?>"
-					onclick="toggleFilter('<?php echo 'Time'.$CookingTime;?>', this)"> <?php echo $CookingTime. " minutes"; ?>
+				      <span class="input-group-addon">
+				        <input type="checkbox" value = "<?php echo 'Time'.$CookingTime; ?>" onclick = "toggleFilter('<?php echo 'Time'.$CookingTime;?>', this)"> <?php echo $CookingTime. " minutes"; ?>
 				      </span>
-			</div>
+				</div>
 			<?php } ?>
 		</ul>
 		<?php } ?>
 	</div>
-</div>
+</div>	
 
 <script type="text/javascript">
 var categoryLog = new Array();
