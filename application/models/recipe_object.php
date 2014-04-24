@@ -94,4 +94,7 @@ class Recipe_object {
 		}
 		return $pools;
 	}
+	public function __toString() {
+	    return $this->recipe_id;
+	}
 }

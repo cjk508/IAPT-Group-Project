@@ -23,11 +23,11 @@ class Search extends CI_Controller {
 			
 			$recipe_Results = $this->recipes_model->recipe_Search ( $search_term );
 			if (is_array ( $ingredient_Results ) and is_array ( $recipe_Results )) {
-				$data ['searchValues'] = array_merge ( $ingredient_Results, $recipe_Results );
+				$data ['searchValues'] = array_unique(array_merge ( $ingredient_Results, $recipe_Results ));
 			} else if (is_array ( $ingredient_Results )) {
-				$data ['searchValues'] = $ingredient_Results;
+				$data ['searchValues'] = array_unique($ingredient_Results);
 			} else if (is_array ( $recipe_Results )) {
-				$data ['searchValues'] = $recipe_Results;
+				$data ['searchValues'] = array_unique($recipe_Results);
 			} else {
 				$data ['searchValues'] = null;
 			}
