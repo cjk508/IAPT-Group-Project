@@ -15,7 +15,7 @@
 		}
 		else{
 			foreach($searchValues as $searchValue) {?>
-			<li class="media recipe_list <?php
+			<li class="recipe_list row blue-glow <?php
 				$tempAllCategories = $searchValue->getCategory();
 				foreach ($tempAllCategories as $tempAllCategory) {
 					echo $tempAllCategory->getCategoryName(). ' ';
@@ -32,14 +32,34 @@
 					alt="">
 			</a> <span class="media-body"> <a
 					href="<?php echo site_url('recipe/'.$searchValue->getID()); ?>">
-						<h4 class="media-heading"><?php echo $searchValue->getTitle();?></h4>
-						<div class="servings">Serves <?php echo $searchValue->getServings();?></div>
+					<div class = "recipe_info_box">	
+						<h4 class="media-heading"><?php echo $searchValue->getTitle();?></h4></a>
+						<p><?php echo $searchValue->getDescription(); ?></p>
+						<p class="servings">Serves <?php echo $searchValue->getServings();?></p>
+						<p> <span class = "glyphicon glyphicon-tags"></span>
+						<?php
+							$forCount = 0;
+							foreach ($searchValue->getCategory() as $cat) {
+								$url = $cat->getCategoryName();
+								$display_name = $cat->getCategoryDisplayName();
+								?>
+								<a href = '<?php echo base_url()?>category/<?php echo $url; ?>'>
+								<?php
+									echo $display_name; 
+									echo '; ';
+									echo "</a>";
+
+							}
+						?>
+						</p>
+						<p>
+							<span class="glyphicon glyphicon-time"></span>
+						<?php
+							echo $searchValue->getRecipeCookTime();
+						?> mins.
+						</p>
 						
-				</a> <span class="button-box pull-right">
-						<button class="btn btn-primary" name='Cook'
-							value='Cook <?php echo $searchValue->getTitle(); ?>'
-							onclick="window.location='<?php echo site_url('recipe/'.$searchValue->getID()) ?>';">Cook</button>
-				</span>
+				</a>
 					<?php
 				$sessionData = $this->session->all_userdata ();
 
@@ -55,13 +75,18 @@
 								data-html="true" data-toggle="tooltip" data-placement="bottom"
 								title="<?php echo $ingredList ?></li>
 						
-						</ul>">Ingredients... <span class="glyphicon glyphicon-info-sign"> </span></a>
+						</ul>"><?php echo $pool->getTitle();?><span class="glyphicon glyphicon-info-sign"> </span></a>
 							<?php
 						}
 					}
 					?>
 					</span>
-
+				</div>
+				<span class="button-box pull-right">
+						<button class="btn btn-primary" name='Cook'
+							value='Cook <?php echo $searchValue->getTitle(); ?>'
+							onclick="window.location='<?php echo site_url('recipe/'.$searchValue->getID()) ?>';">Cook Recipe</button>
+				</span>
 			</li>
 				<?php } ?>
 			</ul>

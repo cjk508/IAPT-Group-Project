@@ -5,7 +5,7 @@ $sessionData = $this->session->all_userdata ();
 // if there is no session data then set the value to null
 if (! isset ( $sessionData ['viewType'] )) {
 	$sessionData = array (
-			'viewType' => 'null' 
+			'viewType' => SEGMENTED 
 	);
 	
 	$this->session->set_userdata ( $sessionData );

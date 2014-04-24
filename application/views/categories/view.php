@@ -16,6 +16,7 @@ $AllCategories = array ();
 	<div class="panel-body category-body">
 		<ul class="media-list">
 			<?php foreach($category_items as $category_item) {?>
+<<<<<<< HEAD
 			<li
 				class="recipe_list row blue-glow <?php
 				$tempAllCategories = $category_item->getCategory ();
@@ -46,13 +47,72 @@ $AllCategories = array ();
 						<i>Serves <?php echo $category_item->getServings();?></i>
 					</p>
 					 <?php
+=======
+			<li class="recipe_list row blue-glow <?php
+				$tempAllCategories = $category_item->getCategory();
+				foreach ($tempAllCategories as $tempAllCategory) {
+					echo $tempAllCategory->getCategoryName(). ' ';
+					array_push($AllCategories, $tempAllCategory );
+				}
+				echo ' Serves'. $category_item->getServings() .' Time' . $category_item->getRecipeCookTime();
+				array_push($CookingTimes, $category_item->getRecipeCookTime());
+				
+				array_push($Servings, $category_item->getServings());
+			?>"><a class="pull-left"
+				href="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <img
+					class="category-media-object"
+					src="<?php echo base_url('assets/images/')."/".$category_item->getImage();?> "
+					alt="">
+			</a> <span class="media-body"> <a
+					href="<?php echo site_url('recipe/'.$category_item->getID()); ?>">
+					<div class = "recipe_info_box">	
+						<h4 class="media-heading"><?php echo $category_item->getTitle();?></h4></a>
+						<p><?php echo $category_item->getDescription(); ?></p>
+						<p class="servings">Serves <?php echo $category_item->getServings();?></p>
+						<p> <span class = "glyphicon glyphicon-tags"></span>
+						<?php
+							$forCount = 0;
+							foreach ($category_item->getCategory() as $cat) {
+								$url = $cat->getCategoryName();
+								$display_name = $cat->getCategoryDisplayName();
+								?>
+								<a href = '<?php echo base_url()?>category/<?php echo $url; ?>'>
+								<?php
+									echo $display_name; 
+									echo '; ';
+									echo "</a>";
+
+							}
+						?>
+						</p>
+						<p>
+							<span class="glyphicon glyphicon-time"></span>
+						<?php
+							echo $category_item->getRecipeCookTime();
+						?> mins.
+						</p>
+						
+				</a>
+					<?php
+>>>>>>> 91cf24ffb51012f47c4c096bcb166051591fdd65
 				$sessionData = $this->session->all_userdata ();
-				foreach ( $category_item->getIngredientPools () as $pool ) {
-					if ($pool->getDifficulty () == $sessionData ['viewType']) {
-						$ingredList = "<ul>";
-						foreach ( $pool->getIngredients () as $ingredient ) {
-							$ingredList = $ingredList . "<li>" . $ingredient . "</li>";
+
+					foreach ( $category_item->getIngredientPools () as $pool ) {
+						if ($pool->getDifficulty () == $sessionData ['viewType']) {
+							?>
+							<?php
+							$ingredList = "<ul>";
+							foreach ( $pool->getIngredients () as $ingredient ) {
+									$ingredList = $ingredList . " </li><li>" . $ingredient;
+							}?>
+								<a href="#"
+								data-html="true" data-toggle="tooltip" data-placement="bottom"
+								title="<?php echo $ingredList ?></li>
+						
+						</ul>"><?php echo $pool->getTitle();?> <span class="glyphicon glyphicon-info-sign"> </span></a>
+							<?php
 						}
+<<<<<<< HEAD
 						?>
 									<a href="#" class="ingr-tooltip" data-html="true"
 						data-toggle="tooltip" data-placement="auto bottom"
@@ -68,9 +128,20 @@ $AllCategories = array ();
 					<button class="btn btn-primary category-button" name='Go to individual recipe page'
 						value='Cook <?php echo $category_item->getTitle(); ?>'
 						onclick="window.location='<?php echo site_url('recipe/'.$category_item->getID()) ?>';">Cook</button>
+=======
+					}
+					?>
+					</span>
+>>>>>>> 91cf24ffb51012f47c4c096bcb166051591fdd65
 				</div>
+				<span class="button-box pull-right">
+						<button class="btn btn-primary" name='Cook'
+							value='Cook <?php echo $category_item->getTitle(); ?>'
+							onclick="window.location='<?php echo site_url('recipe/'.$category_item->getID()) ?>';">Cook Recipe</button>
+				</span>
 			</li>
-			<?php } ?>
+				<?php } ?>
+
 		</ul>
 
 	</div>
@@ -79,6 +150,7 @@ $AllCategories = array ();
 	<div class="panel-heading">
 		<h3 style="margin-bottom: 0px;">Filtering Options</h3>
 	</div>
+<<<<<<< HEAD
 	<?php
 	// Remove all duplicate values for the array, leaving just one instance of each filtering option
 	$AllCategories = array_unique ( $AllCategories );
@@ -97,6 +169,26 @@ foreach ( $AllCategories as $AllCategory ) {
 				<span class="input-group-addon"> <input type="checkbox"
 					value="<?php echo $AllCategory; ?>"
 					onclick="toggleFilter('<?php echo $AllCategory; ?>', this)"> <?php echo $AllCategory; ?>
+=======
+	<?php 
+		//Remove all duplicate values for the array, leaving just one instance of each filtering option
+		$AllCategories = array_unique($AllCategories, SORT_STRING);
+		$Servings = array_unique($Servings);
+		$CookingTimes = array_unique($CookingTimes);
+	?>
+	<div class = "panel-body ">
+		<?php
+
+		if (sizeof($AllCategories) > 1 ){
+		?>
+		<h4>Category</h4>
+		<ul class="list-group">
+			<?php foreach ($AllCategories as $AllCategory) {
+				if ($AllCategory->getCategoryDisplayName() != $searchCategory){?>
+				<div class="input-group">
+				      <span class="input-group-addon">
+				        <input type="checkbox" value = "<?php echo $AllCategory->getCategoryName(); ?>" onclick="toggleFilter('<?php echo $AllCategory->getCategoryName(); ?>', this)"> <?php echo $AllCategory->getCategoryDisplayName(); ?>
+>>>>>>> 91cf24ffb51012f47c4c096bcb166051591fdd65
 				      </span>
 			</div>
 			<?php
@@ -105,6 +197,8 @@ foreach ( $AllCategories as $AllCategory ) {
 			}
 			?>
 		</ul>
+		<?php }
+		if (sizeof($Servings) > 0){?>
 		<h4>Servings</h4>
 		<ul class="list-group">
 			<?php foreach ($Servings as $Serving) {?>
@@ -116,6 +210,8 @@ foreach ( $AllCategories as $AllCategory ) {
 			</div>
 			<?php } ?>
 		</ul>
+		<?php }
+		if (sizeof($CookingTimes) > 0 ){?>
 		<h4>Prep Time</h4>
 		<ul class="list-group">
 			<?php foreach ($CookingTimes as $CookingTime) {?>
@@ -127,6 +223,7 @@ foreach ( $AllCategories as $AllCategory ) {
 			</div>
 			<?php } ?>
 		</ul>
+		<?php } ?>
 	</div>
 </div>
 
