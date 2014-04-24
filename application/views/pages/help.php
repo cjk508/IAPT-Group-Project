@@ -9,12 +9,12 @@
 			presentation style at any time, even</p>
 
 		<ul>
-			<li><b>Whole</b> - This presentation style simply displays the recipe
-				instructions as a whole block of text.</li>
-			<li><b>Segmented</b> - The instructions are separated out into
+			<li><b>Advanced</b> - This presentation style simply displays the
+				recipe instructions as a whole block of text.</li>
+			<li><b>Intermediate</b> - The instructions are separated out into
 				several combined steps.</li>
-			<li><b>Finely cut</b> - For those who are relatively new to cooking
-				or prefer to simply take it step-by-step, the finely cut option
+			<li><b>Novice</b> - For those who are relatively new to cooking or
+				prefer to simply take it step-by-step, the finely cut option
 				separates the recipe instructions into clear, easy to follow steps.
 			</li>
 		</ul>
@@ -25,12 +25,24 @@
 				press 's' and start searching away for your desired meal.</li>
 			<li><b>Instructions</b> - If you don't want to get your
 				mouse/trackpad dirty by having to click next, you can use the arrow
-				keys or alternatively enable voice control to skip steps by saying
-				"next step".</li>
+				keys or alternatively enable voice control - you can read more about
+				that feature below.</li>
 			<li><b>Surprise me</b> - If you're stuck for choice or want to
 				challenge yourself to cook something out of your comfort zone, try
-				using the Surprise Me ! (link?) function in the navigation bar to
+				using the <i>Surprise Me!</i> function in the navigation bar to
 				select a meal at random.</li>
+		</ul>
+		<h4>Voice control of recipes:</h4>
+		You can change the current step of your recipes through voice control.
+		First, you'll need to select either the Intermediate or Novice
+		presentation styles - only they can be controlled through voice. After
+		that, you'll be able to enable voice control from a button right of
+		the recipe title. You can use the following commands to control the
+		recipes:
+		<ul>
+			<li><b>Next</b> - skip a step</li>
+			<li><b>Previous</b> - go a step back.</li>
+			<li><b>Go to start</b> - go to the first step of the recipe.</li>
 		</ul>
 	</div>
 </div>

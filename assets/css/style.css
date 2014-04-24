@@ -170,15 +170,15 @@ footer {
 
 .category-box {
 	height: 80%;
-	overflow-y:scroll;
-	width:74%;
+	overflow-y: scroll;
+	width: 74%;
 }
 
-.filter-box{
+.filter-box {
 	height: 80%;
-	overflow-y:scroll;
+	overflow-y: scroll;
 	width: 24%;
-	float:right;
+	float: right;
 	margin-right: 1%;
 }
 
@@ -187,7 +187,8 @@ footer {
 	width: 49%;
 	display: inline-block;
 }
-.hidden{
+
+.hidden {
 	display: none;
 }
 
@@ -289,6 +290,6 @@ hr {
 	left: 0;
 }
 
-#collapseOne {
-	
+.category-button {
+	margin-top: 32px; 	
 }

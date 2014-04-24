@@ -51,15 +51,30 @@ $(document).ready(function() {
 
 	 $(document).ready(function() {		
 		<?php
-		// Alerts.
+		// Code to display alert on type change.
+		// This isn't working as well as it should, because a page refresh clears out
+		// the notification too soon.
 		foreach ( unserialize ( DIFFICULTIES ) as $item ) {
-			?>			
+			switch ($item) {
+				case NARRATIVE :
+					$display = "Advanced";
+					break;
+				
+				case SEGMENTED :
+					$display = "Intermediate";
+					break;
+				
+				case STEP :
+					$display = "Novice";
+					break;
+			}
+			?> // Push some javascript to create the alert. 
 		    $("#<?php echo $item ?>").click(function() {
 			    var current = <?php echo $sessionData ['viewType'] ?>; 
 		    	$.post(window.location.object, {viewType: "<?php echo $item ?>"}, function() {
 				    window.location.reload(true);		    								
 		    	    if (<?php echo $item ?> !== current) {
-		    	    	newAlert('alert-info', 'Your new view type is <?php echo $item ?>');
+		    	    	newAlert('alert-info', 'Your new view type is <?php echo $display ?>');
 					}
 				}); 
 			});
@@ -105,7 +120,7 @@ $(document).ready(function() {
 				<?php }?>
 				  </ul></li>
 
-						<li><a data-toggle="tooltip" data-placement="bottom"
+						<li><a id="surprise" data-toggle="tooltip" data-placement="bottom"
 							title="Pick a recipe completely at random."
 							href="<?php echo site_url('recipe/'.$headerSurprise->getID()); ?>">
 								Surprise Me! </a></li>
@@ -122,10 +137,10 @@ $(document).ready(function() {
 							'value' => set_value ( 'search' ),
 							'class' => "form-control",
 							'role' => 'search',
-							'label' => 'search',
+							'label' => 'Search website for a meal or ingredient, e.g. lime.',
 							'rules' => 'required',
 							'id' => 'search',
-							'placeholder' => 'Search recipe/ingredient e.g. lime' 
+							'placeholder' => 'Search meal/ingredient' 
 					);
 					echo form_input ( $data );
 					
@@ -152,7 +167,7 @@ $(document).ready(function() {
 				echo_type_depend ( "Novice", $sessionData, STEP );
 				?>
 							<b class="caret"></b>
-						</a> </a>
+						</a> </a> <!-- Presentation styles dropdown menu -->
 							<ul class="dropdown-menu" role="menu">
 								<li><a id="<?php echo NARRATIVE ?>" href="#"
 									data-toggle="tooltip" data-html="true" data-placement="right"
@@ -173,5 +188,6 @@ $(document).ready(function() {
 		</nav>
 		<!-- End navigation -->
 	</header>
+	<!-- Empty div used to push the alerts to.  -->
 	<div id="alert-area"></div>
 	<div class="wrapper">

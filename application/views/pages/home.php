@@ -66,7 +66,7 @@ else {
 					</div>
 					<h4>
 					<?php echo $mostRecents[0]->getTitle(); ?>
-						<small>Serves <?php echo $mostRecents[0]->getServings();?> ;<span
+						<small> ;<span
 							class="glyphicon glyphicon-tags"> </span>   
 							<?php
 	
@@ -82,10 +82,10 @@ else {
 		}
 		?>
 							<?php } ?>
+				</a>; Serves <?php echo $mostRecents[0]->getServings();?>;
 							<span class="glyphicon glyphicon-time"></span> <?php echo $mostRecents [0]->getRecipeCookTime()?> min.
 						</small>
 					</h4>
-				</a>
 			</div>
 			<div class="otherFour col-md-6">
 			<?php
@@ -113,7 +113,7 @@ else {
 
 								<h4>
 							<?php echo $mostRecents[$i]->getTitle(); ?>
-								<small>Serves <?php echo $mostRecents[$i]->getServings();?> ;<span
+								<small><span
 										class="glyphicon glyphicon-tags"> </span>   
 									<?php
 			$forCount = 0;
@@ -130,7 +130,7 @@ else {
 				}
 				?>
 
-										</a>
+										</a>; Serves <?php echo $mostRecents[$i]->getServings();?>;
 									<?php } ?>
 									<span class="glyphicon glyphicon-time"></span> <?php echo $mostRecents [$i]->getRecipeCookTime()?> min.
 								</small>

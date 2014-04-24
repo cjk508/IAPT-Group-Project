@@ -18,6 +18,8 @@ $(document).ready(function(){
 				    	$("#next_step").trigger("click");
 				    }, 'previous': function() {
 				    	$("#previous_step").trigger("click");
+				    }, 'go to start': function() {
+				    	$("#reset_steps").trigger("click");
 				    }, 'go to top': function() {
 				    	$("#reset_steps").trigger("click");
 				    }
@@ -54,9 +56,8 @@ function isSelected($type) {
 }
 ?>
 <!-- Header of recipe, containing title, categories, preparation time, voice control button -->
-		<h3><?php echo  $recipe_item->getTitle()?> <small>
-				Serves <?php echo $recipe_item->getServings();?> ;
-				<span class="glyphicon glyphicon-tags"> </span>   <?php
+		<h3><?php echo  $recipe_item->getTitle()?> <small> <span
+				class="glyphicon glyphicon-tags"> </span>   <?php
 				foreach ( $recipe_item->getCategory () as $cat ) {
 					$display_name = $cat->getCategoryDisplayName ();
 					$url = $cat->getCategoryName ();
@@ -69,8 +70,7 @@ function isSelected($type) {
 						echo '; ';
 					}
 					?>
-
-					</a>
+					</a> Serves <?php echo $recipe_item->getServings();?>;
 					
 				<?php
 				}
@@ -99,4 +99,5 @@ function isSelected($type) {
 		require_once 'preparation_panel.php';
 		?>
 </div>
-</div><!-- End recipe panel.  -->
+</div>
+<!-- End recipe panel.  -->

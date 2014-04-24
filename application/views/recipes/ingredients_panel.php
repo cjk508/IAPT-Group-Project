@@ -53,6 +53,7 @@ $(document).ready(function(){
 						<div class="panel panel-default">
 							<div class="panel-body">
 				<?php
+				
 				// For every ingredient pool, print its recipes.
 				$pools = $recipe_item->getIngredientPool ( $GLOBALS ['user_type'] );
 				$count = - 1;
