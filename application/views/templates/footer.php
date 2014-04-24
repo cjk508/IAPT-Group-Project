@@ -1,4 +1,4 @@
-</div>
+</main>
 <!-- Wrapper class end -->
 </body>
 <footer>
