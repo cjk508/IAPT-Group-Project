@@ -3,6 +3,14 @@
 	$Servings = array();
 	$AllCategories = array();
 ?>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".category-box").css({"max-height": $(window).height()*0.78});
+	$(".filter-box").css({"min-height": $(".category-box").height()});
+	$(".ingr-tooltip").tooltip();
+});
+</script>
 <div class="panel panel-default  category-box pull-right">
 	<div class="panel-heading">
 		<h3 style = "margin-bottom: 0px;">Search Results</h3>
