@@ -175,7 +175,7 @@ footer {
 }
 
 .filter-box {
-	height: 80%;
+	/* height: 80%; */
 	overflow-y: scroll;
 	width: 24%;
 	float: right;
@@ -231,7 +231,7 @@ img.media-object {
 
 .featuredRecipe img {
 	max-width: 100%;
-	min-height: 100%;
+	min-height: 372px;
 }
 
 .featuredRecipe {
@@ -295,4 +295,8 @@ hr {
 
 .category-button {
 	margin-top: 32px; 	
+}
+
+.filter-box h4:hover {
+	text-decoration: none; 
 }

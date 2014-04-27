@@ -1,154 +1,175 @@
 <script type="text/javascript">
 $(document).ready(function(){
-	$(".category-box").css({"max-height": $(window).height()*0.83});
-	 $(".ingr-tooltip").tooltip();
+	$(".category-box").css({"max-height": $(window).height()*0.78});
+	$(".filter-box").css({"min-height": $(".category-box").height()});
+	$(".ingr-tooltip").tooltip();
 });
 </script>
-<?php 
-	$CookingTimes = array();
-	$Servings = array();
-	$AllCategories = array();
+<?php
+$CookingTimes = array ();
+$Servings = array ();
+$AllCategories = array ();
 ?>
 <div class="panel panel-default category-box pull-right">
 	<div class="panel-heading">
 		<h3 class="" style="margin-bottom: 0px;">Category - <?php echo $searchCategory; ?></h3>
 	</div>
-	<div class="panel-body category-body">	
+	<div class="panel-body category-body">
 		<ul class="media-list">
 			<?php foreach($category_items as $category_item) {?>
-			<li class="recipe_list row blue-glow <?php
-				$tempAllCategories = $category_item->getCategory();
-				foreach ($tempAllCategories as $tempAllCategory) {
-					echo $tempAllCategory->getCategoryName(). ' ';
-					array_push($AllCategories, $tempAllCategory );
+			<li
+				class="recipe_list row blue-glow <?php
+				$tempAllCategories = $category_item->getCategory ();
+				foreach ( $tempAllCategories as $tempAllCategory ) {
+					echo $tempAllCategory->getCategoryName () . ' ';
+					array_push ( $AllCategories, $tempAllCategory );
 				}
-				echo ' Serves'. $category_item->getServings() .' Time' . $category_item->getRecipeCookTime();
-				array_push($CookingTimes, $category_item->getRecipeCookTime());
-
-				array_push($Servings, $category_item->getServings());
-			?>"><a class="pull-left"
+				echo ' Serves' . $category_item->getServings () . ' Time' . $category_item->getRecipeCookTime ();
+				array_push ( $CookingTimes, $category_item->getRecipeCookTime () );
+				
+				array_push ( $Servings, $category_item->getServings () );
+				?>"><a class="pull-left"
 				href="<?php echo site_url('recipe/'.$category_item->getID()); ?>"> <img
 					class="category-media-object"
 					src="<?php echo base_url('assets/images/')."/".$category_item->getImage();?> "
 					alt="">
 			</a> <span class="media-body"> <a
 					href="<?php echo site_url('recipe/'.$category_item->getID()); ?>">
-					<div class = "recipe_info_box">	
-						<h4 class="media-heading"><?php echo $category_item->getTitle();?></h4></a>
-						<p><?php echo $category_item->getDescription(); ?></p>
-						<p class="servings">Serves <?php echo $category_item->getServings();?></p>
-						<p> <span class = "glyphicon glyphicon-tags"></span>
-						<?php
-							$forCount = 0;
-							foreach ($category_item->getCategory() as $cat) {
-								$url = $cat->getCategoryName();
-								$display_name = $cat->getCategoryDisplayName();
-								?>
-								<a href = '<?php echo base_url()?>category/<?php echo $url; ?>'>
-								<?php
-									echo $display_name; 
-									echo '; ';
-									echo "</a>";
-
-							}
-						?>
-						</p>
-						<p>
-							<span class="glyphicon glyphicon-time"></span>
-						<?php
-							echo $category_item->getRecipeCookTime();
-						?> mins.
-						</p>
-						
+						<div class="recipe_info_box">
+							<h4 class="media-heading"><?php echo $category_item->getTitle();?></h4>
+				
 				</a>
+					<p><?php echo $category_item->getDescription(); ?></p>
+					<p class="servings"><i>Serves <?php echo $category_item->getServings();?></i></p>
+					<p>
+						In Categories: <span class="glyphicon glyphicon-tags"></span>
+						<?php
+				$forCount = 0;
+				foreach ( $category_item->getCategory () as $cat ) {
+					$url = $cat->getCategoryName ();
+					$display_name = $cat->getCategoryDisplayName ();
+					?>
+								<a href='<?php echo base_url()?>category/<?php echo $url; ?>'>
+								<?php
+					echo $display_name;
+					echo '; ';
+					echo "</a>";
+				}
+				?>
+						
+					
+					</p>
+					<p>
+						Cooking time: <span class="glyphicon glyphicon-time"></span>
+						<?php
+				echo $category_item->getRecipeCookTime ();
+				?> mins.
+						</p> </a>Ingredients: 
 					<?php
 				$sessionData = $this->session->all_userdata ();
-
-					foreach ( $category_item->getIngredientPools () as $pool ) {
-						if ($pool->getDifficulty () == $sessionData ['viewType']) {
-							?>
+				
+				foreach ( $category_item->getIngredientPools () as $pool ) {
+					if ($pool->getDifficulty () == $sessionData ['viewType']) {
+						?>
 							<?php
-							$ingredList = "<ul>";
-							foreach ( $pool->getIngredients () as $ingredient ) {
-									$ingredList = $ingredList . " </li><li>" . $ingredient;
-							}?>
-								<a href="#"
-								data-html="true" data-toggle="tooltip" data-placement="bottom"
-								title="<?php echo $ingredList ?></li>
-						
-						</ul>"><?php echo $pool->getTitle();?> <span class="glyphicon glyphicon-info-sign"> </span></a>
-							<?php
+						$ingredList = "<ul>";
+						foreach ( $pool->getIngredients () as $ingredient ) {
+							$ingredList = $ingredList . " </li><li>" . $ingredient;
 						}
+						?>
+								<a href="#" data-html="true" data-toggle="tooltip"
+					data-placement="bottom" title="<?php echo $ingredList ?></li>
+		
+		</ul>"><?php echo $pool->getTitle();?> <span
+			class="glyphicon glyphicon-info-sign"> </span></a>
+							<?php
 					}
-					?>
+				}
+				?>
 					</span>
-				</div>
-				<span class="button-box pull-right">
-						<button class="btn btn-primary" name='Cook'
-							value='Cook <?php echo $category_item->getTitle(); ?>'
-							onclick="window.location='<?php echo site_url('recipe/'.$category_item->getID()) ?>';">Cook Recipe</button>
-				</span>
-			</li>
+	</div>
+	<span class="button-box pull-right">
+		<button class="btn btn-primary" name='Cook'
+			value='Cook <?php echo $category_item->getTitle(); ?>'
+			onclick="window.location='<?php echo site_url('recipe/'.$category_item->getID()) ?>';">Cook
+			Recipe</button>
+	</span>
+	</li>
 				<?php } ?>
 
 		</ul>
 
-	</div>
+</div>
 </div>
 <div class="panel panel-default filter-box">
-	<div class = "panel-heading"> 
-		<h3 style ="margin-bottom: 0px;">Filtering Options</h3>
+	<div class="panel-heading">
+		<h3 style="margin-bottom: 0px;">Filtering Options</h3>
 	</div>
-	<?php 
-		//Remove all duplicate values for the array, leaving just one instance of each filtering option
-		$AllCategories = array_unique($AllCategories, SORT_STRING);
-		$Servings = array_unique($Servings);
-		$CookingTimes = array_unique($CookingTimes);
+	<?php
+	// Remove all duplicate values for the array, leaving just one instance of each filtering option
+	$AllCategories = array_unique ( $AllCategories, SORT_STRING );
+	$Servings = array_unique ( $Servings );
+	$CookingTimes = array_unique ( $CookingTimes );
 	?>
-	<div class = "panel-body ">
+	<div class="panel-body ">
 		<?php
-
-		if (sizeof($AllCategories) > 1 ){
-		?>
+		
+		if (sizeof ( $AllCategories ) > 1) {
+			?>
 		<h4>Category</h4>
 		<ul class="list-group">
-			<?php foreach ($AllCategories as $AllCategory) {
-				if ($AllCategory->getCategoryDisplayName() != $searchCategory){?>
+			<?php
+			
+foreach ( $AllCategories as $AllCategory ) {
+				if ($AllCategory->getCategoryDisplayName () != $searchCategory) {
+					?>
 				<div class="input-group">
-				      <span class="input-group-addon">
-				        <input type="checkbox" value = "<?php echo $AllCategory->getCategoryName(); ?>" onclick="toggleFilter('<?php echo $AllCategory->getCategoryName(); ?>', this)"> <?php echo $AllCategory->getCategoryDisplayName(); ?>
+				<span class="input-group-addon"> <input type="checkbox"
+					value="<?php echo $AllCategory->getCategoryName(); ?>"
+					onclick="toggleFilter('<?php echo $AllCategory->getCategoryName(); ?>', this)"> <?php echo $AllCategory->getCategoryDisplayName(); ?>
 				      </span>
-				</div>
-			<?php }
-			} ?>
+			</div>
+			<?php
+				
+}
+			}
+			?>
 		</ul>
-		<?php }
-		if (sizeof($Servings) > 0){?>
+		<?php
+		
+}
+		if (sizeof ( $Servings ) > 0) {
+			?>
 		<h4>Servings</h4>
 		<ul class="list-group">
 			<?php foreach ($Servings as $Serving) {?>
 				<div class="input-group">
-				      <span class="input-group-addon">
-				        <input type="checkbox" value = "<?php echo 'Serves'.$Serving; ?>" onclick="toggleFilter('<?php echo 'Serves'.$Serving; ?>', this)"> <?php echo $Serving; ?>
+				<span class="input-group-addon"> <input type="checkbox"
+					value="<?php echo 'Serves'.$Serving; ?>"
+					onclick="toggleFilter('<?php echo 'Serves'.$Serving; ?>', this)"> <?php echo $Serving; ?>
 				      </span>
-				</div>
+			</div>
 			<?php } ?>
 		</ul>
-		<?php }
-		if (sizeof($CookingTimes) > 0 ){?>
+		<?php
+		
+}
+		if (sizeof ( $CookingTimes ) > 0) {
+			?>
 		<h4>Prep Time</h4>
 		<ul class="list-group">
 			<?php foreach ($CookingTimes as $CookingTime) {?>
 				<div class="input-group">
-				      <span class="input-group-addon">
-				        <input type="checkbox" value = "<?php echo 'Time'.$CookingTime; ?>" onclick = "toggleFilter('<?php echo 'Time'.$CookingTime;?>', this)"> <?php echo $CookingTime. " minutes"; ?>
+				<span class="input-group-addon"> <input type="checkbox"
+					value="<?php echo 'Time'.$CookingTime; ?>"
+					onclick="toggleFilter('<?php echo 'Time'.$CookingTime;?>', this)"> <?php echo $CookingTime. " minutes"; ?>
 				      </span>
-				</div>
+			</div>
 			<?php } ?>
 		</ul>
 		<?php } ?>
 	</div>
-</div>	
+</div>
 
 <script type="text/javascript">
 var categoryLog = new Array();

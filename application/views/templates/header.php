@@ -28,7 +28,7 @@ $(document).ready(function() {
 	$this->session->set_userdata ( $sessionData );
 }
 ?>
-<html>
+<!DOCTYPE html>
 <head>
 <title>The Cook Book -- Cooking made easy</title>
 	<?php
@@ -89,7 +89,7 @@ $(document).ready(function() {
 	</script>
 </head>
 <body>
-	<header role = "banner"> 
+	<header role="banner">
 		<!-- Header navigation start -->
 		<nav class="navbar navbar-default" role="navigation"
 			style="width: 100%;">
@@ -101,15 +101,16 @@ $(document).ready(function() {
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" accesskey="0" href="<?php echo site_url(); ?>"><h2>The
-							Cook Book</h2></a>
+					<a class="navbar-brand" accesskey="0"
+						href="<?php echo site_url(); ?>"><h2>The Cook Book</h2></a>
 				</div>
 
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="dropdown"><a id="dLabel" role="button"
-							data-toggle="dropdown" href="#" accesskey="1"> Categories <span class="caret"></span>
+							data-toggle="dropdown" href="#" accesskey="1"> Categories <span
+								class="caret"></span>
 						</a>
 							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 				  <?php
@@ -122,8 +123,8 @@ $(document).ready(function() {
 
 						<li><a id="surprise" data-toggle="tooltip" data-placement="bottom"
 							title="Pick a recipe completely at random."
-							href="<?php echo site_url('recipe/'.$headerSurprise->getID()); ?>" accesskey="2">
-								Surprise Me! </a></li>
+							href="<?php echo site_url('recipe/'.$headerSurprise->getID()); ?>"
+							accesskey="2"> Surprise Me! </a></li>
 					</ul>
 					<?php
 					$attributes = array (
@@ -190,4 +191,4 @@ $(document).ready(function() {
 	</header>
 	<!-- Empty div used to push the alerts to.  -->
 	<div id="alert-area"></div>
-	<main role = "main" class="wrapper">
+	<main role="main" class="wrapper">
