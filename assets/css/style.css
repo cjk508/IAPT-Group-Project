@@ -1,3 +1,4 @@
+/*Main CSS file of the cooking application*/
 @font-face {
 	font-family: 'Lobster';
 	src: url('../fonts/Lobster_1.4.otf');
@@ -221,10 +222,12 @@ img.media-object {
 .largeImageRecipes {
 	
 }
-.recipe_info_box{
-	max-width:75%;
+
+.recipe_info_box {
+	max-width: 75%;
 	display: inline-block;
 }
+
 .largeImageRecipes img {
 	max-width: 100%;
 }
@@ -294,9 +297,9 @@ hr {
 }
 
 .category-button {
-	margin-top: 32px; 	
+	margin-top: 32px;
 }
 
 .filter-box h4:hover {
-	text-decoration: none; 
+	text-decoration: none;
 }

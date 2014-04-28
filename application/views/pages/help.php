@@ -4,9 +4,11 @@
 		<h3 style="margin-bottom: 0px;">Help Section</h3>
 	</div>
 	<div class="panel-body">
+		This is the help section of the cooking website.
 		<h4>Viewing preference</h4>
 		<p>Don't worry if you picked a style by accident! You can change
-			presentation style at any time, even</p>
+			presentation style at any time through the dropdown at the top of the
+			page. The three presentation styles are:</p>
 
 		<ul>
 			<li><b>Advanced</b> - This presentation style simply displays the

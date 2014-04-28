@@ -32,10 +32,13 @@ $(document).ready(function() {
 <head>
 <title>The Cook Book -- Cooking made easy</title>
 	<?php
+	// Bootstrap CSS
 	echo link_tag ( 'assets/css/bootstrap.css' );
+	// Main CSS file
 	echo link_tag ( 'assets/css/style.css' );
 	?>
-	<script src="http://code.jquery.com/jquery-latest.min.js"
+	<!-- jQuery -->
+<script src="http://code.jquery.com/jquery-latest.min.js"
 	type="text/javascript"></script>
 <script type="text/javascript"
 	src="<?php echo base_url('assets/js/bootstrap.js'); ?>"></script>
@@ -44,7 +47,7 @@ $(document).ready(function() {
 <script type="text/javascript"
 	src="<?php echo base_url('assets/js/jquery.collagePlus.min.js'); ?>"></script>
 <script type="text/javascript">
-	// Background images. 
+	// Background images for the application. Random image is picked on every website load.  
 	var images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg'];
 	 $('html').css({'background': 'url(<?php echo base_url()?>assets/images/' + images[Math.floor(Math.random() * images.length)] + ') no-repeat center center fixed'});
 	 $('html').css({'background-size': '100%'});
@@ -80,6 +83,10 @@ $(document).ready(function() {
 			});
 		<?php } ?>		
 		$('a').tooltip();	 
+		$('input[type=search]').tooltip({ 
+		    placement: "bottom",
+		    trigger: "focus"
+		});
 	});
 	// Push a new alert to screen. 
 	 function newAlert (type, message) {
@@ -104,7 +111,7 @@ $(document).ready(function() {
 					<a class="navbar-brand" accesskey="0"
 						href="<?php echo site_url(); ?>"><h2>The Cook Book</h2></a>
 				</div>
-
+				<!-- Categories dropdown -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
@@ -130,10 +137,9 @@ $(document).ready(function() {
 					$attributes = array (
 							'class' => 'navbar-form navbar-right navbar-search' 
 					);
-					echo "<a href='#' data-toggle='tooltip' data-placement='bottom'
-									title='you can search for ingredients or recipes.'>";
 					echo form_open ( 'search/view', $attributes );
 					$data = array (
+							'type' => 'search',
 							'name' => 'search',
 							'value' => set_value ( 'search' ),
 							'class' => "form-control",
@@ -141,7 +147,10 @@ $(document).ready(function() {
 							'label' => 'Search website for a meal or ingredient, e.g. lime.',
 							'rules' => 'required',
 							'id' => 'search',
-							'placeholder' => 'Search meal/ingredient' 
+							'placeholder' => 'Search meal/ingredient',
+							'data-toggle' => 'tooltip',
+							'data-placement' => 'bottom',
+							'title' => 'you can search for ingredients or recipes.' 
 					);
 					echo form_input ( $data );
 					
@@ -149,7 +158,7 @@ $(document).ready(function() {
 					<button type="submit" class="btn btn-default">
 						<span class="glyphicon glyphicon-search"></span>
 					</button>
-					</a>
+					
 			<?php
 			echo form_close ();
 			// If we're not on the home page.
@@ -158,6 +167,7 @@ $(document).ready(function() {
 			 */
 			if (! endsWith ( $_SERVER ['PHP_SELF'], "index.php" ) || $sessionData ['viewType'] !== 'null') {
 				?>
+				<!-- Presentation styles dropdown -->
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"> <b>Current style: </b>
@@ -168,7 +178,7 @@ $(document).ready(function() {
 				echo_type_depend ( "Novice", $sessionData, STEP );
 				?>
 							<b class="caret"></b>
-						</a> </a> <!-- Presentation styles dropdown menu -->
+						</a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a id="<?php echo NARRATIVE ?>" href="#"
 									data-toggle="tooltip" data-html="true" data-placement="right"

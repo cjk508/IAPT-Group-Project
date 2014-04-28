@@ -1,5 +1,4 @@
 <!-- Beginning the body of a recipe. -->
-
 <script type="text/javascript">
 $(document).ready(function(){
 	// Enable experimental voice recognition functionality. 
@@ -48,6 +47,13 @@ $(document).ready(function(){
 <?php
 $sessionData = $this->session->all_userdata ();
 $GLOBALS ['user_type'] = getUserType ( $sessionData );
+/**
+ * A helper method to determine whether a user type is selected. Useful for rendering
+ * HTML. 
+ * 
+ * @param string $type the target type
+ * @return string "active" if selected, empty string otherwise
+ */
 function isSelected($type) {
 	if ($type === $GLOBALS ['user_type']) {
 		return "active";
@@ -58,6 +64,7 @@ function isSelected($type) {
 <!-- Header of recipe, containing title, categories, preparation time, voice control button -->
 		<h3><?php echo  $recipe_item->getTitle()?> <small> <span
 				class="glyphicon glyphicon-tags"> </span>   <?php
+				// Recipe category. 
 				foreach ( $recipe_item->getCategory () as $cat ) {
 					$display_name = $cat->getCategoryDisplayName ();
 					$url = $cat->getCategoryName ();
@@ -77,6 +84,7 @@ function isSelected($type) {
 				?>
 				 <span class="glyphicon glyphicon-time"></span> <?php echo $recipe_item->getRecipeCookTime()?> minutes to prepare.</small>
 			<?php if (!isNarrative ( $sessionData )) {?>				
+				<!-- Enable voice control button -->
 				<button id="voice-toggle" type="button"
 				class="btn btn-default pull-right" data-toggle="button"
 				data-animation="true" data-placement="right"

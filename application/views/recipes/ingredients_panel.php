@@ -46,15 +46,14 @@ $(document).ready(function(){
 							<img class="img-rounded"
 								alt="<?php echo $recipe_item->getImageAlt()?>"
 								src="<?php echo base_url('assets/images/')."/".$recipe_item->getImage()?>">
-
 						</div>
 					</div>
 					<div class="col-md-8 ingr-list">
 						<div class="panel panel-default">
 							<div class="panel-body">
+							<!-- Ingredients list -->
 				<?php
-				
-				// For every ingredient pool, print its recipes.
+				// For every ingredient pool, print its ingredients.
 				$pools = $recipe_item->getIngredientPool ( $GLOBALS ['user_type'] );
 				$count = - 1;
 				foreach ( $pools as $pool ) {

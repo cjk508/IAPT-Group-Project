@@ -68,8 +68,7 @@ else {
 					<?php echo $mostRecents[0]->getTitle(); ?>
 						<small> ;<span
 							class="glyphicon glyphicon-tags"> </span>   
-							<?php
-	
+							<?php	
 	foreach ( $mostRecents [0]->getCategory () as $cat ) {
 		$url = $cat->getCategoryName ();
 		$display_name = $cat->getCategoryDisplayName ();
@@ -85,7 +84,8 @@ else {
 				</a>; Serves <?php echo $mostRecents[0]->getServings();?>;
 							<span class="glyphicon glyphicon-time"></span> <?php echo $mostRecents [0]->getRecipeCookTime()?> min.
 						</small>
-					</h4>
+						</h4></a>
+					
 			</div>
 			<div class="otherFour col-md-6">
 			<?php

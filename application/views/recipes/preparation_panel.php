@@ -63,7 +63,7 @@ $(document).ready(function(){
 			}
 		}
 	}); 
-
+	// Change height if ingredients panel collapses. 
 	$('#collapseOne').on('hidden.bs.collapse', function () {
 		  $("#preparation").css({"max-height": "60%"});
 		  animatePreparationTo(current); 
@@ -78,9 +78,11 @@ $(document).ready(function(){
 
 	// Keyboard control of prep panel. 
 	$(document).keydown(function(e){
+		// Right and down. 
 	    if (e.keyCode == 40 || e.keyCode == 39) { 
 	       $("#next_step").trigger("click");
-	    } else if (e.keyCode == 37 || e.keyCode == 38) {
+	    } // Left and up. 
+	    else if (e.keyCode == 37 || e.keyCode == 38) {
 	    	$("#previous_step").trigger("click");
 		}
 	});	
@@ -166,16 +168,16 @@ if (! typeIsSelected ( $sessionData ) or isNarrative ( $sessionData )) {
 // Preparation navigation buttons
 if (isSegmented ( $sessionData ) || isStep ( $sessionData )) {
 	?>
-	<div class="text-center panel-footer">
-		<a data-toggle="tooltip" data-placement="top"
-			title="Did you know that you can use the arrow keys of your keyboard to change the steps?"
-			style="margin-right: 10px;"><span
-			class="glyphicon glyphicon-info-sign"></span></a>
-		<button type="button" class="btn btn-default" id="previous_step">Previous</button>
-		<button type="button" class="btn btn-default" id="reset_steps">Go to
-			Start</button>
-		<button type="button" class="btn btn-default" id="next_step">Next</button>
-	</div>
+<div class="text-center panel-footer">
+	<a data-toggle="tooltip" data-placement="top"
+		title="Did you know that you can use the arrow keys of your keyboard to change the steps?"
+		style="margin-right: 10px;"><span
+		class="glyphicon glyphicon-info-sign"></span></a>
+	<button type="button" class="btn btn-default" id="previous_step">Previous</button>
+	<button type="button" class="btn btn-default" id="reset_steps">Go to
+		Start</button>
+	<button type="button" class="btn btn-default" id="next_step">Next</button>
+</div>
 </div>
 
 <?php

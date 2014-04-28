@@ -6,7 +6,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-	$(".category-box").css({"max-height": $(window).height()*0.78});
+	$(".category-box").css({"height": $(window).height()*0.78});
 	$(".filter-box").css({"min-height": $(".category-box").height()});
 	$(".ingr-tooltip").tooltip();
 });
