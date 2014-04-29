@@ -94,6 +94,7 @@ class Recipe_object {
 		}
 		return $pools;
 	}
+	//used to create unique array on the recipe name
 	public function __toString() {
 	    return $this->recipe_id;
 	}

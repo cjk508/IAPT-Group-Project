@@ -1,3 +1,4 @@
+<!-- Invalid search terms iew only occurs when the form validation fails -->
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">Search Results</h3>

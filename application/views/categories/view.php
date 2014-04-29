@@ -6,6 +6,7 @@ $(document).ready(function(){
 });
 </script>
 <?php
+// filtering arrays being setup
 $CookingTimes = array ();
 $Servings = array ();
 $AllCategories = array ();
@@ -16,14 +17,18 @@ $AllCategories = array ();
 	</div>
 	<div class="panel-body category-body">
 		<ul class="media-list">
-			<?php foreach($category_items as $category_item) {?>
+			<?php
+			foreach($category_items as $category_item) {?>
+			<!-- print out each recipe in a list -->
 			<li
 				class="recipe_list row blue-glow <?php
 				$tempAllCategories = $category_item->getCategory ();
 				foreach ( $tempAllCategories as $tempAllCategory ) {
+					// print all of the categories that the recipe is in as class names (this allows them to be hidden during filtering)
 					echo $tempAllCategory->getCategoryName () . ' ';
 					array_push ( $AllCategories, $tempAllCategory );
 				}
+				//push the classes onto the arrays so a list of filtering options is created
 				echo ' Serves' . $category_item->getServings () . ' Time' . $category_item->getRecipeCookTime ();
 				array_push ( $CookingTimes, $category_item->getRecipeCookTime () );
 				
@@ -35,6 +40,7 @@ $AllCategories = array ();
 					alt="">
 			</a> <span class="media-body"> <a
 					href="<?php echo site_url('recipe/'.$category_item->getID()); ?>">
+					<!-- display the recipe information including the recipe title, description, alt text,  -->
 						<div class="recipe_info_box">
 							<h4 class="media-heading"><?php echo $category_item->getTitle();?></h4>
 				
@@ -42,6 +48,7 @@ $AllCategories = array ();
 					<p><?php echo $category_item->getDescription(); ?></p>
 					<p class="servings"><i>Serves <?php echo $category_item->getServings();?></i></p>
 					<p>
+					<!-- print out the categorie that the recipe is in and link to the respective category pages -->
 						In Categories: <span class="glyphicon glyphicon-tags"></span>
 						<?php
 				$forCount = 0;
@@ -60,6 +67,7 @@ $AllCategories = array ();
 					
 					</p>
 					<p>
+					<!-- print out the cooking time of the recipe -->
 						Cooking time: <span class="glyphicon glyphicon-time"></span>
 						<?php
 				echo $category_item->getRecipeCookTime ();
@@ -67,7 +75,7 @@ $AllCategories = array ();
 						</p> </a>Ingredients: 
 					<?php
 				$sessionData = $this->session->all_userdata ();
-				
+				// create the html ingredient pools list and add this to a tooltip
 				foreach ( $category_item->getIngredientPools () as $pool ) {
 					if ($pool->getDifficulty () == $sessionData ['viewType']) {
 						?>
@@ -123,6 +131,7 @@ $AllCategories = array ();
 foreach ( $AllCategories as $AllCategory ) {
 				if ($AllCategory->getCategoryDisplayName () != $searchCategory) {
 					?>
+				<!-- Populate filter with all categories that are being used in the recipe list -->					
 				<div class="input-group">
 				<span class="input-group-addon"> <input type="checkbox"
 					value="<?php echo $AllCategory->getCategoryName(); ?>"
@@ -141,7 +150,9 @@ foreach ( $AllCategories as $AllCategory ) {
 		if (sizeof ( $Servings ) > 0) {
 			?>
 		<h4>Servings</h4>
+
 		<ul class="list-group">
+		<!-- Populate the filter list with all of the serving times -->
 			<?php foreach ($Servings as $Serving) {?>
 				<div class="input-group">
 				<span class="input-group-addon"> <input type="checkbox"
@@ -158,6 +169,7 @@ foreach ( $AllCategories as $AllCategory ) {
 			?>
 		<h4>Prep Time</h4>
 		<ul class="list-group">
+		<!-- Populate the filter list with all of the cooking times -->
 			<?php foreach ($CookingTimes as $CookingTime) {?>
 				<div class="input-group">
 				<span class="input-group-addon"> <input type="checkbox"
@@ -172,26 +184,32 @@ foreach ( $AllCategories as $AllCategory ) {
 </div>
 
 <script type="text/javascript">
-var categoryLog = new Array();
-var servesLog = new Array();
-var timeLog = new Array();
-var checkedLog = new Array();
+var categoryLog = new Array(); // which category boxes are checked
+var servesLog = new Array();// which serves boxes are checked
+var timeLog = new Array();// which time boxes are checked
+var checkedLog = new Array();// which category boxes are checked
+
 function toggleFilter(className, checkBoxObject){
+	//called every time that a checkbox has been checked
 	if (checkBoxObject.checked){
 		if (checkBoxObject.value.indexOf( "Serves") > -1){
 			servesLog.push(checkBoxObject.value);	
+			// If it contains the word "Serves" then add it to  the serves log 
 		}
 		else if (checkBoxObject.value.indexOf("Time") > -1){
 			timeLog.push(checkBoxObject.value);	
+			// If it contains the word "Time" then add it to  the serves log 
 		}
 		else{
 			categoryLog.push(checkBoxObject.value);	
+			//If it does not contain any of the above words then it is a category
 		}
 	}
 	else{
+		// If nothing has been checked then remove it from the log
 		removeValueFromLog(checkBoxObject.value);	
 	}
-
+	// then hide filtered results
 	var elements = document.getElementsByClassName("recipe_list");
 	for (var i = 0; i < elements.length; i++) {
 		filterItem(elements[i]);
@@ -200,11 +218,14 @@ function toggleFilter(className, checkBoxObject){
 
 function filterItem(recipe){
 	var classList = recipe.className.split(/\s+/);
-	var visible = [false,false,false];
+	var visible = [false,false,false]; // if any are false then the recipe is visible
+	
 	for (var i = classList.length - 1; i >= 0; i--) {
 		if (categoryLog.length > 0) {	
+			// if category log is larger than 0 then iterate
 			for (var j = categoryLog.length - 1; j >= 0; j--) {	
 				if (categoryLog[j] == classList[i]){
+					//true if the class name is in the category log
 					visible[0] = true;
 				}
 			}
@@ -213,40 +234,50 @@ function filterItem(recipe){
 			visible[0] = true;
 		}
 		if (servesLog.length > 0) {	
+			// if serveslog is larger than 0 then iterate
 			for (var j = servesLog.length - 1; j >= 0; j--) {	
+				//true if the class name is in the serves log
 				if (servesLog[j] == classList[i]){
 					visible[1] = true;
 				}
 			}
 		}
 		else {
+			//if there are none them set it to true so that the filter can still be activated
 			visible[1] = true;
 		}
 		if (timeLog.length > 0) {	
 			for (var j = timeLog.length - 1; j >= 0; j--) {	
+				//true if the class name is in the timelog
 				if (timeLog[j] == classList[i]){
 					visible[2] = true;
 				}
 			}
 		}
 		else {
+			//if there are none them set it to true so that the filter can still be activated
 			visible[2] = true;
 		}
 	}
 	if (visible[0] == true && visible[1] == true && visible[2] == true){
+		// if all filters have been activated then show the recipe
 		$(recipe).removeClass("hidden");
 	}
 	else{
 		if (categoryLog.length == 0 && servesLog.length == 0 && timeLog.length == 0 ){
+			//show the recipe if there are no filters activated
 			$(recipe).removeClass("hidden");
 		}
 		else{
+			//otherwise hide the recipe
 			$(recipe).addClass("hidden");	
 		}
 	}
 }
 
 function removeValueFromLog(cbValue){
+	// iterates through each of the logs to find the class that should be removed from the list
+	// Only one can be removed at once though so when deleetedOne becomes true then no more searching occurs
 	var deletedOne = false;
 	for (var i = categoryLog.length - 1; i >= 0; i--) {
 		if (categoryLog[i] == cbValue && deletedOne == false){
