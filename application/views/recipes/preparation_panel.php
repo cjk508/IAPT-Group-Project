@@ -65,7 +65,7 @@ $(document).ready(function(){
 	}); 
 	// Change height if ingredients panel collapses. 
 	$('#collapseOne').on('hidden.bs.collapse', function () {
-		  $("#preparation").css({"max-height": "60%"});
+		  $("#preparation").css({"max-height": $(window).height()/2.2});
 		  animatePreparationTo(current); 
 		  $("#accordion h4 span").attr("class","glyphicon glyphicon-arrow-down");
 	}); 
