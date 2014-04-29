@@ -1,4 +1,5 @@
 
+<!-- Help section of the application. -->
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 style="margin-bottom: 0px;">Help Section</h3>

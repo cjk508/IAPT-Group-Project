@@ -38,7 +38,7 @@ $(document).ready(function() {
 	echo link_tag ( 'assets/css/style.css' );
 	?>
 	<!-- jQuery -->
-<script src="http://code.jquery.com/jquery-latest.min.js"
+<script src="<?php echo base_url('assets/js/jquery-latest.min.js'); ?>"
 	type="text/javascript"></script>
 <script type="text/javascript"
 	src="<?php echo base_url('assets/js/bootstrap.js'); ?>"></script>

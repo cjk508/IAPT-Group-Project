@@ -70,11 +70,11 @@ $(document).ready(function(){
 		  $("#accordion h4 span").attr("class","glyphicon glyphicon-arrow-down");
 	}); 
 	$('#collapseOne').on('shown.bs.collapse', function () {
-		  $("#preparation").css({"max-height": $(window).height()/5});
+		  $("#preparation").css({"max-height": $(window).height()/6});
 		  animatePreparationTo(current); 
 		  $("#accordion h4 span").attr("class","glyphicon glyphicon-arrow-up");
 	});
-	$("#preparation").css({"max-height": $(window).height()/5});
+	$("#preparation").css({"max-height": $(window).height()/6});
 
 	// Keyboard control of prep panel. 
 	$(document).keydown(function(e){
@@ -90,7 +90,7 @@ $(document).ready(function(){
 });
 </script>
 <!-- Begin preparation panel -->
-<div class="panel panel-default">
+<div class="panel panel-default" style="margin-bottom: 10px;">
 	<div class="panel-heading navbar-example">
 		<h3 class="panel-title">
 			Preparation: <span class="steps">
