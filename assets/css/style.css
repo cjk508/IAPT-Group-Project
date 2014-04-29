@@ -58,6 +58,7 @@ header,footer {
 }
 
 footer {
+	text-align: center; 
 	position: fixed;
 	display: inline;
 }
