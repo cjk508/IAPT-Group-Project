@@ -16,7 +16,7 @@ if (isset ( $_POST ['viewType'] )) {
 	if ($sessionData ['viewType'] !== $_POST ['viewType']) {
 		?>
 <script type="text/javascript">
-$(document).ready(function() {	
+$(document).ready(function() {
 		newAlert('alert-info', 'Your new view type is <?php echo $_POST ['viewType'] ?>');
 });
 		 </script>
@@ -116,7 +116,7 @@ $(document).ready(function() {
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="dropdown"><a id="dLabel" role="button"
-							data-toggle="dropdown" href="#" accesskey="1"> Categories <span
+							data-toggle="dropdown" href="#" accesskey="1">Categories<span
 								class="caret"></span>
 						</a>
 							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -127,7 +127,6 @@ $(document).ready(function() {
 									href="<?php echo base_url()."category/".$category-> getCategoryName() ?>"> <?php echo $category-> getCategoryDisplayName()?> </a></li>
 				<?php }?>
 				  </ul></li>
-
 						<li><a id="surprise" data-toggle="tooltip" data-placement="bottom"
 							title="Pick a recipe completely at random."
 							href="<?php echo site_url('recipe/'.$headerSurprise->getID()); ?>"
@@ -189,8 +188,7 @@ $(document).ready(function() {
 								<li><a id="<?php echo STEP ?>" href="#" data-toggle="tooltip"
 									data-placement="right" data-html="true" title="<style>.tooltip-inner{min-width:150px});</style>Instructions are finely cut and easy to follow, so you can take one step at a time."><?php echo_type_depend("<span class=\"glyphicon glyphicon-ok\"></span> ", $sessionData, STEP)?>Novice</a></li>
 							</ul></li>
-					</ul>
-					
+					</ul>					
 			<?php
 			}
 			?>

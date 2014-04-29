@@ -49,7 +49,7 @@ $AllCategories = array ();
 					<p class="servings"><i>Serves <?php echo $category_item->getServings();?></i></p>
 					<p>
 					<!-- print out the categorie that the recipe is in and link to the respective category pages -->
-						In Categories: <span class="glyphicon glyphicon-tags"></span>
+						Categories: <span class="glyphicon glyphicon-tags"></span>
 						<?php
 				$forCount = 0;
 				foreach ( $category_item->getCategory () as $cat ) {
