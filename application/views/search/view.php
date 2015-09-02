@@ -1,4 +1,4 @@
-<?php 
+<?php
 // filtering arrays being setup
 	$CookingTimes = array();
 	$Servings = array();
@@ -26,7 +26,7 @@ $(document).ready(function(){
 			echo "Sorry there are no results for '". $searchTerm."'";
 		}
 		else{
-			// otherwise 
+			// otherwise
 			foreach($searchValues as $searchValue) {?>
 			<!-- print out each recipe in a list -->
 			<li
@@ -40,7 +40,7 @@ $(document).ready(function(){
 				//push the classes onto the arrays so a list of filtering options is created
 				echo ' Serves' . $searchValue->getServings () . ' Time' . $searchValue->getRecipeCookTime ();
 				array_push ( $CookingTimes, $searchValue->getRecipeCookTime () );
-				
+
 				array_push ( $Servings, $searchValue->getServings () );
 				?>"><a class="pull-left"
 				href="<?php echo site_url('recipe/'.$searchValue->getID()); ?>"> <img
@@ -52,7 +52,7 @@ $(document).ready(function(){
 					<!-- display the recipe information including the recipe title, description, alt text,  -->
 						<div class="recipe_info_box">
 							<h4 class="media-heading"><?php echo $searchValue->getTitle();?></h4>
-				
+
 				</a>
 					<p><?php echo $searchValue->getDescription(); ?></p>
 					<p class="servings"><i>Serves <?php echo $searchValue->getServings();?></i></p>
@@ -72,8 +72,8 @@ $(document).ready(function(){
 					echo "</a>";
 				}
 				?>
-						
-					
+
+
 					</p>
 					<p>
 					<!-- print out the cooking time of the recipe -->
@@ -81,7 +81,7 @@ $(document).ready(function(){
 						<?php
 				echo $searchValue->getRecipeCookTime ();
 				?> mins.
-						</p> </a>Ingredients: 
+						</p> </a>Ingredients:
 					<?php
 				$sessionData = $this->session->all_userdata ();
 				// create the html ingredient pools list and add this to a tooltip
@@ -96,8 +96,8 @@ $(document).ready(function(){
 						?>
 								<a href="#" data-html="true" data-toggle="tooltip"
 					data-placement="bottom" title="<?php echo $ingredList ?></li>
-		
-		</ul>"><?php echo $pool->getTitle();?> <span
+
+		</ul>"><?php echo $searchValue->getTitle();?> <span
 			class="glyphicon glyphicon-info-sign"> </span></a>
 							<?php
 					}
@@ -117,10 +117,10 @@ $(document).ready(function(){
 	</div>
 </div>
 <div class="panel panel-default filter-box">
-	<div class = "panel-heading"> 
+	<div class = "panel-heading">
 		<h3 style ="margin-bottom: 0px;">Filtering Options</h3>
 	</div>
-	<?php 
+	<?php
 		//Remove all duplicate values for the array, leaving just one instance of each filtering option
 		$AllCategories = array_unique($AllCategories);
 		$Servings = array_unique($Servings);
@@ -131,7 +131,7 @@ $(document).ready(function(){
 		<ul class="list-group">
 		<!-- Populate filter with all categories that are being used in the recipe list -->
 			<?php foreach ( $AllCategories as $AllCategory ) {?>
-				<!-- Populate filter with all categories that are being used in the recipe list -->					
+				<!-- Populate filter with all categories that are being used in the recipe list -->
 				<div class="input-group">
 				<span class="input-group-addon"> <input type="checkbox"
 					value="<?php echo $AllCategory->getCategoryName(); ?>"
@@ -165,7 +165,7 @@ $(document).ready(function(){
 			<?php } ?>
 		</ul>
 	</div>
-</div>	
+</div>
 
 <script type="text/javascript">
 var categoryLog = new Array(); // which category boxes are checked
@@ -177,37 +177,37 @@ function toggleFilter(className, checkBoxObject){
 	//called every time that a checkbox has been checked
 	if (checkBoxObject.checked){
 		if (checkBoxObject.value.indexOf( "Serves") > -1){
-			servesLog.push(checkBoxObject.value);	
-			// If it contains the word "Serves" then add it to  the serves log 
+			servesLog.push(checkBoxObject.value);
+			// If it contains the word "Serves" then add it to  the serves log
 		}
 		else if (checkBoxObject.value.indexOf("Time") > -1){
-			timeLog.push(checkBoxObject.value);	
-			// If it contains the word "Time" then add it to  the serves log 
+			timeLog.push(checkBoxObject.value);
+			// If it contains the word "Time" then add it to  the serves log
 		}
 		else{
-			categoryLog.push(checkBoxObject.value);	
+			categoryLog.push(checkBoxObject.value);
 			//If it does not contain any of the above words then it is a category
 		}
 	}
 	else{
 		// If nothing has been checked then remove it from the log
-		removeValueFromLog(checkBoxObject.value);	
+		removeValueFromLog(checkBoxObject.value);
 	}
 	// then hide filtered results
 	var elements = document.getElementsByClassName("recipe_list");
 	for (var i = 0; i < elements.length; i++) {
 		filterItem(elements[i]);
-	}	
+	}
 }
 
 function filterItem(recipe){
 	var classList = recipe.className.split(/\s+/);
 	var visible = [false,false,false]; // if any are false then the recipe is visible
-	
+
 	for (var i = classList.length - 1; i >= 0; i--) {
-		if (categoryLog.length > 0) {	
+		if (categoryLog.length > 0) {
 			// if category log is larger than 0 then iterate
-			for (var j = categoryLog.length - 1; j >= 0; j--) {	
+			for (var j = categoryLog.length - 1; j >= 0; j--) {
 				if (categoryLog[j] == classList[i]){
 					//true if the class name is in the category log
 					visible[0] = true;
@@ -217,9 +217,9 @@ function filterItem(recipe){
 		else {
 			visible[0] = true;
 		}
-		if (servesLog.length > 0) {	
+		if (servesLog.length > 0) {
 			// if serveslog is larger than 0 then iterate
-			for (var j = servesLog.length - 1; j >= 0; j--) {	
+			for (var j = servesLog.length - 1; j >= 0; j--) {
 				//true if the class name is in the serves log
 				if (servesLog[j] == classList[i]){
 					visible[1] = true;
@@ -230,8 +230,8 @@ function filterItem(recipe){
 			//if there are none them set it to true so that the filter can still be activated
 			visible[1] = true;
 		}
-		if (timeLog.length > 0) {	
-			for (var j = timeLog.length - 1; j >= 0; j--) {	
+		if (timeLog.length > 0) {
+			for (var j = timeLog.length - 1; j >= 0; j--) {
 				//true if the class name is in the timelog
 				if (timeLog[j] == classList[i]){
 					visible[2] = true;
@@ -254,7 +254,7 @@ function filterItem(recipe){
 		}
 		else{
 			//otherwise hide the recipe
-			$(recipe).addClass("hidden");	
+			$(recipe).addClass("hidden");
 		}
 	}
 }

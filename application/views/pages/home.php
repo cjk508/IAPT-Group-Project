@@ -40,13 +40,13 @@ if (! typeIsSelected ( $sessionData ) /*or $sessionData['viewType'] != 'null'*/)
 </div>
 
 <?php
-} 
+}
 
 /*
  * If there is already a session variable stored for the user attempting to access the site then a different page will be shown to the user. Instead of seeing the welcome page, they will see a list of the most recent and most popular recipes @todo link these to the database and loop
  */
 else {
-	
+
 	?>
 
 <div class="panel panel-default recent-panel">
@@ -67,8 +67,8 @@ else {
 					<h4>
 					<?php echo $mostRecents[0]->getTitle(); ?>
 						<small> ;<span
-							class="glyphicon glyphicon-tags"> </span>   
-							<?php	
+							class="glyphicon glyphicon-tags"> </span>
+							<?php
 	foreach ( $mostRecents [0]->getCategory () as $cat ) {
 		$url = $cat->getCategoryName ();
 		$display_name = $cat->getCategoryDisplayName ();
@@ -76,26 +76,27 @@ else {
 								<a href='<?php echo base_url()?>category/<?php echo $url ?>'>
 								<?php
 		echo $display_name;
+		$forCount = 0;
 		if (sizeof ( $display_name ) != 1 and $forCount < sizeof ( $display_name )) {
 			echo '; ';
 		}
 		?>
 							<?php } ?>
 				</a>; Serves <?php echo $mostRecents[0]->getServings();?>;
-							<span class="glyphicon glyphicon-time"></span> <?php echo $mostRecents [0]->getRecipeCookTime()?> min.
+							<span class="glyphicon glyphicon-time"></span> <?php echo $mostRecents[0]->getRecipeCookTime()?> min.
 						</small>
 						</h4></a>
-					
+
 			</div>
 			<div class="otherFour col-md-6">
 			<?php
-	
+
 	// Create rows with 2 recipes each.
 	foreach ( array (
 			1,
-			3 
+			3
 	) as $index ) {
-		?> 
+		?>
 				<div class="row">
 			<?php
 		for($i = $index; $i < $index + 2; $i ++) {
@@ -114,15 +115,15 @@ else {
 								<h4>
 							<?php echo $mostRecents[$i]->getTitle(); ?>
 								<small><span
-										class="glyphicon glyphicon-tags"> </span>   
+										class="glyphicon glyphicon-tags"> </span>
 									<?php
 			$forCount = 0;
 			foreach ( $mostRecents [$i]->getCategory () as $cat ) {
 				$url = $cat->getCategoryName ();
 				$display_name = $cat->getCategoryDisplayName ();
 				?>
-										<a href='<?php echo base_url()?>category/<?php echo $url; ?>'> 
-									
+										<a href='<?php echo base_url()?>category/<?php echo $url; ?>'>
+
 										<?php
 				echo $display_name;
 				if (sizeof ( $display_name ) != 1 and $forCount < sizeof ( $display_name )) {
@@ -136,7 +137,7 @@ else {
 								</small>
 								</h4>
 							</div>
-					
+
 					</a>
 				</div>
 				<?php
@@ -146,7 +147,7 @@ else {
 				<?php if ($index ===1) { ?>
 				<hr>
 				<?php }?>
-			<?php } ?>					
+			<?php } ?>
 			</div>
 	</div>
 </div>

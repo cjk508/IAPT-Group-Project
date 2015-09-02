@@ -1,16 +1,16 @@
 <!-- Beginning the body of a recipe. -->
 <script type="text/javascript">
 $(document).ready(function(){
-	// Enable experimental voice recognition functionality. 
-	// It uses the Annyang library. 
+	// Enable experimental voice recognition functionality.
+	// It uses the Annyang library.
 	$('#voice-toggle').click(function() {
-		$(this).tooltip('toggle'); 
-		$(this).popover('toggle'); 		
+		$(this).tooltip('toggle');
+		$(this).popover('toggle');
 		if($(this).hasClass('active')) {
-			annyang.abort();  
+			annyang.abort();
 			$(this).popover('hide');
-		} else {		
-			if (annyang) {		
+		} else {
+			if (annyang) {
 				  // Annyang Voice Commands
 				  var commands = {
 				    'next': function() {
@@ -29,14 +29,14 @@ $(document).ready(function(){
 				  annyang.start();
 			}
 			setTimeout(function() {
-				$('#voice-toggle').popover('hide'); 
+				$('#voice-toggle').popover('hide');
 			}, 3000);
 		}
 	});
-	
+
 	$('#voice-toggle').hover(function() {
-		$('#voice-toggle').tooltip('toggle'); 
-	}); 
+		$('#voice-toggle').tooltip('toggle');
+	});
 });
 </script>
 
@@ -67,25 +67,26 @@ function isSelected($type) {
 		<h3><?php echo  $recipe_item->getTitle()?> <small> <span
 				class="glyphicon glyphicon-tags"> </span>   <?php
 				// Recipe category.
-				foreach ( $recipe_item->getCategory () as $cat ) {
+				foreach ( $recipe_item->getCategory() as $cat ) {
 					$display_name = $cat->getCategoryDisplayName ();
 					$url = $cat->getCategoryName ();
 					?>
-					<a href='<?php echo base_url()?>category/<?php echo $url; ?>'> 
-					
+					<a href='<?php echo base_url()?>category/<?php echo $url; ?>'>
+
 					<?php
 					echo $display_name . ";";
+					$forCount = 0;
 					if (sizeof ( $display_name ) != 1 and $forCount < sizeof ( $display_name )) {
 						echo '; ';
 					}
 					?>
-					</a> 
-					
+					</a>
+
 				<?php
 				}
 				?>Serves <?php echo $recipe_item->getServings();?>;
 				 <span class="glyphicon glyphicon-time"></span> <?php echo $recipe_item->getRecipeCookTime()?> minutes to prepare.</small>
-			<?php if (!isNarrative ( $sessionData )) {?>				
+			<?php if (!isNarrative ( $sessionData )) {?>
 				<!-- Enable voice control button -->
 			<button id="voice-toggle" type="button"
 				class="btn btn-default pull-right" data-toggle="button"

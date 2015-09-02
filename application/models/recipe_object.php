@@ -1,7 +1,7 @@
 <?php
 /**
- * This defines the skeleton of a Recipe_object. 
- * Recipe_objects contain all the key details of a Recipe, including preparation methods. 
+ * This defines the skeleton of a Recipe_object.
+ * Recipe_objects contain all the key details of a Recipe, including preparation methods.
  */
 class Recipe_object {
 	// The id of the recipe

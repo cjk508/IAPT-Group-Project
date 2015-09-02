@@ -20,7 +20,7 @@ class Recipes_model extends CI_Model {
 	 */
 	public function get_recipe($id) {
 		$result = $this->db->get_where ( 'recipes_view', array (
-				'recipe_id' => $id 
+				'recipe_id' => $id
 		) );
 		return $this->_processSingleResult ( $result );
 	}
@@ -44,7 +44,7 @@ class Recipes_model extends CI_Model {
 	 *        	value that is being searched for
 	 */
 	public function ingredient_Search($searchTerm) {
-		$query_1 = "select recipes_view.* from `ingredient_pools_view` INNER JOIN `recipes_view` on 
+		$query_1 = "select recipes_view.* from `ingredient_pools_view` INNER JOIN `recipes_view` on
 					recipes_view.recipe_id=ingredient_pools_view.recipe_id where `ingredients` like '%" . ( string ) $searchTerm . "%' Group by recipes_view.recipe_id;";
 		$result = $this->db->query ( $query_1 );
 		return $this->_processMultipleResults ( $result );
@@ -61,7 +61,7 @@ class Recipes_model extends CI_Model {
 			if ($category === "Quick_meals") {
 				return $this->get_quick_meals ();
 			} else {
-				$query_1 = "select * from `recipes_view` where `category` like '%" . ( string ) $category . "%'" . " or " . " `category_url` like '%" . ( string ) $category . "%'";
+				$query_1 = "select * from `recipes_view` where `category` like '%" . ( string ) $category . "%'";
 				$result = $this->db->query ( $query_1 );
 				return $this->_processMultipleResults ( $result );
 			}
@@ -90,7 +90,7 @@ class Recipes_model extends CI_Model {
 		$result = $this->db->query ( $query_1 );
 		return $this->_processMultipleResults ( $result, 'Category_object' );
 	}
-	
+
 	/**
 	 * Check if a category call is valid.
 	 *
@@ -165,7 +165,7 @@ class Recipes_model extends CI_Model {
 	 */
 	private function _getIngredientPool($id) {
 		$ingredient_pools = $this->db->get_where ( 'ingredient_pools_view', array (
-				'recipe_id' => $id 
+				'recipe_id' => $id
 		) );
 		if ($ingredient_pools->num_rows () > 0) {
 			$result = $ingredient_pools->result ( 'Ingredient_pool' );
@@ -182,8 +182,8 @@ class Recipes_model extends CI_Model {
 	 *        	the id of the recipe
 	 */
 	private function _getCategories($id) {
-		$categories = $this->db->get_where ( 'recipe_categories_view_2', array (
-				'recipe_id' => $id 
+		$categories = $this->db->get_where ( 'recipe_categories_view', array (
+				'recipe_id' => $id
 		) );
 		if ($categories->num_rows () > 0) {
 			$result = $categories->result ( 'Category_object' );
